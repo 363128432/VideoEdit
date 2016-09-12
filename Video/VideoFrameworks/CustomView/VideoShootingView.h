@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, CameraManagerDevicePosition) {
 @property (nonatomic, assign) CameraManagerDevicePosition position;        // 是否为前置摄像头
 @property (nonatomic, assign) BOOL focusing;        // 是否自动聚焦(默认为yes)
 @property (nonatomic, assign) BOOL TorchModeOn;     // 是否打开闪光灯
+@property (nonatomic, assign) UIInterfaceOrientation orientation;
 
 
 - (void)startRecording;

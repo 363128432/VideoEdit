@@ -7,6 +7,8 @@
 //
 
 #import "CanEditAsset.h"
+#import "AVURLAsset+Custom.h"
+#import "VideoPlayView.h"
 
 @interface CanEditAsset ()
 
@@ -16,19 +18,65 @@
 @property (nonatomic, strong) GPUImageContrastFilter *contrastFilter;       // 对比
 @property (nonatomic, strong) GPUImageMovie *movie;
 @property (nonatomic, strong) GPUImageMovieWriter *vedioWriter;
+@property (nonatomic, strong) VideoPlayView *playView;
+@property (nonatomic, strong) GPUImageView *preview;
 
 @end
 
 @implementation CanEditAsset
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
++ (instancetype)assetWithURL:(NSURL *)URL {
+    CanEditAsset *asset = [super assetWithURL:URL];
+    if (asset) {
+        asset.playTimeRange = CMTimeRangeMake(kCMTimeZero, asset.duration);
+    }
+    return asset;
+}
+
+- (CMTimeRange)playTimeRange {
+    if (&_playTimeRange == NULL) {
         _playTimeRange = CMTimeRangeMake(kCMTimeZero, self.duration);
     }
-    return self;
+    return _playTimeRange;
 }
+
+
+#pragma mark 更换滤镜
+- (UIView *)filterPreviewViewWithFrame:(CGRect)rect {
+    _playView = [[VideoPlayView alloc]initWithFrame:rect];
+    [_playView setPlayUrl:self.URL];
+    
+    _preview = [[GPUImageView alloc]initWithFrame:_playView.container.bounds];
+    _preview.backgroundColor = [UIColor blackColor];
+    [_playView addSubview:_preview];
+    
+    return _playView ;
+}
+
+- (void)startPlayPreview {
+    
+}
+
+- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter {
+    [self.movie removeAllTargets];
+    [_filter removeAllTargets];
+    [self.movie cancelProcessing];
+    self.movie = nil;
+
+    _filter = otherFilter;
+    
+    [self.movie addTarget:_filter];
+    [_filter addTarget:self.preview];
+    [self.movie startProcessing];
+    
+    [self startPlayPreview];
+    [self.playView toPlay];
+}
+
+- (void)identifyAndSaveCurrentFilter {
+    
+}
+
 
 #pragma mark -set
 - (void)setContrastVaule:(float)contrastVaule {
@@ -50,9 +98,8 @@
 - (GPUImageMovie *)movie {
     if (!_movie) {
         _movie = [[GPUImageMovie alloc] initWithURL:self.URL];
-        _movie.runBenchmark = YES;
         _movie.audioEncodingTarget = nil;
-        _movie.playAtActualSpeed = NO;
+        _movie.playAtActualSpeed = YES;
     }
     return _movie;
 }
@@ -64,5 +111,12 @@
     }
     return _vedioWriter;
 }
+
+- (UIImage *)thumbnailImage {
+    return [self thumbnailImageAtTime:0];
+}
+
+
+
 
 @end

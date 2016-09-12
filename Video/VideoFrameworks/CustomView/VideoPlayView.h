@@ -20,11 +20,13 @@
 
 @property (nonatomic, strong) NSURL *playUrl;               // 视频播放地址
 @property (nonatomic, assign) CMTime totalTime;             // 视频总时长
+@property (nonatomic, assign) CMTime nowTime;               // 当前播放时间
 @property (nonatomic, strong) NSArray<NSNumber *> *separatePoints;  // 分隔
 
+- (void)toPlay;             // 从最开始播放
 
-- (void)startPlayer;
+- (void)startPlayer;        // 开始播放，暂停后从暂停地方开始播放，和toplay有区别
 
-- (void)pausePlayer;
+- (void)pausePlayer;    
 
 @end

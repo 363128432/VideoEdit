@@ -71,6 +71,10 @@
     
     [self setRatio:(lastPoint.x / self.bounds.size.width)];
     _value = (lastPoint.x / self.bounds.size.width) * _maxVaule;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(VauleChangeTimeBarSlider:)]) {
+        [_delegate VauleChangeTimeBarSlider:self];
+    }
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -78,6 +82,10 @@
     
     [self setRatio:(lastPoint.x / self.bounds.size.width)];
     _value = (lastPoint.x / self.bounds.size.width) * _maxVaule;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(VauleChangeTimeBarSlider:)]) {
+        [_delegate VauleChangeTimeBarSlider:self];
+    }
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -85,6 +93,10 @@
     
     [self setRatio:(lastPoint.x / self.bounds.size.width)];
     _value = (lastPoint.x / self.bounds.size.width) * _maxVaule;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(VauleChangeFinishTimeBarSlider:)]) {
+        [_delegate VauleChangeFinishTimeBarSlider:self];
+    }
 }
 
 @end

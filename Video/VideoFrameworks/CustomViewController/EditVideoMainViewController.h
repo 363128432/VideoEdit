@@ -11,7 +11,6 @@
 
 @interface EditVideoMainViewController : UIViewController
 
-
 @property (nonatomic, strong) VideoObject *currentVideo;
 
 @end

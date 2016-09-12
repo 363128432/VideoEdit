@@ -12,9 +12,19 @@
 #import <AVFoundation/AVFoundation.h>
 #import "GPUImage.h"
 
+typedef NS_ENUM(NSInteger, VideoFilterType) {
+    VideoFilterTypeWithNone,
+    VideoFilterTypeWithLookup,
+    VideoFilterTypeWithAmatorka,
+    VideoFilterTypeWithMissEtikate,
+    VideoFilterTypeWithSoftElegance,
+};
+
 @interface CanEditAsset : AVURLAsset
 
-@property (nonatomic, strong) AVURLAsset *editChanges;          // 编辑后的视频
+@property (nonatomic, strong) NSURL *afterEditingUrl;           // 编辑后的视频路径
+@property (nonatomic, strong) NSURL *previeweditorUrl;          // 编辑时的合成的预览路径，
+
 @property (nonatomic, assign) CMTimeRange playTimeRange;             // 剪裁之后播放的时间
 @property (nonatomic, assign) float changeSpeed;                // 变速
 @property (nonatomic, assign) float rotation;                   // 旋转角度
@@ -24,9 +34,18 @@
 @property (nonatomic, assign) float exposureVaule;              // 亮度
 @property (nonatomic, assign) float contrastVaule;              // 对比度
 
+@property (nonatomic, assign) VideoFilterType filterType;
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;    // 视频滤镜
+
+@property (nonatomic, strong) UIImage *thumbnailImage;          // 缩略图
 
 
 - (NSArray<CanEditAsset *> *)componentsSeparatedByTime:(CMTime)time;
+
+
+- (UIView *)filterPreviewViewWithFrame:(CGRect)rect;
+- (void)startPlayPreview;
+- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter;
+
 
 @end

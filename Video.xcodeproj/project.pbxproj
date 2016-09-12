@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8068B681D6F515600C4A857 /* 123.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8068B671D6F515600C4A857 /* 123.mp3 */; };
+		A8068B6B1D6F543000C4A857 /* AddElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B6A1D6F543000C4A857 /* AddElementObject.m */; };
+		A8068B6E1D6F555600C4A857 /* DubbingElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B6D1D6F555600C4A857 /* DubbingElementObject.m */; };
+		A8068B701D71824D00C4A857 /* VideoEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8068B6F1D71824D00C4A857 /* VideoEdit.storyboard */; };
+		A8068B731D71831C00C4A857 /* MaterialEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B721D71831C00C4A857 /* MaterialEditTableViewController.m */; };
+		A8068B761D71838400C4A857 /* SelectMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B751D71838400C4A857 /* SelectMusicTableViewController.m */; };
+		A8068B791D7183FD00C4A857 /* AddDubbingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B781D7183FD00C4A857 /* AddDubbingViewController.m */; };
+		A8068B7C1D7186E900C4A857 /* MusicElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B7B1D7186E900C4A857 /* MusicElementObject.m */; };
+		A8068B7F1D748F7300C4A857 /* MaterialEditAddTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B7E1D748F7300C4A857 /* MaterialEditAddTableViewCell.m */; };
+		A8068B821D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B811D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m */; };
+		A8068B881D749F0F00C4A857 /* AVURLAsset+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B871D749F0F00C4A857 /* AVURLAsset+Custom.m */; };
+		A8068B8B1D7708AE00C4A857 /* VideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */; };
+		A8068B8E1D770AA300C4A857 /* VideoFilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */; };
+		A81ABCB91D7ACF38005AE73D /* AddSubtitlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */; };
+		A81ABCBC1D7ACFC3005AE73D /* SubtitlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */; };
+		A81ABCC61D7B09A9005AE73D /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBF1D7B09A9005AE73D /* SAResizibleBubble.m */; };
+		A81ABCC71D7B09A9005AE73D /* SASliderLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCC11D7B09A9005AE73D /* SASliderLeft.m */; };
+		A81ABCC81D7B09A9005AE73D /* SASliderRight.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCC31D7B09A9005AE73D /* SASliderRight.m */; };
+		A81ABCC91D7B09A9005AE73D /* SAVideoRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCC51D7B09A9005AE73D /* SAVideoRangeSlider.m */; };
+		A81AC0991D7C0AAF005AE73D /* SubtitleElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */; };
 		A8E855B21D6B6DB60030F854 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B11D6B6DB60030F854 /* main.m */; };
 		A8E855B51D6B6DB60030F854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B41D6B6DB60030F854 /* AppDelegate.m */; };
 		A8E855B81D6B6DB60030F854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B71D6B6DB60030F854 /* ViewController.m */; };
@@ -22,7 +42,6 @@
 		A8E855E41D6B6DF70030F854 /* VideoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855D61D6B6DF70030F854 /* VideoPlayView.m */; };
 		A8E855E51D6B6DF70030F854 /* VideoShootingView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855D81D6B6DF70030F854 /* VideoShootingView.m */; };
 		A8E855E61D6B6DF70030F854 /* EditVideoMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855DB1D6B6DF70030F854 /* EditVideoMainViewController.m */; };
-		A8E855E71D6B6DF70030F854 /* VideoEditManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855DD1D6B6DF70030F854 /* VideoEditManager.m */; };
 		A8E8575F1D6B6E320030F854 /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E855EA1D6B6E310030F854 /* lookup.png */; };
 		A8E857601D6B6E320030F854 /* lookup_amatorka.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E855EB1D6B6E310030F854 /* lookup_amatorka.png */; };
 		A8E857611D6B6E320030F854 /* lookup_miss_etikate.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E855EC1D6B6E310030F854 /* lookup_miss_etikate.png */; };
@@ -204,6 +223,44 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A8068B671D6F515600C4A857 /* 123.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 123.mp3; sourceTree = "<group>"; };
+		A8068B691D6F543000C4A857 /* AddElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddElementObject.h; sourceTree = "<group>"; };
+		A8068B6A1D6F543000C4A857 /* AddElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddElementObject.m; sourceTree = "<group>"; };
+		A8068B6C1D6F555600C4A857 /* DubbingElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DubbingElementObject.h; sourceTree = "<group>"; };
+		A8068B6D1D6F555600C4A857 /* DubbingElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DubbingElementObject.m; sourceTree = "<group>"; };
+		A8068B6F1D71824D00C4A857 /* VideoEdit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoEdit.storyboard; sourceTree = "<group>"; };
+		A8068B711D71831C00C4A857 /* MaterialEditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialEditTableViewController.h; sourceTree = "<group>"; };
+		A8068B721D71831C00C4A857 /* MaterialEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialEditTableViewController.m; sourceTree = "<group>"; };
+		A8068B741D71838400C4A857 /* SelectMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectMusicTableViewController.h; sourceTree = "<group>"; };
+		A8068B751D71838400C4A857 /* SelectMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectMusicTableViewController.m; sourceTree = "<group>"; };
+		A8068B771D7183FD00C4A857 /* AddDubbingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDubbingViewController.h; sourceTree = "<group>"; };
+		A8068B781D7183FD00C4A857 /* AddDubbingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddDubbingViewController.m; sourceTree = "<group>"; };
+		A8068B7A1D7186E900C4A857 /* MusicElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MusicElementObject.h; sourceTree = "<group>"; };
+		A8068B7B1D7186E900C4A857 /* MusicElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MusicElementObject.m; sourceTree = "<group>"; };
+		A8068B7D1D748F7300C4A857 /* MaterialEditAddTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialEditAddTableViewCell.h; sourceTree = "<group>"; };
+		A8068B7E1D748F7300C4A857 /* MaterialEditAddTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialEditAddTableViewCell.m; sourceTree = "<group>"; };
+		A8068B801D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialEditFunctionTableViewCell.h; sourceTree = "<group>"; };
+		A8068B811D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialEditFunctionTableViewCell.m; sourceTree = "<group>"; };
+		A8068B861D749F0F00C4A857 /* AVURLAsset+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AVURLAsset+Custom.h"; sourceTree = "<group>"; };
+		A8068B871D749F0F00C4A857 /* AVURLAsset+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AVURLAsset+Custom.m"; sourceTree = "<group>"; };
+		A8068B891D7708AE00C4A857 /* VideoFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFilterViewController.h; sourceTree = "<group>"; };
+		A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFilterViewController.m; sourceTree = "<group>"; };
+		A8068B8C1D770AA300C4A857 /* VideoFilterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFilterObject.h; sourceTree = "<group>"; };
+		A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFilterObject.m; sourceTree = "<group>"; };
+		A81ABCB71D7ACF38005AE73D /* AddSubtitlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubtitlesViewController.h; sourceTree = "<group>"; };
+		A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubtitlesViewController.m; sourceTree = "<group>"; };
+		A81ABCBA1D7ACFC3005AE73D /* SubtitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitlesView.h; sourceTree = "<group>"; };
+		A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitlesView.m; sourceTree = "<group>"; };
+		A81ABCBE1D7B09A9005AE73D /* SAResizibleBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAResizibleBubble.h; sourceTree = "<group>"; };
+		A81ABCBF1D7B09A9005AE73D /* SAResizibleBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAResizibleBubble.m; sourceTree = "<group>"; };
+		A81ABCC01D7B09A9005AE73D /* SASliderLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASliderLeft.h; sourceTree = "<group>"; };
+		A81ABCC11D7B09A9005AE73D /* SASliderLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASliderLeft.m; sourceTree = "<group>"; };
+		A81ABCC21D7B09A9005AE73D /* SASliderRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SASliderRight.h; sourceTree = "<group>"; };
+		A81ABCC31D7B09A9005AE73D /* SASliderRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SASliderRight.m; sourceTree = "<group>"; };
+		A81ABCC41D7B09A9005AE73D /* SAVideoRangeSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAVideoRangeSlider.h; sourceTree = "<group>"; };
+		A81ABCC51D7B09A9005AE73D /* SAVideoRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAVideoRangeSlider.m; sourceTree = "<group>"; };
+		A81AC0971D7C0AAF005AE73D /* SubtitleElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleElementObject.h; sourceTree = "<group>"; };
+		A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleElementObject.m; sourceTree = "<group>"; };
 		A8E855AD1D6B6DB60030F854 /* Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Video.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E855B11D6B6DB60030F854 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8E855B31D6B6DB60030F854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -231,8 +288,6 @@
 		A8E855D81D6B6DF70030F854 /* VideoShootingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoShootingView.m; sourceTree = "<group>"; };
 		A8E855DA1D6B6DF70030F854 /* EditVideoMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditVideoMainViewController.h; sourceTree = "<group>"; };
 		A8E855DB1D6B6DF70030F854 /* EditVideoMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditVideoMainViewController.m; sourceTree = "<group>"; };
-		A8E855DC1D6B6DF70030F854 /* VideoEditManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoEditManager.h; sourceTree = "<group>"; };
-		A8E855DD1D6B6DF70030F854 /* VideoEditManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoEditManager.m; sourceTree = "<group>"; };
 		A8E855EA1D6B6E310030F854 /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup.png; sourceTree = "<group>"; };
 		A8E855EB1D6B6E310030F854 /* lookup_amatorka.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_amatorka.png; sourceTree = "<group>"; };
 		A8E855EC1D6B6E310030F854 /* lookup_miss_etikate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_miss_etikate.png; sourceTree = "<group>"; };
@@ -600,6 +655,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A81ABCBD1D7B09A9005AE73D /* SAVideoRangeSlider */ = {
+			isa = PBXGroup;
+			children = (
+				A81ABCBE1D7B09A9005AE73D /* SAResizibleBubble.h */,
+				A81ABCBF1D7B09A9005AE73D /* SAResizibleBubble.m */,
+				A81ABCC01D7B09A9005AE73D /* SASliderLeft.h */,
+				A81ABCC11D7B09A9005AE73D /* SASliderLeft.m */,
+				A81ABCC21D7B09A9005AE73D /* SASliderRight.h */,
+				A81ABCC31D7B09A9005AE73D /* SASliderRight.m */,
+				A81ABCC41D7B09A9005AE73D /* SAVideoRangeSlider.h */,
+				A81ABCC51D7B09A9005AE73D /* SAVideoRangeSlider.m */,
+			);
+			path = SAVideoRangeSlider;
+			sourceTree = "<group>";
+		};
 		A8E855A41D6B6DB60030F854 = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +714,7 @@
 		A8E855C71D6B6DF70030F854 /* VideoFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8068B671D6F515600C4A857 /* 123.mp3 */,
 				A8E855C81D6B6DF70030F854 /* 96.png */,
 				A8E855C91D6B6DF70030F854 /* AddContent.h */,
 				A8E855CA1D6B6DF70030F854 /* AddContent.m */,
@@ -651,8 +722,6 @@
 				A8E855CB1D6B6DF70030F854 /* CoutomObject */,
 				A8E855D21D6B6DF70030F854 /* CustomView */,
 				A8E855D91D6B6DF70030F854 /* CustomViewController */,
-				A8E855DC1D6B6DF70030F854 /* VideoEditManager.h */,
-				A8E855DD1D6B6DF70030F854 /* VideoEditManager.m */,
 			);
 			path = VideoFrameworks;
 			sourceTree = "<group>";
@@ -660,12 +729,24 @@
 		A8E855CB1D6B6DF70030F854 /* CoutomObject */ = {
 			isa = PBXGroup;
 			children = (
-				A8E855CC1D6B6DF70030F854 /* CanEditAsset.h */,
-				A8E855CD1D6B6DF70030F854 /* CanEditAsset.m */,
-				A8E855CE1D6B6DF70030F854 /* GPUImageBeautifyFilter.h */,
-				A8E855CF1D6B6DF70030F854 /* GPUImageBeautifyFilter.m */,
 				A8E855D01D6B6DF70030F854 /* VideoObject.h */,
 				A8E855D11D6B6DF70030F854 /* VideoObject.m */,
+				A8E855CC1D6B6DF70030F854 /* CanEditAsset.h */,
+				A8E855CD1D6B6DF70030F854 /* CanEditAsset.m */,
+				A8068B691D6F543000C4A857 /* AddElementObject.h */,
+				A8068B6A1D6F543000C4A857 /* AddElementObject.m */,
+				A8068B7A1D7186E900C4A857 /* MusicElementObject.h */,
+				A8068B7B1D7186E900C4A857 /* MusicElementObject.m */,
+				A8068B6C1D6F555600C4A857 /* DubbingElementObject.h */,
+				A8068B6D1D6F555600C4A857 /* DubbingElementObject.m */,
+				A81AC0971D7C0AAF005AE73D /* SubtitleElementObject.h */,
+				A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */,
+				A8E855CE1D6B6DF70030F854 /* GPUImageBeautifyFilter.h */,
+				A8E855CF1D6B6DF70030F854 /* GPUImageBeautifyFilter.m */,
+				A8068B861D749F0F00C4A857 /* AVURLAsset+Custom.h */,
+				A8068B871D749F0F00C4A857 /* AVURLAsset+Custom.m */,
+				A8068B8C1D770AA300C4A857 /* VideoFilterObject.h */,
+				A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */,
 			);
 			path = CoutomObject;
 			sourceTree = "<group>";
@@ -673,12 +754,19 @@
 		A8E855D21D6B6DF70030F854 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A81ABCBD1D7B09A9005AE73D /* SAVideoRangeSlider */,
+				A81ABCBA1D7ACFC3005AE73D /* SubtitlesView.h */,
+				A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */,
 				A8E855D31D6B6DF70030F854 /* TimeBarSlider.h */,
 				A8E855D41D6B6DF70030F854 /* TimeBarSlider.m */,
 				A8E855D51D6B6DF70030F854 /* VideoPlayView.h */,
 				A8E855D61D6B6DF70030F854 /* VideoPlayView.m */,
 				A8E855D71D6B6DF70030F854 /* VideoShootingView.h */,
 				A8E855D81D6B6DF70030F854 /* VideoShootingView.m */,
+				A8068B7D1D748F7300C4A857 /* MaterialEditAddTableViewCell.h */,
+				A8068B7E1D748F7300C4A857 /* MaterialEditAddTableViewCell.m */,
+				A8068B801D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.h */,
+				A8068B811D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -688,6 +776,17 @@
 			children = (
 				A8E855DA1D6B6DF70030F854 /* EditVideoMainViewController.h */,
 				A8E855DB1D6B6DF70030F854 /* EditVideoMainViewController.m */,
+				A8068B741D71838400C4A857 /* SelectMusicTableViewController.h */,
+				A8068B751D71838400C4A857 /* SelectMusicTableViewController.m */,
+				A8068B711D71831C00C4A857 /* MaterialEditTableViewController.h */,
+				A8068B721D71831C00C4A857 /* MaterialEditTableViewController.m */,
+				A8068B771D7183FD00C4A857 /* AddDubbingViewController.h */,
+				A8068B781D7183FD00C4A857 /* AddDubbingViewController.m */,
+				A8068B891D7708AE00C4A857 /* VideoFilterViewController.h */,
+				A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */,
+				A81ABCB71D7ACF38005AE73D /* AddSubtitlesViewController.h */,
+				A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */,
+				A8068B6F1D71824D00C4A857 /* VideoEdit.storyboard */,
 			);
 			path = CustomViewController;
 			sourceTree = "<group>";
@@ -1149,6 +1248,8 @@
 				A8E855BD1D6B6DB60030F854 /* Assets.xcassets in Resources */,
 				A8E857631D6B6E320030F854 /* lookup_soft_elegance_2.png in Resources */,
 				A8E857621D6B6E320030F854 /* lookup_soft_elegance_1.png in Resources */,
+				A8068B681D6F515600C4A857 /* 123.mp3 in Resources */,
+				A8068B701D71824D00C4A857 /* VideoEdit.storyboard in Resources */,
 				A8E855BB1D6B6DB60030F854 /* Main.storyboard in Resources */,
 				A8E8580B1D6B6E320030F854 /* Info.plist in Resources */,
 				A8E857611D6B6E320030F854 /* lookup_miss_etikate.png in Resources */,
@@ -1163,8 +1264,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E858071D6B6E320030F854 /* GPUImageWeakPixelInclusionFilter.m in Sources */,
+				A8068B6B1D6F543000C4A857 /* AddElementObject.m in Sources */,
 				A8E855B81D6B6DB60030F854 /* ViewController.m in Sources */,
 				A8E857711D6B6E320030F854 /* GPUImageBulgeDistortionFilter.m in Sources */,
+				A8068B821D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m in Sources */,
 				A8E857AE1D6B6E320030F854 /* GPUImageKuwaharaFilter.m in Sources */,
 				A8E857B01D6B6E320030F854 /* GPUImageLanczosResamplingFilter.m in Sources */,
 				A8E8579C1D6B6E320030F854 /* GPUImageGlassSphereFilter.m in Sources */,
@@ -1177,18 +1280,22 @@
 				A8E857AB1D6B6E320030F854 /* GPUImageHueFilter.m in Sources */,
 				A8E857781D6B6E320030F854 /* GPUImageColorBurnBlendFilter.m in Sources */,
 				A8E857C41D6B6E320030F854 /* GPUImageMovie.m in Sources */,
+				A81ABCC61D7B09A9005AE73D /* SAResizibleBubble.m in Sources */,
 				A8E857C01D6B6E320030F854 /* GPUImageMonochromeFilter.m in Sources */,
 				A8E857A11D6B6E320030F854 /* GPUImageHazeFilter.m in Sources */,
 				A8E857FD1D6B6E320030F854 /* GPUImageTwoInputCrossTextureSamplingFilter.m in Sources */,
 				A8E857F91D6B6E320030F854 /* GPUImageTiltShiftFilter.m in Sources */,
+				A8068B761D71838400C4A857 /* SelectMusicTableViewController.m in Sources */,
 				A8E857FC1D6B6E320030F854 /* GPUImageTransformFilter.m in Sources */,
 				A8E857B11D6B6E320030F854 /* GPUImageLaplacianFilter.m in Sources */,
+				A81ABCB91D7ACF38005AE73D /* AddSubtitlesViewController.m in Sources */,
 				A8E857811D6B6E320030F854 /* GPUImageContrastFilter.m in Sources */,
 				A8E857E21D6B6E320030F854 /* GPUImageSepiaFilter.m in Sources */,
 				A8E857EB1D6B6E320030F854 /* GPUImageSoftLightBlendFilter.m in Sources */,
 				A8E857DA1D6B6E320030F854 /* GPUImageRGBClosingFilter.m in Sources */,
 				A8E857DD1D6B6E320030F854 /* GPUImageRGBFilter.m in Sources */,
 				A8E857D31D6B6E320030F854 /* GPUImagePoissonBlendFilter.m in Sources */,
+				A8068B881D749F0F00C4A857 /* AVURLAsset+Custom.m in Sources */,
 				A8E857951D6B6E320030F854 /* GPUImageFourInputFilter.m in Sources */,
 				A8E855E61D6B6DF70030F854 /* EditVideoMainViewController.m in Sources */,
 				A8E857AC1D6B6E320030F854 /* GPUImageiOSBlurFilter.m in Sources */,
@@ -1206,7 +1313,9 @@
 				A8E857F31D6B6E320030F854 /* GPUImageTextureInput.m in Sources */,
 				A8E8578D1D6B6E320030F854 /* GPUImageErosionFilter.m in Sources */,
 				A8E8576D1D6B6E320030F854 /* GPUImageBilateralFilter.m in Sources */,
+				A8068B7F1D748F7300C4A857 /* MaterialEditAddTableViewCell.m in Sources */,
 				A8E857851D6B6E320030F854 /* GPUImageDarkenBlendFilter.m in Sources */,
+				A81AC0991D7C0AAF005AE73D /* SubtitleElementObject.m in Sources */,
 				A8E857901D6B6E320030F854 /* GPUImageFalseColorFilter.m in Sources */,
 				A8E857E61D6B6E320030F854 /* GPUImageSketchFilter.m in Sources */,
 				A8E857BB1D6B6E320030F854 /* GPUImageLuminosity.m in Sources */,
@@ -1231,6 +1340,7 @@
 				A8E857A91D6B6E320030F854 /* GPUImageHSBFilter.m in Sources */,
 				A8E857AA1D6B6E320030F854 /* GPUImageHueBlendFilter.m in Sources */,
 				A8E857BF1D6B6E320030F854 /* GPUImageMissEtikateFilter.m in Sources */,
+				A81ABCC81D7B09A9005AE73D /* SASliderRight.m in Sources */,
 				A8E8579D1D6B6E320030F854 /* GPUImageGrayscaleFilter.m in Sources */,
 				A8E857991D6B6E320030F854 /* GPUImageGaussianBlurFilter.m in Sources */,
 				A8E857D01D6B6E320030F854 /* GPUImagePinchDistortionFilter.m in Sources */,
@@ -1268,11 +1378,13 @@
 				A8E8578B1D6B6E320030F854 /* GPUImageDivideBlendFilter.m in Sources */,
 				A8E857931D6B6E320030F854 /* GPUImageFilterGroup.m in Sources */,
 				A8E857FF1D6B6E320030F854 /* GPUImageTwoPassFilter.m in Sources */,
+				A8068B6E1D6F555600C4A857 /* DubbingElementObject.m in Sources */,
 				A8E8578F1D6B6E320030F854 /* GPUImageExposureFilter.m in Sources */,
 				A8E857771D6B6E320030F854 /* GPUImageColorBlendFilter.m in Sources */,
 				A8E8580D1D6B6E320030F854 /* GPUImageMovieWriter.m in Sources */,
 				A8E857651D6B6E320030F854 /* GPUImage3x3ConvolutionFilter.m in Sources */,
 				A8E855E11D6B6DF70030F854 /* GPUImageBeautifyFilter.m in Sources */,
+				A81ABCC71D7B09A9005AE73D /* SASliderLeft.m in Sources */,
 				A8E857D61D6B6E320030F854 /* GPUImagePosterizeFilter.m in Sources */,
 				A8E857861D6B6E320030F854 /* GPUImageDifferenceBlendFilter.m in Sources */,
 				A8E857C81D6B6E320030F854 /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
@@ -1282,12 +1394,15 @@
 				A8E855E41D6B6DF70030F854 /* VideoPlayView.m in Sources */,
 				A8E857EE1D6B6E320030F854 /* GPUImageSphereRefractionFilter.m in Sources */,
 				A8E855E01D6B6DF70030F854 /* CanEditAsset.m in Sources */,
+				A8068B8B1D7708AE00C4A857 /* VideoFilterViewController.m in Sources */,
 				A8E857B51D6B6E320030F854 /* GPUImageLineGenerator.m in Sources */,
 				A8E857981D6B6E320030F854 /* GPUImageGammaFilter.m in Sources */,
 				A8E857DE1D6B6E320030F854 /* GPUImageRGBOpeningFilter.m in Sources */,
 				A8E857BE1D6B6E320030F854 /* GPUImageMedianFilter.m in Sources */,
 				A8E857B71D6B6E320030F854 /* GPUImageLookupFilter.m in Sources */,
+				A8068B7C1D7186E900C4A857 /* MusicElementObject.m in Sources */,
 				A8E857791D6B6E320030F854 /* GPUImageColorConversion.m in Sources */,
+				A8068B8E1D770AA300C4A857 /* VideoFilterObject.m in Sources */,
 				A8E857691D6B6E320030F854 /* GPUImageAlphaBlendFilter.m in Sources */,
 				A8E858001D6B6E320030F854 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
 				A8E857D11D6B6E320030F854 /* GPUImagePixellateFilter.m in Sources */,
@@ -1296,6 +1411,7 @@
 				A8E857681D6B6E320030F854 /* GPUImageAddBlendFilter.m in Sources */,
 				A8E8576C1D6B6E320030F854 /* GPUImageAverageLuminanceThresholdFilter.m in Sources */,
 				A8E857B31D6B6E320030F854 /* GPUImageLightenBlendFilter.m in Sources */,
+				A8068B731D71831C00C4A857 /* MaterialEditTableViewController.m in Sources */,
 				A8E857801D6B6E320030F854 /* GPUImageColourFASTSamplingOperation.m in Sources */,
 				A8E857E81D6B6E320030F854 /* GPUImageSmoothToonFilter.m in Sources */,
 				A8E857961D6B6E320030F854 /* GPUImageFramebuffer.m in Sources */,
@@ -1303,7 +1419,6 @@
 				A8E857BC1D6B6E320030F854 /* GPUImageLuminosityBlendFilter.m in Sources */,
 				A8E857CF1D6B6E320030F854 /* GPUImagePerlinNoiseFilter.m in Sources */,
 				A8E857641D6B6E320030F854 /* GLProgram.m in Sources */,
-				A8E855E71D6B6DF70030F854 /* VideoEditManager.m in Sources */,
 				A8E857AF1D6B6E320030F854 /* GPUImageKuwaharaRadius3Filter.m in Sources */,
 				A8E8577B1D6B6E320030F854 /* GPUImageColorInvertFilter.m in Sources */,
 				A8E8578C1D6B6E320030F854 /* GPUImageEmbossFilter.m in Sources */,
@@ -1316,15 +1431,18 @@
 				A8E857C31D6B6E320030F854 /* GPUImageMotionDetector.m in Sources */,
 				A8E855DF1D6B6DF70030F854 /* AddContent.m in Sources */,
 				A8E858031D6B6E320030F854 /* GPUImageVibranceFilter.m in Sources */,
+				A81ABCBC1D7ACFC3005AE73D /* SubtitlesView.m in Sources */,
 				A8E857B61D6B6E320030F854 /* GPUImageLocalBinaryPatternFilter.m in Sources */,
 				A8E857F11D6B6E320030F854 /* GPUImageSubtractBlendFilter.m in Sources */,
 				A8E855E51D6B6DF70030F854 /* VideoShootingView.m in Sources */,
+				A8068B791D7183FD00C4A857 /* AddDubbingViewController.m in Sources */,
 				A8E857CB1D6B6E320030F854 /* GPUImageOpeningFilter.m in Sources */,
 				A8E857F71D6B6E320030F854 /* GPUImageThresholdedNonMaximumSuppressionFilter.m in Sources */,
 				A8E857741D6B6E320030F854 /* GPUImageChromaKeyBlendFilter.m in Sources */,
 				A8E857F61D6B6E320030F854 /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
 				A8E8576B1D6B6E320030F854 /* GPUImageAverageColor.m in Sources */,
 				A8E8577A1D6B6E320030F854 /* GPUImageColorDodgeBlendFilter.m in Sources */,
+				A81ABCC91D7B09A9005AE73D /* SAVideoRangeSlider.m in Sources */,
 				A8E857C51D6B6E320030F854 /* GPUImageMovieComposition.m in Sources */,
 				A8E857F51D6B6E320030F854 /* GPUImageThreeInputFilter.m in Sources */,
 				A8E857FB1D6B6E320030F854 /* GPUImageToonFilter.m in Sources */,
@@ -1455,11 +1573,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen liang (AQ4F8Z853R)";
 				INFOPLIST_FILE = Video/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.video.Video;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saunaking.VideoEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0272cb7c-26d9-4c1c-81ef-7a366ed708b2";
 			};
 			name = Debug;
 		};
@@ -1467,11 +1587,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: chen liang (AQ4F8Z853R)";
 				INFOPLIST_FILE = Video/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.video.Video;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saunaking.VideoEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0272cb7c-26d9-4c1c-81ef-7a366ed708b2";
 			};
 			name = Release;
 		};
@@ -1494,6 +1616,7 @@
 				A8E855C61D6B6DB60030F854 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

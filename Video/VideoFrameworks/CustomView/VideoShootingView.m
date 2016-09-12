@@ -7,7 +7,6 @@
 //
 
 #import "VideoShootingView.h"
-#import "VideoEditManager.h"
 #import "VideoObject.h"
 
 @interface VideoShootingView ()
@@ -27,6 +26,12 @@
 @implementation VideoShootingView
 
 #pragma mark property
+
+- (void)setOrientation:(UIInterfaceOrientation)orientation {
+    self.videoCamera.outputImageOrientation = orientation;
+
+    self.preview.frame = self.frame;
+}
 
 - (NSMutableArray *)videoArray {
     if (!_videoArray) {
@@ -167,7 +172,7 @@
         _preview = [[GPUImageView alloc] initWithFrame:self.frame];
         [self addSubview:_preview];
         [self sendSubviewToBack:_preview];
-        
+        self.autoresizesSubviews = NO;
         // 添加滤镜
         [self.videoCamera addTarget:_preview];
         [self.videoCamera startCameraCapture];

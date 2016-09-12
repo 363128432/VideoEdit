@@ -11,6 +11,8 @@
 @class TimeBarSlider;
 @protocol TimeBarSliderDelegate <NSObject>
 - (void)VauleChangeTimeBarSlider:(TimeBarSlider *)timeBar;
+- (void)VauleChangeFinishTimeBarSlider:(TimeBarSlider *)timeBar;
+
 @end
 
 @interface TimeBarSlider : UIView
