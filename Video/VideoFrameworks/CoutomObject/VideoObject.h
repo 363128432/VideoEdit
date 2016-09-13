@@ -40,4 +40,11 @@
 - (void)combinationOfMaterialVideoCompletionBlock:(void (^)(NSURL *assetURL, NSError *error))completion;
 
 
+// 分割
+- (void)componentsSeparatedWithIndex:(NSInteger)index byTime:(NSTimeInterval)time;
+// 复制
+- (void)copyMaterialWithIndex:(NSInteger)index;
+// 删除
+- (void)deleteMaterialWithIndex:(NSInteger)index;
+
 @end

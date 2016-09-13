@@ -81,6 +81,7 @@
     subtitle.rect = CGRectMake(textRect.origin.x * ratio, (self.playView.container.bounds.size.height - textRect.origin.y) * ratio - textRect.size.height * ratio, textRect.size.width * ratio, textRect.size.height * ratio);
     subtitle.fontSize = subtitleView.fontSize * ratio;
     subtitle.title = subtitleView.title;
+    subtitle.textColor = subtitleView.textColor;
     subtitle.insertTime = CMTimeRangeMake(CMTimeMakeWithSeconds(self.mySAVideoRangeSlider.leftPosition, 600), CMTimeMakeWithSeconds(self.mySAVideoRangeSlider.rightPosition - self.mySAVideoRangeSlider.leftPosition, 600));
     
     [self.currentVideo.subtitleArray addObject:subtitle];

@@ -164,56 +164,30 @@ static VideoObject *currentVideo = nil;
     for (SubtitleElementObject *subtitleObject in self.subtitleArray) {
         UILabel *subtitleLabel = [[UILabel alloc]initWithFrame:subtitleObject.rect];
         subtitleLabel.text = subtitleObject.title;
+        subtitleLabel.textColor = subtitleObject.textColor;
         subtitleLabel.font = [subtitleObject.font fontWithSize:subtitleObject.fontSize];
         [_subtitleLabelArray addObject:subtitleLabel];
         
+        // 这个是透明度动画主要是使在插入的才显示，其它时候都是不显示的
         subtitleLabel.layer.opacity = 0;
-
         CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
         opacityAnim.fromValue = [NSNumber numberWithFloat:1];
         opacityAnim.toValue = [NSNumber numberWithFloat:1];
-//        opacityAnim.beginTime = 2;
-        opacityAnim.duration = 3;
         opacityAnim.removedOnCompletion = NO;
         
+        // 这个才是主要动画，通过设置这个动画去控制字幕的动画效果
         CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
         rotationAnimation.repeatCount = 1; // forever
         rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0];
         rotationAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-//        rotationAnimation.delegate = self;
         rotationAnimation.removedOnCompletion = NO;
-//        rotationAnimation.beginTime = 2;
-        rotationAnimation.duration = 3; // repeat every 3 seconds
         
         CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
         groupAnimation.animations = @[opacityAnim, rotationAnimation];
-        groupAnimation.duration = 5;
-        rotationAnimation.beginTime = 1;
+        groupAnimation.duration = CMTimeGetSeconds(subtitleObject.insertTime.duration);
+        groupAnimation.beginTime = CMTimeGetSeconds(subtitleObject.insertTime.start);
 
         [subtitleLabel.layer addAnimation:groupAnimation forKey:nil];
-        
-//        subtitleLabel.layer.opacity = 0;
-//        // 只有在插入的时间段才显示
-//        CABasicAnimation *opacityAnim = [CABasicAnimation animationWithKeyPath:@"opacity"];
-//        opacityAnim.fromValue = [NSNumber numberWithFloat:1];
-//        opacityAnim.toValue = [NSNumber numberWithFloat:1];
-//        opacityAnim.beginTime = CMTimeGetSeconds(subtitleObject.insertTime.start);
-//        opacityAnim.duration = CMTimeGetSeconds(subtitleObject.insertTime.duration);
-//        opacityAnim.removedOnCompletion = NO;
-//        
-//        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-//        rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-//        rotationAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-////        rotationAnimation.additive = YES;
-//        rotationAnimation.removedOnCompletion = NO;
-//        rotationAnimation.beginTime = CMTimeGetSeconds(subtitleObject.insertTime.start);
-//        rotationAnimation.duration = CMTimeGetSeconds(subtitleObject.insertTime.duration); // repeat every 3 seconds
-//        
-//        CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
-//        groupAnimation.animations = @[opacityAnim, rotationAnimation];
-//        groupAnimation.duration = CMTimeGetSeconds(time);
-//        
-//        [subtitleLabel.layer addAnimation:groupAnimation forKey:nil];
         
         [parentLayer addSublayer:subtitleLabel.layer];
 
@@ -252,6 +226,25 @@ static VideoObject *currentVideo = nil;
     }];
 }
 
+
+// 分割
+- (void)componentsSeparatedWithIndex:(NSInteger)index byTime:(NSTimeInterval)time {
+    CanEditAsset *oneAsset = self.materialVideoArray[index];
+    CMTimeRange originalTimeRange = oneAsset.playTimeRange;
+    CanEditAsset *twoAsset = [self.materialVideoArray[index] copy];
+    oneAsset.playTimeRange = CMTimeRangeMake(originalTimeRange.start, CMTimeMake(time - CMTimeGetSeconds(originalTimeRange.start), 600));
+    twoAsset.playTimeRange = CMTimeRangeMake(CMTimeMake(time, 600), CMTimeMake(CMTimeGetSeconds(originalTimeRange.duration) - time, 600));
+    [self.materialVideoArray insertObject:twoAsset atIndex:index + 1];
+}
+// 复制
+- (void)copyMaterialWithIndex:(NSInteger)index {
+    CanEditAsset *editAsset = [self.materialVideoArray[index] copy];
+    [self.materialVideoArray insertObject:editAsset atIndex:index + 1];
+}
+// 删除
+- (void)deleteMaterialWithIndex:(NSInteger)index {
+    [self.materialVideoArray removeObjectAtIndex:index];
+}
 
 - (NSMutableArray<CanEditAsset *> *)materialVideoArray {
     if (!_materialVideoArray) {

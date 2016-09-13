@@ -46,6 +46,7 @@
         [self addSubview:self.btSizeCtrl];
         
         _titleFont = _textLabel.font;
+        _textColor = [UIColor whiteColor];
         self.fontSize = 20;
     }
     return self;
@@ -72,6 +73,10 @@
     NSLog(@"self.contentView.width is %f",self.contentView.bounds.size.width);
 }
 
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    self.textLabel.textColor = textColor;
+}
 
 - (void)tap:(UITapGestureRecognizer *)tapGesture
 {

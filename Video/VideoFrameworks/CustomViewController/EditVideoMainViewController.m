@@ -53,6 +53,8 @@
     __weak typeof(self) weakself = self;
     [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
         weakself.playView.playUrl = assetURL;
+        weakself.playView.totalTime = _currentVideo.totalTime;
+        weakself.playView.separatePoints = _currentVideo.materialPointsArray;
         [weakself.playView startPlayer];
     }];
 }

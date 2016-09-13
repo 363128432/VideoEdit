@@ -35,6 +35,7 @@
 }
 
 - (void)funcitonAction:(UISegmentedControl *)segment {
+    NSInteger index = (segment.tag - 1230) / 2;
     switch (segment.selectedSegmentIndex) {
         case 0: {
         }
@@ -44,14 +45,18 @@
             break;
         case 2: {
             VideoFilterViewController *vc = [[VideoFilterViewController alloc]init];
-            vc.editAsset = self.currentVideo.materialVideoArray[(segment.tag - 1230) / 2];
+            vc.editAsset = self.currentVideo.materialVideoArray[index];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 3: {
+            [self.currentVideo copyMaterialWithIndex:index];
+            [self.tableView reloadData];
         }
             break;
         case 4: {
+            [self.currentVideo deleteMaterialWithIndex:index];
+            [self.tableView reloadData];
         }
             break;
         default:

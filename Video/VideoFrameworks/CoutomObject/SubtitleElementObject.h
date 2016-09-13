@@ -29,6 +29,7 @@ typedef NS_ENUM(NSUInteger, SubtitleAlignmentType) {
 @property (nonatomic, assign) CGFloat fontSize;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) UIFont *font;
+@property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) SubtitleAnimationType animationType;
 @property (nonatomic, assign) SubtitleAlignmentType alignmentType;
 
