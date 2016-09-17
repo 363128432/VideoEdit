@@ -17,11 +17,7 @@
 @property (nonatomic, strong) NSArray *filterArray;
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
-@property (nonatomic, strong) GPUImageMovie *movie;
-@property (nonatomic, strong) GPUImageMovieWriter *writer;
-@property (nonatomic, strong) GPUImageView *preview;            // 预览视图
-@property (nonatomic, strong) NSURL *filterMovieURL;
-@property (nonatomic, strong) UIView *videoView;
+
 @end
 
 @implementation VideoFilterViewController
@@ -32,23 +28,13 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-//    [self.view addSubview:self.playView];
+    [self.view addSubview:self.playView];
     [self.view addSubview:self.filterSelectView];
-//
-//    _preview = [[GPUImageView alloc] initWithFrame:self.playView.container.bounds];
-//    [self.playView.container addSubview:_preview];
-    [self.view addSubview:self.videoView];
     
-//    [self.playView setPlayUrl:self.editAsset.URL];
-//    [self.playView startPlayer];
+    [self.playView setPlayUrl:self.editAsset.URL];
+    [self.playView startPlayer];
 }
 
-- (UIView *)videoView {
-    if (!_videoView) {
-        _videoView = [self.editAsset filterPreviewViewWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-    }
-    return _videoView;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -58,34 +44,13 @@
 
 - (void)selectFilter:(UIButton *)button {
     _filter = self.filterArray[button.tag - 300][@"filter"];
-    [self.editAsset changeFilterWithFilter:_filter];
-//    [self.playView pausePlayer];
+    [self.editAsset changeFilterWithFilter:_filter completion:^{
+        [self.playView setPlayUrl:self.editAsset.filterVideoPath];
+        [self.playView startPlayer];
+    }];
     
-//    if (_filter) {
-//        [self.movie removeAllTargets];
-//        [_filter removeAllTargets];
-//        [self.movie cancelProcessing];
-//    }
-//    
-//    _filter = self.filterArray[button.tag - 300][@"filter"];
-//    
-//    
-//    [self.movie addTarget:_filter];
-//    [_filter addTarget:self.preview];
-//    [self.movie startProcessing];
     
-//    _writer = [[GPUImageMovieWriter alloc] initWithMovieURL:self.filterMovieURL size:self.editAsset.naturalSize];
-//    _writer.delegate = self;
-//    _writer.encodingLiveVideo = NO;
-//    _writer.shouldPassthroughAudio = NO;
-//    _movie.audioEncodingTarget = _writer;
-//    self.movie.audioEncodingTarget = self.writer;
-//    self.movie.playAtActualSpeed = NO;
-//    [self.movie addTarget:self.filter];
-//    [self.filter addTarget:self.writer];
-//    [self.movie enableSynchronizedEncodingUsingMovieWriter:self.writer];
-//    [self.writer startRecording];
-//    [self.movie startProcessing];
+
 }
 
 - (VideoPlayView *)playView {
@@ -121,40 +86,6 @@
     return _filterArray;
 }
 
-- (GPUImageMovie *)movie {
-    if (!_movie) {
-        _movie = [[GPUImageMovie alloc] initWithURL:self.editAsset.URL];
-        _movie.shouldRepeat = NO;           // 控制视频是否循环播放。
-        _movie.playAtActualSpeed = YES;     // 控制GPUImageView预览视频时的速度是否要保持真实的速度,设为YES，则会根据视频本身时长计算出每帧的时间间隔，然后每渲染一帧，就sleep一个时间间隔，从而达到正常的播放速度
-        _movie.delegate = self;
-    }
-    return _movie;
-}
 
-- (NSURL *)filterMovieURL {
-    if (!_filterMovieURL) {
-        NSString *filterMovieString = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie_Filter.mov"];
-        unlink([filterMovieString UTF8String]);
-        _filterMovieURL = [NSURL fileURLWithPath:filterMovieString];
-    }
-    return _filterMovieURL;
-}
-
-//- (GPUImageMovieWriter *)writer {
-//    if (!_writer) {
-//        
-//    }
-//    return _writer;
-//}
-
-- (void)didCompletePlayingMovie {
-    
-    NSLog(@"1");
-}
-
-- (void)movieRecordingCompleted {
-    [self.playView setPlayUrl:self.filterMovieURL];
-    [self.playView startPlayer];
-}
 
 @end

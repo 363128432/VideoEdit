@@ -7,6 +7,7 @@
 //
 
 #import "VideoObject.h"
+#import "SubTitleAnimation.h"
 
 @interface VideoObject ()
 
@@ -48,14 +49,19 @@ static VideoObject *currentVideo = nil;
     CGSize videoSize;
     NSMutableArray *instructionArray = [NSMutableArray arrayWithCapacity:self.materialVideoArray.count];
     NSMutableArray *audioParameterArray = [NSMutableArray arrayWithCapacity:self.materialVideoArray.count];
-    for (id video in self.materialVideoArray) {
+    for (CanEditAsset *video in self.materialVideoArray) {
         // 获取到AVURLAsset
         AVURLAsset *videoAssset;
-        if ([video isKindOfClass:[NSString class]]) {
-            videoAssset = [AVURLAsset assetWithURL:[NSURL URLWithString:video]];
-        }else if ([video isKindOfClass:[NSURL class]]) {
-            videoAssset = [AVURLAsset assetWithURL:video];
-        }else if ([video isKindOfClass:[AVAsset class]]) {
+//        if ([video isKindOfClass:[NSString class]]) {
+//            videoAssset = [AVURLAsset assetWithURL:[NSURL URLWithString:video]];
+//        }else if ([video isKindOfClass:[NSURL class]]) {
+//            videoAssset = [AVURLAsset assetWithURL:video];
+//        }else if ([video isKindOfClass:[AVAsset class]]) {
+//            videoAssset = video;
+//        }
+        if (video.filterVideoPath) {
+            videoAssset = [AVURLAsset assetWithURL:video.filterVideoPath];
+        }else {
             videoAssset = video;
         }
         
@@ -176,16 +182,43 @@ static VideoObject *currentVideo = nil;
         opacityAnim.removedOnCompletion = NO;
         
         // 这个才是主要动画，通过设置这个动画去控制字幕的动画效果
-        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-        rotationAnimation.repeatCount = 1; // forever
-        rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-        rotationAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
-        rotationAnimation.removedOnCompletion = NO;
+//        CABasicAnimation *rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+//        rotationAnimation.repeatCount = 1; // forever
+//        rotationAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+//        rotationAnimation.toValue = [NSNumber numberWithFloat:2 * M_PI];
+//        rotationAnimation.removedOnCompletion = NO;
+        CABasicAnimation *rotationAnimation;
+        switch (subtitleObject.animationType) {
+            case 0:
+            
+                break;
+            case 1:
+                rotationAnimation = [SubTitleAnimation moveAnimationWithFromPosition:CGPointMake(subtitleLabel.layer.position.x + 100, subtitleLabel.layer.position.y) toPosition:subtitleLabel.layer.position];
+                break;
+            case 2:
+                rotationAnimation = [SubTitleAnimation moveAnimationWithFromPosition:CGPointMake(subtitleLabel.layer.position.x, subtitleLabel.layer.position.y + 50) toPosition:subtitleLabel.layer.position];
+                break;
+            case 3:
+                rotationAnimation = [SubTitleAnimation narrowIntoAnimation];
+                break;
+            case 4:
+                
+                break;
+            case 5:
+                rotationAnimation = [SubTitleAnimation transformAnimation];
+                break;
+                
+            default:
+                break;
+        }
         
         CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
-        groupAnimation.animations = @[opacityAnim, rotationAnimation];
+        groupAnimation.animations = [NSArray arrayWithObjects:opacityAnim, rotationAnimation, nil];
         groupAnimation.duration = CMTimeGetSeconds(subtitleObject.insertTime.duration);
-        groupAnimation.beginTime = CMTimeGetSeconds(subtitleObject.insertTime.start);
+        
+        if (CMTimeGetSeconds(subtitleObject.insertTime.start) != 0) {
+            groupAnimation.beginTime = CMTimeGetSeconds(subtitleObject.insertTime.start);
+        }
 
         [subtitleLabel.layer addAnimation:groupAnimation forKey:nil];
         

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Edit Video Main View Controller-->
@@ -172,6 +173,14 @@
                                     <action selector="addSubtitleAction:" destination="TOY-lb-r1B" eventType="touchUpInside" id="KNW-8G-l7A"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKe-2Y-TRk">
+                                <rect key="frame" x="40" y="547" width="30" height="30"/>
+                                <animations/>
+                                <state key="normal" title="样式"/>
+                                <connections>
+                                    <action selector="showStyleViewAction:" destination="TOY-lb-r1B" eventType="touchUpInside" id="9w6-X6-BBZ"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbf-XT-ymh">
                                 <rect key="frame" x="520" y="550" width="60" height="30"/>
                                 <animations/>
@@ -240,22 +249,89 @@
                                     <constraint firstItem="3pb-gH-iHR" firstAttribute="top" secondItem="Lx5-dj-rgY" secondAttribute="top" constant="40" id="hQd-oc-Hc6"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ok3-zF-dOX">
+                                <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N73-kQ-XFZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="29"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="9Fy-ip-G8p"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="效果"/>
+                                            <segment title="颜色"/>
+                                            <segment title="字体"/>
+                                            <segment title="大小"/>
+                                            <segment title="位置"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="styleAction:" destination="TOY-lb-r1B" eventType="valueChanged" id="p9A-Rx-b8Z"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsL-jb-EFx">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="132"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuv-Kn-Ywc">
+                                        <rect key="frame" x="0.0" y="160" width="600" height="40"/>
+                                        <animations/>
+                                        <state key="normal" title="确定"/>
+                                        <connections>
+                                            <action selector="textStyleDetermineAction:" destination="TOY-lb-r1B" eventType="touchUpInside" id="7A7-Mz-NkJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="yuv-Kn-Ywc" firstAttribute="top" secondItem="TsL-jb-EFx" secondAttribute="bottom" id="5GK-QK-8i1"/>
+                                    <constraint firstAttribute="bottom" secondItem="TsL-jb-EFx" secondAttribute="bottom" constant="40" id="7dh-vc-me0"/>
+                                    <constraint firstItem="yuv-Kn-Ywc" firstAttribute="leading" secondItem="ok3-zF-dOX" secondAttribute="leading" id="81d-gr-Ud6"/>
+                                    <constraint firstItem="TsL-jb-EFx" firstAttribute="leading" secondItem="ok3-zF-dOX" secondAttribute="leading" id="AuT-ks-g3k"/>
+                                    <constraint firstAttribute="trailing" secondItem="yuv-Kn-Ywc" secondAttribute="trailing" id="CZu-pg-Lly"/>
+                                    <constraint firstItem="TsL-jb-EFx" firstAttribute="top" secondItem="N73-kQ-XFZ" secondAttribute="bottom" id="G8d-pf-bs8"/>
+                                    <constraint firstAttribute="bottom" secondItem="yuv-Kn-Ywc" secondAttribute="bottom" id="NDm-p1-r7u"/>
+                                    <constraint firstAttribute="trailing" secondItem="TsL-jb-EFx" secondAttribute="trailing" id="NbM-Ze-YHf"/>
+                                    <constraint firstAttribute="height" constant="200" id="jr0-7p-0c3"/>
+                                    <constraint firstAttribute="trailing" secondItem="N73-kQ-XFZ" secondAttribute="trailing" id="qfh-GG-mBI"/>
+                                    <constraint firstItem="N73-kQ-XFZ" firstAttribute="leading" secondItem="ok3-zF-dOX" secondAttribute="leading" id="qmn-Di-u1f"/>
+                                    <constraint firstItem="N73-kQ-XFZ" firstAttribute="top" secondItem="ok3-zF-dOX" secondAttribute="top" id="xxb-D8-gcS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hbf-XT-ymh" firstAttribute="bottom" secondItem="ZdI-Nb-r20" secondAttribute="bottom" id="1I3-Eb-aWl"/>
+                            <constraint firstItem="ok3-zF-dOX" firstAttribute="leading" secondItem="uly-Go-5kz" secondAttribute="leading" id="2bF-vx-n08"/>
+                            <constraint firstItem="ZdI-Nb-r20" firstAttribute="top" secondItem="EKe-2Y-TRk" secondAttribute="bottom" constant="229" id="529-Ni-ESU"/>
+                            <constraint firstItem="ZdI-Nb-r20" firstAttribute="top" secondItem="ok3-zF-dOX" secondAttribute="bottom" id="6dG-0C-682"/>
                             <constraint firstAttribute="trailing" secondItem="Hbf-XT-ymh" secondAttribute="trailing" constant="20" id="BEY-if-34b"/>
+                            <constraint firstItem="EKe-2Y-TRk" firstAttribute="centerY" secondItem="ZdI-Nb-r20" secondAttribute="centerY" id="Bse-Bo-0D0"/>
                             <constraint firstItem="mFE-5B-zH0" firstAttribute="top" secondItem="ZdI-Nb-r20" secondAttribute="bottom" constant="20" id="IoR-h1-qDO"/>
                             <constraint firstItem="Lx5-dj-rgY" firstAttribute="leading" secondItem="uly-Go-5kz" secondAttribute="leading" id="K4F-RB-Swa"/>
                             <constraint firstItem="ZdI-Nb-r20" firstAttribute="centerX" secondItem="uly-Go-5kz" secondAttribute="centerX" id="VgU-7H-8Jj"/>
+                            <constraint firstItem="EKe-2Y-TRk" firstAttribute="leading" secondItem="uly-Go-5kz" secondAttribute="leadingMargin" constant="20" id="W5x-bR-y15"/>
+                            <constraint firstItem="mFE-5B-zH0" firstAttribute="top" secondItem="ok3-zF-dOX" secondAttribute="bottom" id="Ykz-8Y-3Qj"/>
                             <constraint firstItem="Lx5-dj-rgY" firstAttribute="top" secondItem="hQm-ux-Jzj" secondAttribute="bottom" id="cWN-nf-dZH"/>
                             <constraint firstItem="mFE-5B-zH0" firstAttribute="top" secondItem="Lx5-dj-rgY" secondAttribute="bottom" id="e92-JH-eyW"/>
                             <constraint firstAttribute="trailing" secondItem="Lx5-dj-rgY" secondAttribute="trailing" id="eLU-yZ-b6w"/>
+                            <constraint firstAttribute="trailing" secondItem="ok3-zF-dOX" secondAttribute="trailing" id="kF2-5J-eeO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="529-Ni-ESU"/>
+                                <exclude reference="6dG-0C-682"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="maskView" destination="Lx5-dj-rgY" id="qGZ-c9-ELw"/>
+                        <outlet property="styleButton" destination="EKe-2Y-TRk" id="smM-CV-a9g"/>
+                        <outlet property="styleFunctionView" destination="TsL-jb-EFx" id="olO-az-usG"/>
+                        <outlet property="styleView" destination="ok3-zF-dOX" id="Z1H-zX-N7U"/>
                         <outlet property="textView" destination="gOR-g9-gku" id="AMx-Bd-fpR"/>
                     </connections>
                 </viewController>

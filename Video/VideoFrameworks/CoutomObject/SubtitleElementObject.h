@@ -11,8 +11,11 @@
 
 typedef NS_ENUM(NSUInteger, SubtitleAnimationType) {
     SubtitleAnimationTypeWithNone,
+    SubtitleAnimationTypeWithLeftMove,
+    SubtitleAnimationTypeWithUpwardMove,
+    SubtitleAnimationTypeWithNarrow,
     SubtitleAnimationTypeWithFadeIn,
-    SubtitleAnimationTypeWithScrolling,
+    SubtitleAnimationTypeWithRotating,
 };
 
 typedef NS_ENUM(NSUInteger, SubtitleAlignmentType) {

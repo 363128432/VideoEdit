@@ -45,7 +45,7 @@
 }
 
 + (GPUImageOutput<GPUImageInput> *)getSoftEleganceFilter {
-    return [[GPUImageColorBlendFilter alloc]init];
+    return [[GPUImageSoftEleganceFilter alloc]init];
 }
 
 @end

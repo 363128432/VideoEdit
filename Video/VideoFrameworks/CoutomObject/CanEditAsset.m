@@ -57,20 +57,35 @@
     
 }
 
-- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter {
-    [self.movie removeAllTargets];
-    [_filter removeAllTargets];
-    [self.movie cancelProcessing];
-    self.movie = nil;
-
+- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter completion: (void (^ __nullable)(void))completion{
     _filter = otherFilter;
     
-    [self.movie addTarget:_filter];
-    [_filter addTarget:self.preview];
-    [self.movie startProcessing];
+    _movie = [[GPUImageMovie alloc] initWithURL:self.URL];
+    [_movie addTarget:otherFilter];
     
-    [self startPlayPreview];
-    [self.playView toPlay];
+    NSString *pathToMovie = [[self.URL path] stringByReplacingOccurrencesOfString:@".mov" withString:@"-filter.mov"];
+    unlink([pathToMovie UTF8String]);
+    _filterVideoPath = [NSURL fileURLWithPath:pathToMovie];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:pathToMovie error:NULL];
+    
+    _vedioWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:_filterVideoPath size:self.naturalSize];
+    [otherFilter addTarget:_vedioWriter];
+    
+    _vedioWriter.shouldPassthroughAudio = YES;
+    _movie.audioEncodingTarget = _vedioWriter;
+    [_movie enableSynchronizedEncodingUsingMovieWriter:_vedioWriter];
+    
+    [_vedioWriter startRecording];
+    [_movie startProcessing];
+    
+    __weak typeof(self) weakself = self;
+    [_vedioWriter setCompletionBlock:^{
+        NSLog(@"已完成！！！");
+        [weakself.filter removeTarget:weakself.vedioWriter];
+        [weakself.vedioWriter finishRecording];
+        completion();
+    }];
 }
 
 - (void)identifyAndSaveCurrentFilter {
@@ -93,6 +108,8 @@
     _saturationVaule = saturationVaule;
     _saturationFilter.saturation = 2 * saturationVaule;
 }
+
+
 
 #pragma mark -get
 - (GPUImageMovie *)movie {

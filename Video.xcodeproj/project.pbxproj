@@ -20,6 +20,7 @@
 		A8068B881D749F0F00C4A857 /* AVURLAsset+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B871D749F0F00C4A857 /* AVURLAsset+Custom.m */; };
 		A8068B8B1D7708AE00C4A857 /* VideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */; };
 		A8068B8E1D770AA300C4A857 /* VideoFilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */; };
+		A8099D0C1D8DA509000F8013 /* SubTitleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A8099D0B1D8DA509000F8013 /* SubTitleAnimation.m */; };
 		A81ABCB91D7ACF38005AE73D /* AddSubtitlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */; };
 		A81ABCBC1D7ACFC3005AE73D /* SubtitlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */; };
 		A81ABCC61D7B09A9005AE73D /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBF1D7B09A9005AE73D /* SAResizibleBubble.m */; };
@@ -247,6 +248,8 @@
 		A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFilterViewController.m; sourceTree = "<group>"; };
 		A8068B8C1D770AA300C4A857 /* VideoFilterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoFilterObject.h; sourceTree = "<group>"; };
 		A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFilterObject.m; sourceTree = "<group>"; };
+		A8099D0A1D8DA509000F8013 /* SubTitleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTitleAnimation.h; sourceTree = "<group>"; };
+		A8099D0B1D8DA509000F8013 /* SubTitleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTitleAnimation.m; sourceTree = "<group>"; };
 		A81ABCB71D7ACF38005AE73D /* AddSubtitlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubtitlesViewController.h; sourceTree = "<group>"; };
 		A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubtitlesViewController.m; sourceTree = "<group>"; };
 		A81ABCBA1D7ACFC3005AE73D /* SubtitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitlesView.h; sourceTree = "<group>"; };
@@ -747,6 +750,8 @@
 				A8068B871D749F0F00C4A857 /* AVURLAsset+Custom.m */,
 				A8068B8C1D770AA300C4A857 /* VideoFilterObject.h */,
 				A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */,
+				A8099D0A1D8DA509000F8013 /* SubTitleAnimation.h */,
+				A8099D0B1D8DA509000F8013 /* SubTitleAnimation.m */,
 			);
 			path = CoutomObject;
 			sourceTree = "<group>";
@@ -1345,6 +1350,7 @@
 				A8E857991D6B6E320030F854 /* GPUImageGaussianBlurFilter.m in Sources */,
 				A8E857D01D6B6E320030F854 /* GPUImagePinchDistortionFilter.m in Sources */,
 				A8E857C71D6B6E320030F854 /* GPUImageNobleCornerDetectionFilter.m in Sources */,
+				A8099D0C1D8DA509000F8013 /* SubTitleAnimation.m in Sources */,
 				A8E857B81D6B6E320030F854 /* GPUImageLowPassFilter.m in Sources */,
 				A8E857A21D6B6E320030F854 /* GPUImageHighlightShadowFilter.m in Sources */,
 				A8E858081D6B6E320030F854 /* GPUImageWhiteBalanceFilter.m in Sources */,

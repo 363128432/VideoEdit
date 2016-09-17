@@ -7,16 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SubtitleElementObject.h"
 
 @interface SubtitlesView : UIView
 
 @property (nonatomic, strong) NSString *title;
-
 @property (nonatomic, strong) UIFont *titleFont;
-
 @property (nonatomic, assign) CGFloat fontSize;
-
 @property (nonatomic, strong) UIColor *textColor;
+@property (nonatomic, assign) SubtitleAnimationType animationType;
 
 @property (nonatomic, strong) UIView *contentView ;         // 内容视图
 @property (nonatomic, strong) UILabel *textLabel;            // 文字

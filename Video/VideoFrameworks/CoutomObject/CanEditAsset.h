@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, VideoFilterType) {
 
 @interface CanEditAsset : AVURLAsset
 
-@property (nonatomic, strong) NSURL *afterEditingUrl;           // 编辑后的视频路径
+@property (nonatomic, strong) NSURL *filterVideoPath;           // 编辑后的视频路径
 @property (nonatomic, strong) NSURL *previeweditorUrl;          // 编辑时的合成的预览路径，
 
 @property (nonatomic, assign) CMTimeRange playTimeRange;             // 剪裁之后播放的时间
@@ -43,9 +43,7 @@ typedef NS_ENUM(NSInteger, VideoFilterType) {
 - (NSArray<CanEditAsset *> *)componentsSeparatedByTime:(CMTime)time;
 
 
-- (UIView *)filterPreviewViewWithFrame:(CGRect)rect;
-- (void)startPlayPreview;
-- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter;
+- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter completion: (void (^ __nullable)(void))completion;
 
 
 @end
