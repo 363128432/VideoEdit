@@ -8,11 +8,6 @@
 
 #import "SubtitlesView.h"
 
-#define PASTER_SLIDE        150.0
-#define BT_SIZE             20.0        // 按钮直径大小
-#define BORDER_LINE_WIDTH   1.0
-#define SECURITY_LENGTH     75.0
-
 @interface SubtitlesView ()
 {
     CGPoint prevPoint;
@@ -45,22 +40,23 @@
         [self addSubview:self.btDelete];
         [self addSubview:self.btSizeCtrl];
         
-        _titleFont = _textLabel.font;
+        _titleFontName = _textLabel.font.fontName;
         _textColor = [UIColor whiteColor];
         self.fontSize = 20;
     }
     return self;
 }
 
+- (void)setHideBorder:(BOOL)hideBorder {
+    self.contentView.hidden = hideBorder;
+    self.btDelete.hidden = hideBorder;
+    self.btSizeCtrl.hidden = hideBorder;
+}
+
 - (void)setFontSize:(CGFloat)fontSize {
     _fontSize = fontSize;
     
-    self.titleFont = [self.titleFont fontWithSize:_fontSize];
-}
-
-- (void)setTitleFont:(UIFont *)titleFont {
-    _titleFont = titleFont;
-    
+    self.textLabel.font = [UIFont fontWithName:self.titleFontName size:_fontSize];
     self.contentView.frame = CGRectMake(BT_SIZE / 2, BT_SIZE / 2, BT_SIZE + _title.length * _fontSize, _fontSize + BT_SIZE);
     self.textLabel.frame = CGRectMake(BT_SIZE, BT_SIZE, _title.length * _fontSize, _fontSize);
     self.bounds = CGRectMake(0, 0, self.contentView.frame.size.width + BT_SIZE, self.contentView.frame.size.height + BT_SIZE);
@@ -68,14 +64,45 @@
                                        self.bounds.size.height - BT_SIZE ,
                                        BT_SIZE,
                                        BT_SIZE);
-    self.textLabel.font = titleFont;
+}
+
+- (void)setTitleFontName:(NSString *)titleFontName {
+    _titleFontName = titleFontName;
     
-    NSLog(@"self.contentView.width is %f",self.contentView.bounds.size.width);
+    self.textLabel.font = [UIFont fontWithName:titleFontName size:self.fontSize];
 }
 
 - (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
     self.textLabel.textColor = textColor;
+}
+
+- (CABasicAnimation *)addAnimationWithType:(SubtitleAnimationType)animationType {
+    CABasicAnimation *rotationAnimation;
+    switch (animationType) {
+        case 0:
+            rotationAnimation = [CABasicAnimation animation];
+            break;
+        case 1:
+            rotationAnimation = [SubTitleAnimation moveAnimationWithFromPosition:CGPointMake(self.layer.position.x + 100, self.layer.position.y) toPosition:self.layer.position];
+            break;
+        case 2:
+            rotationAnimation = [SubTitleAnimation moveAnimationWithFromPosition:CGPointMake(self.layer.position.x, self.layer.position.y + 50) toPosition:self.layer.position];
+            break;
+        case 3:
+            rotationAnimation = [SubTitleAnimation narrowIntoAnimation];
+            break;
+        case 4:
+            rotationAnimation = [SubTitleAnimation fadeInAnimation];
+            break;
+        case 5:
+            rotationAnimation = [SubTitleAnimation transformAnimation];
+            break;
+            
+        default:
+            break;
+    }
+    return rotationAnimation;
 }
 
 - (void)tap:(UITapGestureRecognizer *)tapGesture
@@ -208,7 +235,7 @@
 
 - (void)btDeletePressed:(id)btDel
 {
-    NSLog(@"btDel") ;
+    [_delegate deleteView];
     [self removeFromSuperview] ;
 }
 

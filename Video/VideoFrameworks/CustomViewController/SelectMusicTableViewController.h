@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MusicElementObject.h"
 
 @interface SelectMusicTableViewController : UITableViewController
 
-
+- (void)selectMusicElementcompletion: (void (^)(MusicElementObject *musicElement))completion ;
 
 @end

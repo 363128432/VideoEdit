@@ -8,10 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class MaterialEditFunctionTableViewCell ;
+@protocol MaterialEditFunctionTableViewCellDelegate <NSObject>
+
+- (void)materialEditFunctionTableViewCell:(MaterialEditFunctionTableViewCell *)cell didSelectFunctionType:(NSInteger)type;
+
+@end
+
 @interface MaterialEditFunctionTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;        // 缩略图
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *functionSegment;
+@property (nonatomic, assign) id<MaterialEditFunctionTableViewCellDelegate> delegate;
 
 @end

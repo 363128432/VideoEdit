@@ -8,14 +8,28 @@
 
 #import "VideoPlayView.h"
 #import "TimeBarSlider.h"
+#import "GPUImage.h"
 
-@interface VideoPlayView ()<TimeBarSliderDelegate>
+@interface VideoPlayView ()<TimeBarSliderDelegate,GPUImageMovieDelegate>
 
-@property (nonatomic, strong) AVPlayer *player;
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;       // 播放层
 @property (nonatomic, strong) TimeBarSlider *timeSlider;        // 时间滑杆
 @property (nonatomic, strong) UILabel *playTimeLabel;           // 播放时间标签
 @property (nonatomic, strong) UILabel *totalTimeLabel;          // 总时间标签
+
+@property (nonatomic, strong) UIButton *refreshButton;
+
+// 饱和等滤镜相关
+@property (nonatomic, strong) GPUImageMovie *movie;
+@property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
+@property (nonatomic, strong) GPUImageView *gpuImageView;
+@property (nonatomic, strong) GPUImageBrightnessFilter *brightnessFilter;   // 亮度滤镜
+@property (nonatomic, strong) GPUImageContrastFilter *contrastFilter;       // 对比度
+@property (nonatomic, strong) GPUImageSaturationFilter *saturationFilter;   // 饱和度
+@property (nonatomic, assign) CGSize videoSize;
+
+
+
 
 @end
 
@@ -25,6 +39,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _nowTime = kCMTimeZero;
+        self.clipsToBounds = YES;
+        
         // 添加视图
         _container = [[UIView alloc]initWithFrame:CGRectMake(0, 0, frame.size.width, [UIScreen mainScreen].bounds.size.width * frame.size.width / [UIScreen mainScreen].bounds.size.height)];
         _container.backgroundColor = [UIColor blackColor];
@@ -38,22 +55,58 @@
         
         // 添加播放层
         [_container.layer addSublayer:self.playerLayer];
+        if (_showRefresh) {
+            [self addSubview:self.refreshButton];
+        }
     }
     return self;
 }
 
 - (void)startPlayer {
     [self.player play];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.refreshButton.hidden = YES;
+    });
+    
+    if (_gpuImageView) {   // 如果有视频滤镜，启动实时滤镜
+        [self.movie startProcessing];
+    }
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(videoPlayViewPlayerStart:)]) {
+        [_delegate videoPlayViewPlayerStart:self];
+    }
+}
+
+-(void)playbackFinished:(NSNotification *)notification{
+    [self.player seekToTime:self.player.currentItem.duration];
+    [self bringSubviewToFront:self.refreshButton];
+    self.refreshButton.hidden = NO;
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(videoPlayViewPlayerPlayEnd:)]) {
+        [_delegate videoPlayViewPlayerPlayEnd:self];
+    }
 }
 
 - (void)toPlay {
-    [self.player seekToTime:CMTimeMake(0, 600) completionHandler:^(BOOL finished) {
-        [self.player play];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.refreshButton.hidden = YES;
+    });
+
+    [self.player seekToTime:CMTimeMakeWithSeconds(0.001, 600) completionHandler:^(BOOL finished) {
+        [self startPlayer];
     }];
 }
 
 - (void)pausePlayer {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.refreshButton.hidden = YES;
+    });
+    
     [self.player pause];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(videoPlayViewPlayerPause:)]) {
+        [_delegate videoPlayViewPlayerPause:self];
+    }
 }
 
 - (void)playClick {
@@ -66,35 +119,110 @@
     }
 }
 
+- (void)refreshAction {
+    [self toPlay];
+}
+
 - (void)setNowTime:(CMTime)nowTime {
-    [self.player seekToTime:nowTime completionHandler:^(BOOL finished) {
-    }];
-    
-    self.timeSlider.value = CMTimeGetSeconds(nowTime);
+    _nowTime = nowTime;
+    [self.player seekToTime:nowTime];
 }
 
+- (void)updateViewWitTime:(CMTime)time {
+    double current = CMTimeGetSeconds(time);
+    self.playTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",(int)current / 60, (int)current % 60];
+    self.timeSlider.value = CMTimeGetSeconds(time);
+}
+
+- (void)startPlayerWithTime:(CMTime)time {
+    _nowTime = time;
+    [self.player seekToTime:_nowTime];
+    [self startPlayer];
+}
+
+#pragma mark TimeBarSliderDelegate
 - (void)VauleChangeFinishTimeBarSlider:(TimeBarSlider *)timeBar {
-    [self.player seekToTime:CMTimeMakeWithSeconds(timeBar.value, self.player.currentItem.duration.timescale) completionHandler:^(BOOL finished) {
-        [self.player play];
-    }];
+   
 }
 
+- (void)VauleChangeTimeBarSlider:(TimeBarSlider *)timeBar {
+    [self.player pause];
+    [self.player seekToTime:CMTimeMakeWithSeconds(timeBar.value, self.player.currentItem.duration.timescale)];
+}
+
+#pragma mark set
 - (void)setPlayUrl:(NSURL *)playUrl {
+    [self removeNotification];
     _playUrl = playUrl;
-    self.player = [AVPlayer playerWithURL:playUrl];
+//    self.player = [AVPlayer playerWithURL:playUrl];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:playUrl];
+    self.player = [AVPlayer playerWithPlayerItem:item];
     self.player.volume = 1.0f;
     __weak typeof(self) weakself = self;
-    [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-        NSUInteger current=CMTimeGetSeconds(time);
-        weakself.playTimeLabel.text = [NSString stringWithFormat:@"%02lu:%02lu",current / 60, current % 60];
-        weakself.timeSlider.value = current;
+    [_player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(0.1, 600) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        _nowTime = time;
+        
+        [weakself updateViewWitTime:time];
+        
+        if (weakself.delegate && [weakself.delegate respondsToSelector:@selector(videoPlayViewPlayerIsPlay:)]) {
+            [weakself.delegate videoPlayViewPlayerIsPlay:weakself];
+        }
     }];
-    self.playerLayer.player = self.player;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
+    self.playerLayer.player = _player;
+}
+
+-(void)removeNotification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealloc
+{
+    [self removeNotification];
+    _delegate = nil;
+    [self.player pause];
+    [self.player removeTimeObserver:self];
 }
 
 - (void)setSeparatePoints:(NSArray<NSNumber *> *)separatePoints {
     _separatePoints = separatePoints;
     self.timeSlider.separatePoint = separatePoints;
+}
+
+- (void)setRate:(CGFloat)rate {
+    _rate = rate;
+    [self.player seekToTime:kCMTimeZero completionHandler:^(BOOL finished) {
+        [self startPlayer];
+        _player.rate = rate;
+    }];
+}
+
+- (void)setAngle:(CGFloat)angle {
+    _angle = angle;
+    
+    self.gpuImageView.transform = CGAffineTransformMakeRotation(angle);
+}
+
+- (void)setIsEditModel:(BOOL)isEditModel {
+    _isEditModel = isEditModel;
+    if (!_gpuImageView) {
+        [self.container addSubview:self.gpuImageView];
+    }
+}
+
+- (void)setSaturationVaule:(float)saturationVaule {
+    _saturationVaule = saturationVaule;
+    _saturationFilter.saturation = saturationVaule;
+}
+
+- (void)setBrightnessVaule:(float)brightnessVaule {
+    _brightnessVaule = brightnessVaule;
+    _brightnessFilter.brightness = brightnessVaule;
+}
+
+- (void)setContrastVaule:(float)contrastVaule {
+    _contrastVaule = contrastVaule;
+    _contrastFilter.contrast = contrastVaule;
 }
 
 - (void)setTotalTime:(CMTime)totalTime {
@@ -105,6 +233,66 @@
     self.timeSlider.maxVaule = time;
 }
 
+- (void)setFilter:(GPUImageOutput<GPUImageInput> *)filter {
+    _filter = filter;
+    if (!_gpuImageView) {
+        [self.container addSubview:self.gpuImageView];
+    }
+    [self.movie removeAllTargets];
+    [self.movie addTarget:filter];
+    [filter addTarget:self.gpuImageView];
+    
+    NSLog(@"videoPlay is %@",_movie);
+
+}
+
+- (void)cancelMovieProcessing {
+    [self.movie cancelProcessing];
+}
+
+- (void)saveFilterVideoPath:(NSURL *)pathUrl completion: (void (^ __nullable)(void))completion {
+//    [_movie cancelProcessing];
+    
+//    NSLog(@"videoPlay is %@",_movie);
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_movie cancelProcessing];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _movie = [[GPUImageMovie alloc] initWithURL:_playUrl];
+            _movie.runBenchmark = YES;
+            _movie.shouldRepeat = NO;
+            _movie.playAtActualSpeed = NO;
+            //    [_movie removeAllTargets];
+            [_movie addTarget:_filter];
+            
+            _videoSize = self.player.currentItem.asset.naturalSize;
+            _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:pathUrl size:_videoSize fileType:AVFileTypeQuickTimeMovie outputSettings:nil];
+            _movieWriter.encodingLiveVideo = YES;
+            _movieWriter.assetWriter.movieFragmentInterval = kCMTimeInvalid;
+            [_filter addTarget:_movieWriter];
+            _movieWriter.shouldPassthroughAudio = YES;
+            _movie.audioEncodingTarget = _movieWriter;
+            [_movie enableSynchronizedEncodingUsingMovieWriter:_movieWriter];
+
+            [_movieWriter startRecording];
+            [_movie startProcessing];
+            
+            
+            __weak typeof(self) weakself = self;
+            [_movieWriter setCompletionBlock:^{
+                [weakself.filter removeTarget:weakself.movieWriter];
+                [weakself.movieWriter finishRecording];
+                [weakself.movie cancelProcessing];
+                NSLog(@"finish");
+                completion();
+            }];
+        });
+    });
+}
+
+
+#pragma mark get
 - (UIView *)statusView {
     if (!_statusView) {
         _statusView = [[UIView alloc]initWithFrame:CGRectMake(0, _container.bounds.size.height, self.frame.size.width, 50)];
@@ -140,5 +328,47 @@
     }
     return _playerLayer;
 }
+
+- (BOOL)isPlay {
+    return self.player.rate;
+}
+
+
+- (GPUImageMovie *)movie {
+    if (!_movie) {
+        _movie = [[GPUImageMovie alloc]initWithPlayerItem:self.player.currentItem];
+        _movie.playAtActualSpeed = YES;
+        _movie.runBenchmark = NO;
+        _movie.delegate = self;
+        _brightnessFilter = [[GPUImageBrightnessFilter alloc]init];
+        _contrastFilter = [[GPUImageContrastFilter alloc]init];
+        _saturationFilter = [[GPUImageSaturationFilter alloc]init];
+        [_movie addTarget:_brightnessFilter];
+        [_brightnessFilter addTarget:_contrastFilter];
+        [_contrastFilter addTarget:_saturationFilter];
+        [_saturationFilter addTarget:self.gpuImageView];
+    }
+    return _movie;
+}
+
+- (GPUImageView *)gpuImageView {
+    if (!_gpuImageView) {
+        _gpuImageView = [[GPUImageView alloc]initWithFrame:self.container.bounds];
+    }
+    return _gpuImageView;
+}
+
+- (UIButton *)refreshButton {
+    if (!_refreshButton) {
+        _refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _refreshButton.frame = CGRectMake(0, 0, 40, 40);
+        _refreshButton.center = self.container.center;
+        _refreshButton.hidden = YES;
+        [_refreshButton setImage:[UIImage imageNamed:@"refresh"] forState:UIControlStateNormal];
+        [_refreshButton addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _refreshButton;
+}
+
 
 @end

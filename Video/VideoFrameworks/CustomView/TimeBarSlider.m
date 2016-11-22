@@ -27,7 +27,7 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor greenColor];
 
     //获得处理的上下文
     CGContextRef context = UIGraphicsGetCurrentContext();

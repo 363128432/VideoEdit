@@ -26,7 +26,6 @@
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
     scaleAnimation.fromValue = [NSNumber numberWithFloat:1.3];
     scaleAnimation.toValue = [NSNumber numberWithFloat:1.0];
-
     return scaleAnimation;
 }
 
@@ -35,8 +34,15 @@
     CABasicAnimation *moveAnimation = [CABasicAnimation animationWithKeyPath:@"position"];
     moveAnimation.fromValue = [NSValue valueWithCGPoint:fromPosition];
     moveAnimation.toValue = [NSValue valueWithCGPoint:toPosition];
-    moveAnimation.fillMode = kCAFillModeForwards;
     return moveAnimation;
+}
+
+// 淡入
++ (CABasicAnimation *)fadeInAnimation {
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    scaleAnimation.fromValue = [NSNumber numberWithFloat:1];
+    scaleAnimation.toValue = [NSNumber numberWithFloat:0];
+    return scaleAnimation;
 }
 
 @end

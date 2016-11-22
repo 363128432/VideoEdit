@@ -26,51 +26,7 @@
                                     <action selector="recordingAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DK-gN-bp9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bee-C2-n2E">
-                                <rect key="frame" x="550" y="20" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" title="镜头"/>
-                                <connections>
-                                    <action selector="cameraAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5JA-HK-7pJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKf-hJ-N9r">
-                                <rect key="frame" x="475" y="20" width="45" height="30"/>
-                                <animations/>
-                                <state key="normal" title="闪光灯"/>
-                                <connections>
-                                    <action selector="torchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YzE-Yw-x5Y"/>
-                                </connections>
-                            </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qLE-Ca-L9b">
-                                <rect key="frame" x="10" y="20" width="245" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="正常"/>
-                                    <segment title="怀旧"/>
-                                    <segment title="黑白"/>
-                                    <segment title=""/>
-                                    <segment title=""/>
-                                    <segment title=""/>
-                                </segments>
-                                <connections>
-                                    <action selector="subFilterAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="SLT-hv-Bk3"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4G2-Cg-nOv">
-                                <rect key="frame" x="10" y="58" width="163" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="正常"/>
-                                    <segment title="鱼眼"/>
-                                    <segment title="美肤"/>
-                                    <segment title="虚化"/>
-                                </segments>
-                                <connections>
-                                    <action selector="mainFilterAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="nrM-0O-hgS"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-6y-vdE">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-6y-vdE">
                                 <rect key="frame" x="550" y="550" width="30" height="30"/>
                                 <animations/>
                                 <state key="normal" title="确定"/>
@@ -78,30 +34,105 @@
                                     <action selector="determineAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZhA-Hv-ai1"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cW9-I0-sfq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aU-xn-Vec">
+                                        <rect key="frame" x="150" y="0.0" width="150" height="50"/>
+                                        <animations/>
+                                        <state key="normal" title="闪光"/>
+                                        <connections>
+                                            <action selector="torchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tKN-Yl-0fs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3B-sn-gog">
+                                        <rect key="frame" x="300" y="0.0" width="150" height="50"/>
+                                        <animations/>
+                                        <state key="normal" title="镜头"/>
+                                        <connections>
+                                            <action selector="cameraAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DuO-kj-VOB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVs-6d-kAF">
+                                        <rect key="frame" x="450" y="0.0" width="150" height="50"/>
+                                        <animations/>
+                                        <state key="normal" title="滤镜"/>
+                                        <connections>
+                                            <action selector="showFilterAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zav-YX-SWb"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uO-PV-N4j">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="50"/>
+                                        <animations/>
+                                        <state key="normal" title="返回"/>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40382179054054052" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="PVs-6d-kAF" firstAttribute="leading" secondItem="W3B-sn-gog" secondAttribute="trailing" id="1bF-cH-9Ed"/>
+                                    <constraint firstAttribute="height" constant="50" id="4w5-Wh-HMN"/>
+                                    <constraint firstItem="7uO-PV-N4j" firstAttribute="leading" secondItem="cW9-I0-sfq" secondAttribute="leading" id="6uN-J4-ZvD"/>
+                                    <constraint firstAttribute="bottom" secondItem="W3B-sn-gog" secondAttribute="bottom" id="743-Y1-ehX"/>
+                                    <constraint firstAttribute="bottom" secondItem="PVs-6d-kAF" secondAttribute="bottom" id="7w7-vY-CEV"/>
+                                    <constraint firstItem="PVs-6d-kAF" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="top" id="B3x-Jg-DTW"/>
+                                    <constraint firstItem="3aU-xn-Vec" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="top" id="E6R-uS-CDH"/>
+                                    <constraint firstAttribute="trailing" secondItem="PVs-6d-kAF" secondAttribute="trailing" id="EQI-RY-wYn"/>
+                                    <constraint firstAttribute="bottom" secondItem="3aU-xn-Vec" secondAttribute="bottom" id="Fir-Jh-Nio"/>
+                                    <constraint firstItem="3aU-xn-Vec" firstAttribute="leading" secondItem="7uO-PV-N4j" secondAttribute="trailing" id="QAe-xm-EBY"/>
+                                    <constraint firstItem="3aU-xn-Vec" firstAttribute="width" secondItem="W3B-sn-gog" secondAttribute="width" id="XN2-QC-AyL"/>
+                                    <constraint firstItem="7uO-PV-N4j" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="top" id="Xft-GW-iFt"/>
+                                    <constraint firstItem="PVs-6d-kAF" firstAttribute="leading" secondItem="W3B-sn-gog" secondAttribute="trailing" id="jHI-Wm-Qb9"/>
+                                    <constraint firstItem="W3B-sn-gog" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="top" id="kjP-It-DpE"/>
+                                    <constraint firstItem="7uO-PV-N4j" firstAttribute="width" secondItem="3aU-xn-Vec" secondAttribute="width" id="pAk-f5-ghR"/>
+                                    <constraint firstAttribute="bottom" secondItem="7uO-PV-N4j" secondAttribute="bottom" id="upd-Y1-JVp"/>
+                                    <constraint firstItem="W3B-sn-gog" firstAttribute="width" secondItem="PVs-6d-kAF" secondAttribute="width" id="y4Q-sm-HYj"/>
+                                    <constraint firstItem="W3B-sn-gog" firstAttribute="leading" secondItem="3aU-xn-Vec" secondAttribute="trailing" id="zPC-R1-LZ2"/>
+                                    <constraint firstItem="W3B-sn-gog" firstAttribute="leading" secondItem="3aU-xn-Vec" secondAttribute="trailing" id="zlf-Iw-6H8"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="46f-rY-cQU">
+                                <rect key="frame" x="0.0" y="50" width="600" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="无"/>
+                                    <segment title="滤镜1"/>
+                                    <segment title="滤镜2"/>
+                                    <segment title="滤镜3"/>
+                                    <segment title="滤镜4"/>
+                                </segments>
+                                <connections>
+                                    <action selector="subFilterAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="4KX-Xd-KxM"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qLE-Ca-L9b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="DUJ-qO-gpG"/>
-                            <constraint firstItem="4G2-Cg-nOv" firstAttribute="top" secondItem="qLE-Ca-L9b" secondAttribute="bottom" constant="10" id="FtE-0R-W83"/>
+                            <constraint firstItem="cW9-I0-sfq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="4mq-nK-1N9"/>
+                            <constraint firstAttribute="trailing" secondItem="46f-rY-cQU" secondAttribute="trailing" id="5Ek-fi-YYs"/>
                             <constraint firstItem="gJc-ft-F1h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JCO-xM-ftu"/>
-                            <constraint firstItem="qLE-Ca-L9b" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="LhZ-JC-xNE"/>
-                            <constraint firstItem="bee-C2-n2E" firstAttribute="leading" secondItem="hKf-hJ-N9r" secondAttribute="trailing" constant="30" id="U2i-m4-54e"/>
+                            <constraint firstItem="46f-rY-cQU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SLd-ps-Izr"/>
                             <constraint firstItem="hTY-6y-vdE" firstAttribute="centerY" secondItem="gJc-ft-F1h" secondAttribute="centerY" id="ZnV-sm-lPe"/>
                             <constraint firstAttribute="trailing" secondItem="hTY-6y-vdE" secondAttribute="trailing" constant="20" id="bOi-oU-RXr"/>
-                            <constraint firstItem="bee-C2-n2E" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="20" id="c0U-wP-MC8"/>
-                            <constraint firstAttribute="trailing" secondItem="bee-C2-n2E" secondAttribute="trailing" constant="20" id="eV2-2G-wfZ"/>
-                            <constraint firstItem="hKf-hJ-N9r" firstAttribute="top" secondItem="bee-C2-n2E" secondAttribute="top" id="lNq-fu-Iv5"/>
-                            <constraint firstItem="4G2-Cg-nOv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="mSr-5i-NH7"/>
-                            <constraint firstItem="hKf-hJ-N9r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="vHY-ji-t2I"/>
+                            <constraint firstItem="gJc-ft-F1h" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="bottom" constant="40" id="cQ8-rm-g2o"/>
+                            <constraint firstAttribute="trailing" secondItem="cW9-I0-sfq" secondAttribute="trailing" id="fbU-ix-sZ5"/>
+                            <constraint firstItem="cW9-I0-sfq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mkH-UY-XMp"/>
+                            <constraint firstItem="46f-rY-cQU" firstAttribute="top" secondItem="cW9-I0-sfq" secondAttribute="bottom" id="y8j-p0-BgK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gJc-ft-F1h" secondAttribute="bottom" constant="20" id="ylF-Q7-oMX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="vHY-ji-t2I"/>
+                                <exclude reference="cQ8-rm-g2o"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="functionView" destination="cW9-I0-sfq" id="5Rx-wY-g91"/>
+                        <outlet property="makeSure" destination="hTY-6y-vdE" id="pp8-js-WBs"/>
+                        <outlet property="recordButton" destination="gJc-ft-F1h" id="9fk-X8-EXX"/>
+                        <outlet property="subFilterView" destination="46f-rY-cQU" id="aQy-9M-jED"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

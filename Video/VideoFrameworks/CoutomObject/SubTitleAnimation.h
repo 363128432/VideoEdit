@@ -16,6 +16,8 @@
 // 缩入
 + (CABasicAnimation *)narrowIntoAnimation;
 
++ (CABasicAnimation *)fadeInAnimation;
+
 // 移动
 + (CABasicAnimation *)moveAnimationWithFromPosition:(CGPoint)fromPosition toPosition:(CGPoint)toPosition;
 

@@ -10,11 +10,19 @@
 #import "VideoShootingView.h"
 #import "EditVideoMainViewController.h"
 #import "VideoObject.h"
+#import "VideoFilterObject.h"
+
 
 @interface ViewController ()
 
 @property (nonatomic, strong) VideoShootingView *videoView;
 @property (nonatomic, strong) AVAudioPlayer *audioplayer;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *subFilterView;
+@property (weak, nonatomic) IBOutlet UIView *functionView;
+@property (weak, nonatomic) IBOutlet UIButton *recordButton;
+@property (weak, nonatomic) IBOutlet UIButton *makeSure;
+
+@property (nonatomic, strong) NSMutableArray *videoArray;
 
 @end
 
@@ -37,7 +45,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _videoView = [[VideoShootingView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _videoView = [[VideoShootingView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width)];
     [self.view addSubview:_videoView];
     [self.view sendSubviewToBack:_videoView];
 }
@@ -53,12 +61,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)subFilterAction:(id)sender {
-    self.videoView.subFilterType = ((UISegmentedControl *)sender).selectedSegmentIndex;
+- (IBAction)showFilterAction:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    self.subFilterView.hidden = !sender.selected;
 }
+
+- (IBAction)subFilterAction:(UISegmentedControl *)sender {
+    self.videoView.subFilter = [[VideoFilterObject filterArray][sender.selectedSegmentIndex] objectForKey:@"filter"];
+}
+
 - (IBAction)mainFilterAction:(id)sender {
     self.videoView.mainFilterType = ((UISegmentedControl *)sender).selectedSegmentIndex;
 }
+
 - (IBAction)torchAction:(id)sender {
     UIButton *button = (UIButton *)sender;
     button.selected = !button.isSelected;
@@ -75,36 +90,68 @@
     UIButton *button = (UIButton *)sender;
     button.selected = !button.isSelected;
     if (button.isSelected) {
-        [self.videoView startRecording];
+        NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"Documents/Movie_%lu.mov",(unsigned long)arc4random()]];
+        unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
+        NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+        [self.videoView startRecordingWithSavePath:movieURL];
+//        [self.videoView startRecording];
+        self.functionView.hidden = YES;
+        self.makeSure.hidden = YES;
     }else {
-        [self.videoView pauseRecording];
+        [self.videoView pauseRecordingCompletion:^(NSURL *pathUrl) {
+            [self.videoArray addObject:pathUrl];
+        }];
+//        [self.videoView pauseRecording];
+        self.functionView.hidden = NO;
+        self.makeSure.hidden = NO;
     }
-    //4.播放
-//    [_audioplayer play];
+
 }
 
 // 确认
 - (IBAction)determineAction:(id)sender {
-    [self.videoView endRecordingCompletion:^(NSMutableArray<NSURL *> *aseetUrlArray) {
-        VideoObject *currentVideo = [VideoObject currentVideo];
-        for (NSURL *url  in aseetUrlArray) {
-            CanEditAsset *editAsset = [CanEditAsset assetWithURL:url];
-            [currentVideo.materialVideoArray addObject:editAsset];
-        }
-        
-//        EditVideoMainViewController *vc = [[EditVideoMainViewController alloc]init];
-        UINavigationController *nav = [[UIStoryboard storyboardWithName:@"VideoEdit" bundle:nil]instantiateInitialViewController];
-        
-        [self presentViewController:nav animated:YES completion:^{
-            [self.videoView removeFromSuperview];
-            self.videoView = nil;
-        }];
+    VideoObject *currentVideo = [VideoObject currentVideo];
+    for (NSURL *url in self.videoArray) {
+        CanEditAsset *editAsset = [CanEditAsset assetWithURL:url];
+        [currentVideo.materialVideoArray addObject:editAsset];
+    }
+    _videoArray = nil;
+    UINavigationController *nav = [[UIStoryboard storyboardWithName:@"VideoEdit" bundle:nil]instantiateInitialViewController];
+    [self presentViewController:nav animated:YES completion:^{
+        [self.videoView removeFromSuperview];
+        self.videoView = nil;
     }];
+    
+    
+//    [self.videoView endRecordingCompletion:^(NSMutableArray<NSURL *> *aseetUrlArray) {
+//        
+//        dispatch_async(dispatch_get_main_queue(),^(){
+//            VideoObject *currentVideo = [VideoObject currentVideo];
+//            for (NSURL *url in self.videoArray) {
+//                CanEditAsset *editAsset = [CanEditAsset assetWithURL:url];
+//                [currentVideo.materialVideoArray addObject:editAsset];
+//            }
+//            _videoArray = nil;
+//            UINavigationController *nav = [[UIStoryboard storyboardWithName:@"VideoEdit" bundle:nil]instantiateInitialViewController];
+//            [self presentViewController:nav animated:YES completion:^{
+//                [self.videoView removeFromSuperview];
+//                self.videoView = nil;
+//            }];
+//        });
+//    }];
 }
 
+- (NSMutableArray *)videoArray {
+    if (!_videoArray) {
+        _videoArray = [NSMutableArray arrayWithCapacity:5];
+    }
+    return _videoArray;
+}
+
+#pragma mark
 //支持旋转
 -(BOOL)shouldAutorotate{
-    return YES;
+    return !self.videoView.isCamera;
 }
 //支持的方向
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
@@ -120,7 +167,12 @@
 }
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    _videoView.frame = self.view.window.bounds;
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait) {
+        _videoView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width);
+    }else {
+        _videoView.frame = self.view.window.bounds;
+    }
     _videoView.orientation = toInterfaceOrientation;
 }
+
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "ZipArchive.h"
+
 
 @interface AppDelegate ()
 
@@ -19,6 +21,22 @@
     // Override point for customization after application launch.
     
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"FirstLaunch"]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        [SSZipArchive unzipFileAtPath:[[NSBundle mainBundle] pathForResource:@"theme" ofType:@"zip"] toDestination: documentsDirectory];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"FirstLaunch"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"animatedsticker.zip"]) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        [SSZipArchive unzipFileAtPath:[[NSBundle mainBundle] pathForResource:@"animatedsticker" ofType:@"zip"] toDestination: documentsDirectory];
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"animatedsticker.zip"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
     
     return YES;
 }
