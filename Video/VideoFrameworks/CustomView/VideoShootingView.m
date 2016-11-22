@@ -215,7 +215,7 @@
 - (void)pauseRecording {
     _isCamera = NO;
     [_movieWriter finishRecording];
-    _movieWriter = nil;
+//    _movieWriter = nil;
 }
 
 - (void)endRecordingCompletion:(void (^)(NSMutableArray<NSURL *> *))completion {

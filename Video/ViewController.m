@@ -32,15 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    
-    
-//    //1.音频文件的url路径
-//    NSString *audioPath = [[NSBundle mainBundle] pathForResource:@"123" ofType:@"mp3"];
-//    NSURL *audioUrl = [NSURL fileURLWithPath:audioPath];
-//    //2.创建播放器（注意：一个AVAudioPlayer只能播放一个url）
-//    _audioplayer=[[AVAudioPlayer alloc]initWithContentsOfURL:audioUrl error:Nil];
-//    //3.缓冲
-//    [_audioplayer prepareToPlay];
+    [self reloadViewWithRecordType:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -59,6 +51,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)reloadViewWithRecordType:(BOOL)isRecording {
+    self.functionView.hidden = isRecording;
+    if (isRecording) {
+        self.subFilterView.hidden = isRecording;
+    }
+    if (!isRecording && self.videoArray.count != 0) {
+        self.makeSure.hidden = NO;
+    }else {
+        self.makeSure.hidden = YES;
+    }
 }
 
 - (IBAction)showFilterAction:(UIButton *)sender {
@@ -94,18 +98,18 @@
         unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
         NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
         [self.videoView startRecordingWithSavePath:movieURL];
-//        [self.videoView startRecording];
-        self.functionView.hidden = YES;
-        self.makeSure.hidden = YES;
-    }else {
-        [self.videoView pauseRecordingCompletion:^(NSURL *pathUrl) {
-            [self.videoArray addObject:pathUrl];
-        }];
-//        [self.videoView pauseRecording];
-        self.functionView.hidden = NO;
-        self.makeSure.hidden = NO;
-    }
 
+        [self reloadViewWithRecordType:YES];
+    }else {
+        __weak typeof(self) weakself = self;
+        [self.videoView pauseRecordingCompletion:^(NSURL *pathUrl) {
+            [weakself.videoArray addObject:pathUrl];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakself reloadViewWithRecordType:NO];
+            });
+        }];
+    }
 }
 
 // 确认
@@ -121,7 +125,8 @@
         [self.videoView removeFromSuperview];
         self.videoView = nil;
     }];
-    
+    [self reloadViewWithRecordType:NO];
+
     
 //    [self.videoView endRecordingCompletion:^(NSMutableArray<NSURL *> *aseetUrlArray) {
 //        
