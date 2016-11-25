@@ -28,11 +28,9 @@
 @interface SAVideoRangeSlider ()
 
 @property (nonatomic, strong) AVAssetImageGenerator *imageGenerator;
-@property (nonatomic, strong) UIView *bgView;
-@property (nonatomic, strong) UIView *centerView;
 @property (nonatomic, strong) NSURL *videoUrl;
-@property (nonatomic, strong) SASliderLeft *leftThumb;
-@property (nonatomic, strong) SASliderRight *rightThumb;
+//@property (nonatomic, strong) SASliderLeft *leftThumb;
+//@property (nonatomic, strong) SASliderRight *rightThumb;
 @property (nonatomic) CGFloat frame_width;
 @property (nonatomic) Float64 durationSeconds;
 @property (nonatomic, strong) SAResizibleBubble *popoverBubble;
@@ -40,7 +38,6 @@
 @end
 
 @implementation SAVideoRangeSlider
-
 
 #define SLIDER_BORDERS_SIZE 6.0f
 #define BG_VIEW_BORDERS_SIZE 3.0f
@@ -53,7 +50,7 @@
         
         _frame_width = frame.size.width;
         
-        int thumbWidth = ceil(frame.size.width*0.05);
+        int thumbWidth = 10;
         
         _bgView = [[UIControl alloc] initWithFrame:CGRectMake(thumbWidth-BG_VIEW_BORDERS_SIZE, 0, frame.size.width-(thumbWidth*2)+BG_VIEW_BORDERS_SIZE*2, frame.size.height)];
         _bgView.layer.borderColor = [UIColor grayColor].CGColor;
@@ -132,6 +129,14 @@
 }
 
 
+- (void)setAllHide:(BOOL)allHide {
+    _allHide = allHide;
+    _leftThumb.hidden = allHide;
+    _topBorder.hidden = allHide;
+    _bottomBorder.hidden = allHide;
+    _rightThumb.hidden = allHide;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -185,6 +190,7 @@
 
 - (void)handleLeftPan:(UIPanGestureRecognizer *)gesture
 {
+    _isMoveLeft = YES;
     if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
         
         CGPoint translation = [gesture translationInView:self];
@@ -222,6 +228,7 @@
 
 - (void)handleRightPan:(UIPanGestureRecognizer *)gesture
 {
+    _isMoveLeft = NO;
     if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
         
         
@@ -304,6 +311,9 @@
 {
     CGFloat inset = _leftThumb.frame.size.width / 2;
     
+    if (_leftPosition == NAN) {
+        return;
+    }
     _leftThumb.center = CGPointMake(_leftPosition+inset, _leftThumb.frame.size.height/2);
     
     _rightThumb.center = CGPointMake(_rightPosition-inset, _rightThumb.frame.size.height/2);
@@ -429,6 +439,12 @@
 - (CGFloat)leftPosition
 {
     return _leftPosition * _durationSeconds / _frame_width;
+}
+
+- (void)setLeftVaule:(CGFloat)leftVaule rightVaule:(CGFloat)rightVaule {
+    _leftPosition = leftVaule * _frame_width / _durationSeconds;
+    _rightPosition = rightVaule * _frame_width / _durationSeconds;
+    [self setNeedsLayout];
 }
 
 

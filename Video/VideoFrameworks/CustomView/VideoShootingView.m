@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSMutableDictionary *videoSettings;   // 录制中视频设置
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;     // 视频写入
 
+@property (nonatomic, strong) NSURL *currentUrl;
+
 @property (nonatomic, strong) NSMutableArray *videoArray;           // 视频数组
 
 @end
@@ -84,24 +86,6 @@
 - (void)setSubFilter:(GPUImageFilter *)subFilter {
     _subFilter = subFilter;
     [self reloadFilter];
-}
-
-- (void)setSubFilterType:(SubFilterType)subFilterType {
-    _subFilterType = subFilterType;
-    switch (subFilterType) {
-        case SubFilterTypeWithNone: {
-            self.subFilter = [[GPUImageFilter alloc]init];
-            break;
-        }
-        case SubFilterTypeWithSepia: {
-            self.subFilter = [[GPUImageSepiaFilter alloc]init];
-            break;
-        }
-        case SubFilterTypeWithErosion: {
-            self.subFilter = [[GPUImageErosionFilter alloc]init];
-            break;
-        }
-    }
 }
 
 - (void)setMainFilterType:(MainFilterType)mainFilterType {
@@ -170,6 +154,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _preview = [[GPUImageView alloc] initWithFrame:self.frame];
+        _preview.fillMode = kGPUImageFillModeStretch;
         [self addSubview:_preview];
         [self sendSubviewToBack:_preview];
         self.autoresizesSubviews = NO;
@@ -196,18 +181,46 @@
     }else {
         [_videoCamera addTarget:_movieWriter];
     }
-    
     self.videoCamera.audioEncodingTarget = _movieWriter;
     [_movieWriter startRecording];
+    
+    _isCamera = YES;
+}
+
+- (void)startRecordingWithSavePath:(NSURL *)pathUrl {
+    _currentUrl = pathUrl;
+    
+    _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:pathUrl size:self.bounds.size];
+    _movieWriter.encodingLiveVideo = YES;
+    _movieWriter.shouldPassthroughAudio = YES;
+    if (_filter) {
+        [_filter addTarget:_movieWriter];
+    }else {
+        [_videoCamera addTarget:_movieWriter];
+    }
+    self.videoCamera.audioEncodingTarget = _movieWriter;
+    [_movieWriter startRecording];
+    
+    _isCamera = YES;
+}
+
+- (void)pauseRecordingCompletion:(void (^)(NSURL *pathUrl))completion {
+    _isCamera = NO;
+    
+    [_movieWriter finishRecordingWithCompletionHandler:^{
+        completion(_currentUrl);
+    }];
 }
 
 - (void)pauseRecording {
+    _isCamera = NO;
     [_movieWriter finishRecording];
+    _movieWriter = nil;
 }
 
 - (void)endRecordingCompletion:(void (^)(NSMutableArray<NSURL *> *))completion {
-    [_movieWriter finishRecording];
-    
+    _isCamera = NO;
+
     completion(self.videoArray);
 }
 

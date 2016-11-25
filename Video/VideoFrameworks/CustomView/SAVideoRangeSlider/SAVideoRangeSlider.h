@@ -46,10 +46,17 @@
 @property (nonatomic, assign) NSInteger maxGap;
 @property (nonatomic, assign) NSInteger minGap;
 
+@property (nonatomic, strong) SASliderLeft *leftThumb;
+@property (nonatomic, strong) SASliderRight *rightThumb;
+@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UIView *centerView;
+
+@property (nonatomic, assign) BOOL allHide;
+@property (nonatomic, assign, readonly) BOOL isMoveLeft;
 
 - (id)initWithFrame:(CGRect)frame videoUrl:(NSURL *)videoUrl;
 - (void)setPopoverBubbleSize: (CGFloat) width height:(CGFloat)height;
-
+- (void)setLeftVaule:(CGFloat)leftVaule rightVaule:(CGFloat)rightVaule;
 
 @end
 

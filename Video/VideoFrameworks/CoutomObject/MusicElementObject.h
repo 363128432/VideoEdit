@@ -10,8 +10,10 @@
 
 @interface MusicElementObject : AddElementObject
 
-@property (nonatomic, assign) CMTimeRange playTimeRange;      // 音乐选择播放的时间段
+@property (nonatomic, assign) CMTimeRange playTimeRange;        // 音乐选择播放的时间段
 
-@property (nonatomic, strong) NSURL *pathUrl;               // 音乐播放地址
+@property (nonatomic, strong) NSURL *pathUrl;                   // 音乐播放地址
+
+@property (nonatomic, strong) NSString *musicName;
 
 @end

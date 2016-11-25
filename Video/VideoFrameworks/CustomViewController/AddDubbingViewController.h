@@ -9,7 +9,8 @@
 // 添加配音视图控制器
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface AddDubbingViewController : UIViewController
+@interface AddDubbingViewController : BaseViewController
 
 @end

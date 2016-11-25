@@ -23,15 +23,16 @@ typedef NS_ENUM(NSInteger, VideoFilterType) {
 @interface CanEditAsset : AVURLAsset
 
 @property (nonatomic, strong) NSURL *filterVideoPath;           // 编辑后的视频路径
-@property (nonatomic, strong) NSURL *previeweditorUrl;          // 编辑时的合成的预览路径，
 
 @property (nonatomic, assign) CMTimeRange playTimeRange;             // 剪裁之后播放的时间
 @property (nonatomic, assign) float changeSpeed;                // 变速
-@property (nonatomic, assign) float rotation;                   // 旋转角度
+@property (nonatomic, assign) float angle;                   // 旋转角度
 
-// 三种已设置成都是0到1的范围，0.5是正常
+// Saturation ranges from 0.0 (fully desaturated) to 2.0 (max saturation), with 1.0 as the normal level
 @property (nonatomic, assign) float saturationVaule;            // 饱和度
-@property (nonatomic, assign) float exposureVaule;              // 亮度
+// Brightness ranges from -1.0 to 1.0, with 0.0 as the normal level
+@property (nonatomic, assign) float brightnessVaule;              // 亮度
+// Contrast ranges from 0.0 to 4.0 (max contrast), with 1.0 as the normal level
 @property (nonatomic, assign) float contrastVaule;              // 对比度
 
 @property (nonatomic, assign) VideoFilterType filterType;
@@ -40,10 +41,11 @@ typedef NS_ENUM(NSInteger, VideoFilterType) {
 @property (nonatomic, strong) UIImage *thumbnailImage;          // 缩略图
 
 
-- (NSArray<CanEditAsset *> *)componentsSeparatedByTime:(CMTime)time;
+// 根据时间分割
+//- (NSArray<CanEditAsset *> *)componentsSeparatedByTime:(CMTime)time;
 
 
-- (void)changeFilterWithFilter:(GPUImageOutput<GPUImageInput> *)otherFilter completion: (void (^ __nullable)(void))completion;
+- (void)saveFilterVideoPath:(NSURL *)pathUrl filter:(GPUImageOutput<GPUImageInput> *)filter  completion: (void (^ __nullable)(void))completion;
 
 
 @end

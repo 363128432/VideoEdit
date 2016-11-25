@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CanEditAsset.h"
+#import "BaseViewController.h"
 
-@interface VideoFilterViewController : UIViewController
+@interface VideoFilterViewController : BaseViewController  
 
 @property (nonatomic, strong) CanEditAsset *editAsset;
 

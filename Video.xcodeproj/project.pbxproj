@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A80573901D9448550061E0E1 /* DoubleSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = A805738D1D9448550061E0E1 /* DoubleSlider.m */; };
+		A80573911D9448550061E0E1 /* handle.png in Resources */ = {isa = PBXBuildFile; fileRef = A805738E1D9448550061E0E1 /* handle.png */; };
+		A80573921D9448550061E0E1 /* handle_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = A805738F1D9448550061E0E1 /* handle_highlight.png */; };
+		A80573941D9566CF0061E0E1 /* music0.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A80573931D9566CF0061E0E1 /* music0.m4a */; };
+		A80573961D9567480061E0E1 /* music1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = A80573951D9567480061E0E1 /* music1.m4a */; };
+		A805739A1D998D0B0061E0E1 /* DubbingManage.m in Sources */ = {isa = PBXBuildFile; fileRef = A80573991D998D0B0061E0E1 /* DubbingManage.m */; };
 		A8068B681D6F515600C4A857 /* 123.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A8068B671D6F515600C4A857 /* 123.mp3 */; };
 		A8068B6B1D6F543000C4A857 /* AddElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B6A1D6F543000C4A857 /* AddElementObject.m */; };
 		A8068B6E1D6F555600C4A857 /* DubbingElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B6D1D6F555600C4A857 /* DubbingElementObject.m */; };
@@ -21,6 +27,11 @@
 		A8068B8B1D7708AE00C4A857 /* VideoFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */; };
 		A8068B8E1D770AA300C4A857 /* VideoFilterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */; };
 		A8099D0C1D8DA509000F8013 /* SubTitleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A8099D0B1D8DA509000F8013 /* SubTitleAnimation.m */; };
+		A80A79631DB52CD100F9E29A /* AddVideoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A79621DB52CD100F9E29A /* AddVideoCollectionViewController.m */; };
+		A80A79661DB52DB800F9E29A /* AddVideoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A80A79651DB52DB800F9E29A /* AddVideoCollectionViewCell.m */; };
+		A80D41F21DD24A1A00173B43 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D41F11DD24A1A00173B43 /* MBProgressHUD.m */; };
+		A80D41F71DD7B83B00173B43 /* MBProgressHUD+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D41F61DD7B83B00173B43 /* MBProgressHUD+Extra.m */; };
+		A80D41FA1DD84A1400173B43 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80D41F91DD84A1400173B43 /* BaseViewController.m */; };
 		A81ABCB91D7ACF38005AE73D /* AddSubtitlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */; };
 		A81ABCBC1D7ACFC3005AE73D /* SubtitlesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */; };
 		A81ABCC61D7B09A9005AE73D /* SAResizibleBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCBF1D7B09A9005AE73D /* SAResizibleBubble.m */; };
@@ -28,14 +39,46 @@
 		A81ABCC81D7B09A9005AE73D /* SASliderRight.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCC31D7B09A9005AE73D /* SASliderRight.m */; };
 		A81ABCC91D7B09A9005AE73D /* SAVideoRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = A81ABCC51D7B09A9005AE73D /* SAVideoRangeSlider.m */; };
 		A81AC0991D7C0AAF005AE73D /* SubtitleElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */; };
+		A836FC751DA81788006F2642 /* preface.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A836FC741DA81788006F2642 /* preface.mp4 */; };
+		A836FC771DA81797006F2642 /* ending.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A836FC761DA81797006F2642 /* ending.mp4 */; };
+		A836FC7A1DAD4627006F2642 /* UIView+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = A836FC791DAD4627006F2642 /* UIView+Custom.m */; };
+		A836FC7D1DAEA7D8006F2642 /* MaterialClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A836FC7C1DAEA7D8006F2642 /* MaterialClipViewController.m */; };
+		A84065661D9D6C1400110B56 /* theme.zip in Resources */ = {isa = PBXBuildFile; fileRef = A84065651D9D6C1400110B56 /* theme.zip */; };
+		A840656D1D9D6D2800110B56 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A84065691D9D6D2800110B56 /* NSObject+YYModel.m */; };
+		A840656E1D9D6D2800110B56 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A840656B1D9D6D2800110B56 /* YYClassInfo.m */; };
+		A84065701D9D860F00110B56 /* cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A840656F1D9D860F00110B56 /* cover.jpg */; };
+		A86EB57C1DC5DC5000C9FB55 /* UIView+Extra.m in Sources */ = {isa = PBXBuildFile; fileRef = A86EB57B1DC5DC5000C9FB55 /* UIView+Extra.m */; };
+		A86EB57F1DC5F9D100C9FB55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A86EB57E1DC5F9D100C9FB55 /* Assets.xcassets */; };
+		A86EB5831DC6180D00C9FB55 /* HorizontalProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = A86EB5821DC6180D00C9FB55 /* HorizontalProgressView.m */; };
+		A86EB5861DC618F400C9FB55 /* MaterialCutDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A86EB5851DC618F400C9FB55 /* MaterialCutDownViewController.m */; };
+		A86EB5891DC62F5700C9FB55 /* SpeedView.m in Sources */ = {isa = PBXBuildFile; fileRef = A86EB5881DC62F5700C9FB55 /* SpeedView.m */; };
+		A874DDE41D9AB73B006F11D4 /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A874DDE31D9AB73B006F11D4 /* NavigationViewController.m */; };
+		A874DDE71D9AC0FA006F11D4 /* AddMusicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A874DDE61D9AC0FA006F11D4 /* AddMusicViewController.m */; };
+		A874DE0D1D9C3571006F11D4 /* aescrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDEC1D9C3571006F11D4 /* aescrypt.c */; };
+		A874DE0E1D9C3571006F11D4 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDED1D9C3571006F11D4 /* aeskey.c */; };
+		A874DE0F1D9C3571006F11D4 /* aestab.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDEF1D9C3571006F11D4 /* aestab.c */; };
+		A874DE101D9C3571006F11D4 /* entropy.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDF31D9C3571006F11D4 /* entropy.c */; };
+		A874DE111D9C3571006F11D4 /* fileenc.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDF51D9C3571006F11D4 /* fileenc.c */; };
+		A874DE121D9C3571006F11D4 /* hmac.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDF71D9C3571006F11D4 /* hmac.c */; };
+		A874DE131D9C3571006F11D4 /* prng.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDF91D9C3571006F11D4 /* prng.c */; };
+		A874DE141D9C3571006F11D4 /* pwd2key.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDFB1D9C3571006F11D4 /* pwd2key.c */; };
+		A874DE151D9C3571006F11D4 /* sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DDFD1D9C3571006F11D4 /* sha1.c */; };
+		A874DE161D9C3571006F11D4 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DE011D9C3571006F11D4 /* ioapi.c */; };
+		A874DE171D9C3571006F11D4 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DE031D9C3571006F11D4 /* mztools.c */; };
+		A874DE181D9C3571006F11D4 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DE051D9C3571006F11D4 /* unzip.c */; };
+		A874DE191D9C3571006F11D4 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = A874DE071D9C3571006F11D4 /* zip.c */; };
+		A874DE1A1D9C3571006F11D4 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = A874DE0A1D9C3571006F11D4 /* SSZipArchive.m */; };
+		A874DE1C1D9C3608006F11D4 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A874DE1B1D9C3608006F11D4 /* libz.tbd */; };
+		A874DE5A1D9D5A30006F11D4 /* ThemeObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A874DE591D9D5A30006F11D4 /* ThemeObject.m */; };
+		A8C591101DC901D700F41454 /* AnimatedStickerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C5910F1DC901D700F41454 /* AnimatedStickerObject.m */; };
+		A8C591131DC9020700F41454 /* AddStickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C591121DC9020700F41454 /* AddStickerViewController.m */; };
+		A8C5911A1DCB974D00F41454 /* BBStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8C591191DCB974D00F41454 /* BBStickerView.m */; };
 		A8E855B21D6B6DB60030F854 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B11D6B6DB60030F854 /* main.m */; };
 		A8E855B51D6B6DB60030F854 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B41D6B6DB60030F854 /* AppDelegate.m */; };
 		A8E855B81D6B6DB60030F854 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855B71D6B6DB60030F854 /* ViewController.m */; };
 		A8E855BB1D6B6DB60030F854 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E855B91D6B6DB60030F854 /* Main.storyboard */; };
-		A8E855BD1D6B6DB60030F854 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A8E855BC1D6B6DB60030F854 /* Assets.xcassets */; };
 		A8E855C01D6B6DB60030F854 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E855BE1D6B6DB60030F854 /* LaunchScreen.storyboard */; };
 		A8E855DE1D6B6DF70030F854 /* 96.png in Resources */ = {isa = PBXBuildFile; fileRef = A8E855C81D6B6DF70030F854 /* 96.png */; };
-		A8E855DF1D6B6DF70030F854 /* AddContent.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855CA1D6B6DF70030F854 /* AddContent.m */; };
 		A8E855E01D6B6DF70030F854 /* CanEditAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855CD1D6B6DF70030F854 /* CanEditAsset.m */; };
 		A8E855E11D6B6DF70030F854 /* GPUImageBeautifyFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855CF1D6B6DF70030F854 /* GPUImageBeautifyFilter.m */; };
 		A8E855E21D6B6DF70030F854 /* VideoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E855D11D6B6DF70030F854 /* VideoObject.m */; };
@@ -221,9 +264,19 @@
 		A8E8580E1D6B6E320030F854 /* GPUImagePicture+TextureSubimage.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E8574A1D6B6E320030F854 /* GPUImagePicture+TextureSubimage.m */; };
 		A8E8580F1D6B6E320030F854 /* GPUImagePicture.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E8574C1D6B6E320030F854 /* GPUImagePicture.m */; };
 		A8E858101D6B6E320030F854 /* GPUImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E8574E1D6B6E320030F854 /* GPUImageView.m */; };
+		A8E8A6421DD0634400AA8F15 /* animatedsticker.zip in Resources */ = {isa = PBXBuildFile; fileRef = A8E8A6411DD0634400AA8F15 /* animatedsticker.zip */; };
+		A8E8A6451DD07A3400AA8F15 /* StickerElementObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E8A6441DD07A3400AA8F15 /* StickerElementObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A805738C1D9448550061E0E1 /* DoubleSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubleSlider.h; sourceTree = "<group>"; };
+		A805738D1D9448550061E0E1 /* DoubleSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubleSlider.m; sourceTree = "<group>"; };
+		A805738E1D9448550061E0E1 /* handle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle.png; sourceTree = "<group>"; };
+		A805738F1D9448550061E0E1 /* handle_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = handle_highlight.png; sourceTree = "<group>"; };
+		A80573931D9566CF0061E0E1 /* music0.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = music0.m4a; sourceTree = "<group>"; };
+		A80573951D9567480061E0E1 /* music1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = music1.m4a; sourceTree = "<group>"; };
+		A80573981D998D0B0061E0E1 /* DubbingManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DubbingManage.h; sourceTree = "<group>"; };
+		A80573991D998D0B0061E0E1 /* DubbingManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DubbingManage.m; sourceTree = "<group>"; };
 		A8068B671D6F515600C4A857 /* 123.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 123.mp3; sourceTree = "<group>"; };
 		A8068B691D6F543000C4A857 /* AddElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddElementObject.h; sourceTree = "<group>"; };
 		A8068B6A1D6F543000C4A857 /* AddElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddElementObject.m; sourceTree = "<group>"; };
@@ -250,6 +303,16 @@
 		A8068B8D1D770AA300C4A857 /* VideoFilterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoFilterObject.m; sourceTree = "<group>"; };
 		A8099D0A1D8DA509000F8013 /* SubTitleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubTitleAnimation.h; sourceTree = "<group>"; };
 		A8099D0B1D8DA509000F8013 /* SubTitleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubTitleAnimation.m; sourceTree = "<group>"; };
+		A80A79611DB52CD100F9E29A /* AddVideoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVideoCollectionViewController.h; sourceTree = "<group>"; };
+		A80A79621DB52CD100F9E29A /* AddVideoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVideoCollectionViewController.m; sourceTree = "<group>"; };
+		A80A79641DB52DB800F9E29A /* AddVideoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVideoCollectionViewCell.h; sourceTree = "<group>"; };
+		A80A79651DB52DB800F9E29A /* AddVideoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVideoCollectionViewCell.m; sourceTree = "<group>"; };
+		A80D41F01DD24A1A00173B43 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A80D41F11DD24A1A00173B43 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A80D41F51DD7B83B00173B43 /* MBProgressHUD+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extra.h"; sourceTree = "<group>"; };
+		A80D41F61DD7B83B00173B43 /* MBProgressHUD+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extra.m"; sourceTree = "<group>"; };
+		A80D41F81DD84A1400173B43 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		A80D41F91DD84A1400173B43 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		A81ABCB71D7ACF38005AE73D /* AddSubtitlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubtitlesViewController.h; sourceTree = "<group>"; };
 		A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubtitlesViewController.m; sourceTree = "<group>"; };
 		A81ABCBA1D7ACFC3005AE73D /* SubtitlesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitlesView.h; sourceTree = "<group>"; };
@@ -264,6 +327,76 @@
 		A81ABCC51D7B09A9005AE73D /* SAVideoRangeSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAVideoRangeSlider.m; sourceTree = "<group>"; };
 		A81AC0971D7C0AAF005AE73D /* SubtitleElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubtitleElementObject.h; sourceTree = "<group>"; };
 		A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubtitleElementObject.m; sourceTree = "<group>"; };
+		A836FC741DA81788006F2642 /* preface.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = preface.mp4; sourceTree = "<group>"; };
+		A836FC761DA81797006F2642 /* ending.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ending.mp4; sourceTree = "<group>"; };
+		A836FC781DAD4627006F2642 /* UIView+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Custom.h"; sourceTree = "<group>"; };
+		A836FC791DAD4627006F2642 /* UIView+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Custom.m"; sourceTree = "<group>"; };
+		A836FC7B1DAEA7D8006F2642 /* MaterialClipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialClipViewController.h; sourceTree = "<group>"; };
+		A836FC7C1DAEA7D8006F2642 /* MaterialClipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialClipViewController.m; sourceTree = "<group>"; };
+		A84065651D9D6C1400110B56 /* theme.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = theme.zip; sourceTree = "<group>"; };
+		A84065681D9D6D2800110B56 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		A84065691D9D6D2800110B56 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		A840656A1D9D6D2800110B56 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		A840656B1D9D6D2800110B56 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		A840656C1D9D6D2800110B56 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
+		A840656F1D9D860F00110B56 /* cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover.jpg; sourceTree = "<group>"; };
+		A86EB57A1DC5DC5000C9FB55 /* UIView+Extra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extra.h"; sourceTree = "<group>"; };
+		A86EB57B1DC5DC5000C9FB55 /* UIView+Extra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extra.m"; sourceTree = "<group>"; };
+		A86EB57D1DC5E0CF00C9FB55 /* CustomMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMacros.h; sourceTree = "<group>"; };
+		A86EB57E1DC5F9D100C9FB55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A86EB5811DC6180D00C9FB55 /* HorizontalProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalProgressView.h; sourceTree = "<group>"; };
+		A86EB5821DC6180D00C9FB55 /* HorizontalProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalProgressView.m; sourceTree = "<group>"; };
+		A86EB5841DC618F400C9FB55 /* MaterialCutDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialCutDownViewController.h; sourceTree = "<group>"; };
+		A86EB5851DC618F400C9FB55 /* MaterialCutDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialCutDownViewController.m; sourceTree = "<group>"; };
+		A86EB5871DC62F5700C9FB55 /* SpeedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeedView.h; sourceTree = "<group>"; };
+		A86EB5881DC62F5700C9FB55 /* SpeedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeedView.m; sourceTree = "<group>"; };
+		A874DDE21D9AB73B006F11D4 /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
+		A874DDE31D9AB73B006F11D4 /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
+		A874DDE51D9AC0FA006F11D4 /* AddMusicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMusicViewController.h; sourceTree = "<group>"; };
+		A874DDE61D9AC0FA006F11D4 /* AddMusicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMusicViewController.m; sourceTree = "<group>"; };
+		A874DDEA1D9C3571006F11D4 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
+		A874DDEB1D9C3571006F11D4 /* aes_via_ace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes_via_ace.h; sourceTree = "<group>"; };
+		A874DDEC1D9C3571006F11D4 /* aescrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aescrypt.c; sourceTree = "<group>"; };
+		A874DDED1D9C3571006F11D4 /* aeskey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aeskey.c; sourceTree = "<group>"; };
+		A874DDEE1D9C3571006F11D4 /* aesopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aesopt.h; sourceTree = "<group>"; };
+		A874DDEF1D9C3571006F11D4 /* aestab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aestab.c; sourceTree = "<group>"; };
+		A874DDF01D9C3571006F11D4 /* aestab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aestab.h; sourceTree = "<group>"; };
+		A874DDF11D9C3571006F11D4 /* brg_endian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_endian.h; sourceTree = "<group>"; };
+		A874DDF21D9C3571006F11D4 /* brg_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brg_types.h; sourceTree = "<group>"; };
+		A874DDF31D9C3571006F11D4 /* entropy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = entropy.c; sourceTree = "<group>"; };
+		A874DDF41D9C3571006F11D4 /* entropy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = entropy.h; sourceTree = "<group>"; };
+		A874DDF51D9C3571006F11D4 /* fileenc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fileenc.c; sourceTree = "<group>"; };
+		A874DDF61D9C3571006F11D4 /* fileenc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fileenc.h; sourceTree = "<group>"; };
+		A874DDF71D9C3571006F11D4 /* hmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hmac.c; sourceTree = "<group>"; };
+		A874DDF81D9C3571006F11D4 /* hmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hmac.h; sourceTree = "<group>"; };
+		A874DDF91D9C3571006F11D4 /* prng.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = prng.c; sourceTree = "<group>"; };
+		A874DDFA1D9C3571006F11D4 /* prng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prng.h; sourceTree = "<group>"; };
+		A874DDFB1D9C3571006F11D4 /* pwd2key.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwd2key.c; sourceTree = "<group>"; };
+		A874DDFC1D9C3571006F11D4 /* pwd2key.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwd2key.h; sourceTree = "<group>"; };
+		A874DDFD1D9C3571006F11D4 /* sha1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sha1.c; sourceTree = "<group>"; };
+		A874DDFE1D9C3571006F11D4 /* sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sha1.h; sourceTree = "<group>"; };
+		A874DE001D9C3571006F11D4 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		A874DE011D9C3571006F11D4 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		A874DE021D9C3571006F11D4 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		A874DE031D9C3571006F11D4 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		A874DE041D9C3571006F11D4 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		A874DE051D9C3571006F11D4 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		A874DE061D9C3571006F11D4 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		A874DE071D9C3571006F11D4 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		A874DE081D9C3571006F11D4 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		A874DE091D9C3571006F11D4 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		A874DE0A1D9C3571006F11D4 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		A874DE0B1D9C3571006F11D4 /* SSZipCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipCommon.h; sourceTree = "<group>"; };
+		A874DE0C1D9C3571006F11D4 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		A874DE1B1D9C3608006F11D4 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A874DE581D9D5A30006F11D4 /* ThemeObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThemeObject.h; sourceTree = "<group>"; };
+		A874DE591D9D5A30006F11D4 /* ThemeObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThemeObject.m; sourceTree = "<group>"; };
+		A8C5910E1DC901D700F41454 /* AnimatedStickerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedStickerObject.h; sourceTree = "<group>"; };
+		A8C5910F1DC901D700F41454 /* AnimatedStickerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedStickerObject.m; sourceTree = "<group>"; };
+		A8C591111DC9020700F41454 /* AddStickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddStickerViewController.h; sourceTree = "<group>"; };
+		A8C591121DC9020700F41454 /* AddStickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStickerViewController.m; sourceTree = "<group>"; };
+		A8C591181DCB974D00F41454 /* BBStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBStickerView.h; sourceTree = "<group>"; };
+		A8C591191DCB974D00F41454 /* BBStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBStickerView.m; sourceTree = "<group>"; };
 		A8E855AD1D6B6DB60030F854 /* Video.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Video.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8E855B11D6B6DB60030F854 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A8E855B31D6B6DB60030F854 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -271,12 +404,9 @@
 		A8E855B61D6B6DB60030F854 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A8E855B71D6B6DB60030F854 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A8E855BA1D6B6DB60030F854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A8E855BC1D6B6DB60030F854 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A8E855BF1D6B6DB60030F854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A8E855C11D6B6DB60030F854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8E855C81D6B6DF70030F854 /* 96.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 96.png; sourceTree = "<group>"; };
-		A8E855C91D6B6DF70030F854 /* AddContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContent.h; sourceTree = "<group>"; };
-		A8E855CA1D6B6DF70030F854 /* AddContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContent.m; sourceTree = "<group>"; };
 		A8E855CC1D6B6DF70030F854 /* CanEditAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanEditAsset.h; sourceTree = "<group>"; };
 		A8E855CD1D6B6DF70030F854 /* CanEditAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanEditAsset.m; sourceTree = "<group>"; };
 		A8E855CE1D6B6DF70030F854 /* GPUImageBeautifyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageBeautifyFilter.h; sourceTree = "<group>"; };
@@ -645,6 +775,9 @@
 		A8E8574C1D6B6E320030F854 /* GPUImagePicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImagePicture.m; sourceTree = "<group>"; };
 		A8E8574D1D6B6E320030F854 /* GPUImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImageView.h; sourceTree = "<group>"; };
 		A8E8574E1D6B6E320030F854 /* GPUImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPUImageView.m; sourceTree = "<group>"; };
+		A8E8A6411DD0634400AA8F15 /* animatedsticker.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = animatedsticker.zip; sourceTree = "<group>"; };
+		A8E8A6431DD07A3400AA8F15 /* StickerElementObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StickerElementObject.h; sourceTree = "<group>"; };
+		A8E8A6441DD07A3400AA8F15 /* StickerElementObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StickerElementObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -652,12 +785,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A874DE1C1D9C3608006F11D4 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A805738B1D9448550061E0E1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A805738C1D9448550061E0E1 /* DoubleSlider.h */,
+				A805738D1D9448550061E0E1 /* DoubleSlider.m */,
+				A805738E1D9448550061E0E1 /* handle.png */,
+				A805738F1D9448550061E0E1 /* handle_highlight.png */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A80573971D998CEF0061E0E1 /* Manage */ = {
+			isa = PBXGroup;
+			children = (
+				A80573981D998D0B0061E0E1 /* DubbingManage.h */,
+				A80573991D998D0B0061E0E1 /* DubbingManage.m */,
+			);
+			path = Manage;
+			sourceTree = "<group>";
+		};
 		A81ABCBD1D7B09A9005AE73D /* SAVideoRangeSlider */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,9 +827,102 @@
 			path = SAVideoRangeSlider;
 			sourceTree = "<group>";
 		};
+		A84065671D9D6D2800110B56 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				A84065681D9D6D2800110B56 /* NSObject+YYModel.h */,
+				A84065691D9D6D2800110B56 /* NSObject+YYModel.m */,
+				A840656A1D9D6D2800110B56 /* YYClassInfo.h */,
+				A840656B1D9D6D2800110B56 /* YYClassInfo.m */,
+				A840656C1D9D6D2800110B56 /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
+		A86EB5791DC5DC5000C9FB55 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A80D41F01DD24A1A00173B43 /* MBProgressHUD.h */,
+				A80D41F11DD24A1A00173B43 /* MBProgressHUD.m */,
+				A80D41F51DD7B83B00173B43 /* MBProgressHUD+Extra.h */,
+				A80D41F61DD7B83B00173B43 /* MBProgressHUD+Extra.m */,
+				A86EB57D1DC5E0CF00C9FB55 /* CustomMacros.h */,
+				A86EB57A1DC5DC5000C9FB55 /* UIView+Extra.h */,
+				A86EB57B1DC5DC5000C9FB55 /* UIView+Extra.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		A86EB5801DC6180D00C9FB55 /* HorizontalProgress */ = {
+			isa = PBXGroup;
+			children = (
+				A86EB5811DC6180D00C9FB55 /* HorizontalProgressView.h */,
+				A86EB5821DC6180D00C9FB55 /* HorizontalProgressView.m */,
+			);
+			path = HorizontalProgress;
+			sourceTree = "<group>";
+		};
+		A874DDE81D9C3571006F11D4 /* SSZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				A874DDE91D9C3571006F11D4 /* aes */,
+				A874DDFF1D9C3571006F11D4 /* minizip */,
+				A874DE091D9C3571006F11D4 /* SSZipArchive.h */,
+				A874DE0A1D9C3571006F11D4 /* SSZipArchive.m */,
+				A874DE0B1D9C3571006F11D4 /* SSZipCommon.h */,
+				A874DE0C1D9C3571006F11D4 /* ZipArchive.h */,
+			);
+			path = SSZipArchive;
+			sourceTree = "<group>";
+		};
+		A874DDE91D9C3571006F11D4 /* aes */ = {
+			isa = PBXGroup;
+			children = (
+				A874DDEA1D9C3571006F11D4 /* aes.h */,
+				A874DDEB1D9C3571006F11D4 /* aes_via_ace.h */,
+				A874DDEC1D9C3571006F11D4 /* aescrypt.c */,
+				A874DDED1D9C3571006F11D4 /* aeskey.c */,
+				A874DDEE1D9C3571006F11D4 /* aesopt.h */,
+				A874DDEF1D9C3571006F11D4 /* aestab.c */,
+				A874DDF01D9C3571006F11D4 /* aestab.h */,
+				A874DDF11D9C3571006F11D4 /* brg_endian.h */,
+				A874DDF21D9C3571006F11D4 /* brg_types.h */,
+				A874DDF31D9C3571006F11D4 /* entropy.c */,
+				A874DDF41D9C3571006F11D4 /* entropy.h */,
+				A874DDF51D9C3571006F11D4 /* fileenc.c */,
+				A874DDF61D9C3571006F11D4 /* fileenc.h */,
+				A874DDF71D9C3571006F11D4 /* hmac.c */,
+				A874DDF81D9C3571006F11D4 /* hmac.h */,
+				A874DDF91D9C3571006F11D4 /* prng.c */,
+				A874DDFA1D9C3571006F11D4 /* prng.h */,
+				A874DDFB1D9C3571006F11D4 /* pwd2key.c */,
+				A874DDFC1D9C3571006F11D4 /* pwd2key.h */,
+				A874DDFD1D9C3571006F11D4 /* sha1.c */,
+				A874DDFE1D9C3571006F11D4 /* sha1.h */,
+			);
+			path = aes;
+			sourceTree = "<group>";
+		};
+		A874DDFF1D9C3571006F11D4 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				A874DE001D9C3571006F11D4 /* crypt.h */,
+				A874DE011D9C3571006F11D4 /* ioapi.c */,
+				A874DE021D9C3571006F11D4 /* ioapi.h */,
+				A874DE031D9C3571006F11D4 /* mztools.c */,
+				A874DE041D9C3571006F11D4 /* mztools.h */,
+				A874DE051D9C3571006F11D4 /* unzip.c */,
+				A874DE061D9C3571006F11D4 /* unzip.h */,
+				A874DE071D9C3571006F11D4 /* zip.c */,
+				A874DE081D9C3571006F11D4 /* zip.h */,
+			);
+			path = minizip;
+			sourceTree = "<group>";
+		};
 		A8E855A41D6B6DB60030F854 = {
 			isa = PBXGroup;
 			children = (
+				A874DE1B1D9C3608006F11D4 /* libz.tbd */,
 				A8E855AF1D6B6DB60030F854 /* Video */,
 				A8E855AE1D6B6DB60030F854 /* Products */,
 			);
@@ -698,9 +945,9 @@
 				A8E855B61D6B6DB60030F854 /* ViewController.h */,
 				A8E855B71D6B6DB60030F854 /* ViewController.m */,
 				A8E855B91D6B6DB60030F854 /* Main.storyboard */,
-				A8E855BC1D6B6DB60030F854 /* Assets.xcassets */,
 				A8E855BE1D6B6DB60030F854 /* LaunchScreen.storyboard */,
 				A8E855C11D6B6DB60030F854 /* Info.plist */,
+				A86EB57E1DC5F9D100C9FB55 /* Assets.xcassets */,
 				A8E855B01D6B6DB60030F854 /* Supporting Files */,
 			);
 			path = Video;
@@ -717,11 +964,20 @@
 		A8E855C71D6B6DF70030F854 /* VideoFrameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A836FC761DA81797006F2642 /* ending.mp4 */,
+				A836FC741DA81788006F2642 /* preface.mp4 */,
 				A8068B671D6F515600C4A857 /* 123.mp3 */,
+				A80573931D9566CF0061E0E1 /* music0.m4a */,
+				A80573951D9567480061E0E1 /* music1.m4a */,
+				A840656F1D9D860F00110B56 /* cover.jpg */,
 				A8E855C81D6B6DF70030F854 /* 96.png */,
-				A8E855C91D6B6DF70030F854 /* AddContent.h */,
-				A8E855CA1D6B6DF70030F854 /* AddContent.m */,
+				A84065651D9D6C1400110B56 /* theme.zip */,
+				A8E8A6411DD0634400AA8F15 /* animatedsticker.zip */,
+				A86EB5791DC5DC5000C9FB55 /* Categories */,
+				A84065671D9D6D2800110B56 /* YYModel */,
+				A874DDE81D9C3571006F11D4 /* SSZipArchive */,
 				A8E855E81D6B6E310030F854 /* GPUImage */,
+				A80573971D998CEF0061E0E1 /* Manage */,
 				A8E855CB1D6B6DF70030F854 /* CoutomObject */,
 				A8E855D21D6B6DF70030F854 /* CustomView */,
 				A8E855D91D6B6DF70030F854 /* CustomViewController */,
@@ -744,6 +1000,12 @@
 				A8068B6D1D6F555600C4A857 /* DubbingElementObject.m */,
 				A81AC0971D7C0AAF005AE73D /* SubtitleElementObject.h */,
 				A81AC0981D7C0AAF005AE73D /* SubtitleElementObject.m */,
+				A8E8A6431DD07A3400AA8F15 /* StickerElementObject.h */,
+				A8E8A6441DD07A3400AA8F15 /* StickerElementObject.m */,
+				A8C5910E1DC901D700F41454 /* AnimatedStickerObject.h */,
+				A8C5910F1DC901D700F41454 /* AnimatedStickerObject.m */,
+				A874DE581D9D5A30006F11D4 /* ThemeObject.h */,
+				A874DE591D9D5A30006F11D4 /* ThemeObject.m */,
 				A8E855CE1D6B6DF70030F854 /* GPUImageBeautifyFilter.h */,
 				A8E855CF1D6B6DF70030F854 /* GPUImageBeautifyFilter.m */,
 				A8068B861D749F0F00C4A857 /* AVURLAsset+Custom.h */,
@@ -759,11 +1021,19 @@
 		A8E855D21D6B6DF70030F854 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				A836FC781DAD4627006F2642 /* UIView+Custom.h */,
+				A836FC791DAD4627006F2642 /* UIView+Custom.m */,
+				A86EB5801DC6180D00C9FB55 /* HorizontalProgress */,
+				A805738B1D9448550061E0E1 /* Components */,
 				A81ABCBD1D7B09A9005AE73D /* SAVideoRangeSlider */,
 				A81ABCBA1D7ACFC3005AE73D /* SubtitlesView.h */,
 				A81ABCBB1D7ACFC3005AE73D /* SubtitlesView.m */,
+				A8C591181DCB974D00F41454 /* BBStickerView.h */,
+				A8C591191DCB974D00F41454 /* BBStickerView.m */,
 				A8E855D31D6B6DF70030F854 /* TimeBarSlider.h */,
 				A8E855D41D6B6DF70030F854 /* TimeBarSlider.m */,
+				A86EB5871DC62F5700C9FB55 /* SpeedView.h */,
+				A86EB5881DC62F5700C9FB55 /* SpeedView.m */,
 				A8E855D51D6B6DF70030F854 /* VideoPlayView.h */,
 				A8E855D61D6B6DF70030F854 /* VideoPlayView.m */,
 				A8E855D71D6B6DF70030F854 /* VideoShootingView.h */,
@@ -772,6 +1042,8 @@
 				A8068B7E1D748F7300C4A857 /* MaterialEditAddTableViewCell.m */,
 				A8068B801D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.h */,
 				A8068B811D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m */,
+				A80A79641DB52DB800F9E29A /* AddVideoCollectionViewCell.h */,
+				A80A79651DB52DB800F9E29A /* AddVideoCollectionViewCell.m */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -781,6 +1053,8 @@
 			children = (
 				A8E855DA1D6B6DF70030F854 /* EditVideoMainViewController.h */,
 				A8E855DB1D6B6DF70030F854 /* EditVideoMainViewController.m */,
+				A874DDE51D9AC0FA006F11D4 /* AddMusicViewController.h */,
+				A874DDE61D9AC0FA006F11D4 /* AddMusicViewController.m */,
 				A8068B741D71838400C4A857 /* SelectMusicTableViewController.h */,
 				A8068B751D71838400C4A857 /* SelectMusicTableViewController.m */,
 				A8068B711D71831C00C4A857 /* MaterialEditTableViewController.h */,
@@ -791,7 +1065,19 @@
 				A8068B8A1D7708AE00C4A857 /* VideoFilterViewController.m */,
 				A81ABCB71D7ACF38005AE73D /* AddSubtitlesViewController.h */,
 				A81ABCB81D7ACF38005AE73D /* AddSubtitlesViewController.m */,
+				A8C591111DC9020700F41454 /* AddStickerViewController.h */,
+				A8C591121DC9020700F41454 /* AddStickerViewController.m */,
+				A836FC7B1DAEA7D8006F2642 /* MaterialClipViewController.h */,
+				A836FC7C1DAEA7D8006F2642 /* MaterialClipViewController.m */,
+				A86EB5841DC618F400C9FB55 /* MaterialCutDownViewController.h */,
+				A86EB5851DC618F400C9FB55 /* MaterialCutDownViewController.m */,
+				A80A79611DB52CD100F9E29A /* AddVideoCollectionViewController.h */,
+				A80A79621DB52CD100F9E29A /* AddVideoCollectionViewController.m */,
 				A8068B6F1D71824D00C4A857 /* VideoEdit.storyboard */,
+				A874DDE21D9AB73B006F11D4 /* NavigationViewController.h */,
+				A874DDE31D9AB73B006F11D4 /* NavigationViewController.m */,
+				A80D41F81DD84A1400173B43 /* BaseViewController.h */,
+				A80D41F91DD84A1400173B43 /* BaseViewController.m */,
 			);
 			path = CustomViewController;
 			sourceTree = "<group>";
@@ -1248,13 +1534,22 @@
 			files = (
 				A8E855DE1D6B6DF70030F854 /* 96.png in Resources */,
 				A8E855C01D6B6DB60030F854 /* LaunchScreen.storyboard in Resources */,
+				A80573921D9448550061E0E1 /* handle_highlight.png in Resources */,
+				A80573911D9448550061E0E1 /* handle.png in Resources */,
+				A84065661D9D6C1400110B56 /* theme.zip in Resources */,
 				A8E8575F1D6B6E320030F854 /* lookup.png in Resources */,
+				A836FC771DA81797006F2642 /* ending.mp4 in Resources */,
 				A8E857601D6B6E320030F854 /* lookup_amatorka.png in Resources */,
-				A8E855BD1D6B6DB60030F854 /* Assets.xcassets in Resources */,
 				A8E857631D6B6E320030F854 /* lookup_soft_elegance_2.png in Resources */,
+				A836FC751DA81788006F2642 /* preface.mp4 in Resources */,
+				A84065701D9D860F00110B56 /* cover.jpg in Resources */,
+				A80573941D9566CF0061E0E1 /* music0.m4a in Resources */,
 				A8E857621D6B6E320030F854 /* lookup_soft_elegance_1.png in Resources */,
+				A8E8A6421DD0634400AA8F15 /* animatedsticker.zip in Resources */,
 				A8068B681D6F515600C4A857 /* 123.mp3 in Resources */,
+				A86EB57F1DC5F9D100C9FB55 /* Assets.xcassets in Resources */,
 				A8068B701D71824D00C4A857 /* VideoEdit.storyboard in Resources */,
+				A80573961D9567480061E0E1 /* music1.m4a in Resources */,
 				A8E855BB1D6B6DB60030F854 /* Main.storyboard in Resources */,
 				A8E8580B1D6B6E320030F854 /* Info.plist in Resources */,
 				A8E857611D6B6E320030F854 /* lookup_miss_etikate.png in Resources */,
@@ -1269,9 +1564,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8E858071D6B6E320030F854 /* GPUImageWeakPixelInclusionFilter.m in Sources */,
+				A874DE181D9C3571006F11D4 /* unzip.c in Sources */,
 				A8068B6B1D6F543000C4A857 /* AddElementObject.m in Sources */,
+				A874DE171D9C3571006F11D4 /* mztools.c in Sources */,
 				A8E855B81D6B6DB60030F854 /* ViewController.m in Sources */,
 				A8E857711D6B6E320030F854 /* GPUImageBulgeDistortionFilter.m in Sources */,
+				A874DE151D9C3571006F11D4 /* sha1.c in Sources */,
+				A80D41F21DD24A1A00173B43 /* MBProgressHUD.m in Sources */,
 				A8068B821D748FBC00C4A857 /* MaterialEditFunctionTableViewCell.m in Sources */,
 				A8E857AE1D6B6E320030F854 /* GPUImageKuwaharaFilter.m in Sources */,
 				A8E857B01D6B6E320030F854 /* GPUImageLanczosResamplingFilter.m in Sources */,
@@ -1280,6 +1579,7 @@
 				A8E857DF1D6B6E320030F854 /* GPUImageSaturationBlendFilter.m in Sources */,
 				A8E857D81D6B6E320030F854 /* GPUImageRawDataInput.m in Sources */,
 				A8E8579E1D6B6E320030F854 /* GPUImageHalftoneFilter.m in Sources */,
+				A874DDE41D9AB73B006F11D4 /* NavigationViewController.m in Sources */,
 				A8E855E31D6B6DF70030F854 /* TimeBarSlider.m in Sources */,
 				A8E857BD1D6B6E320030F854 /* GPUImageMaskFilter.m in Sources */,
 				A8E857AB1D6B6E320030F854 /* GPUImageHueFilter.m in Sources */,
@@ -1308,6 +1608,8 @@
 				A8E857F01D6B6E320030F854 /* GPUImageStretchDistortionFilter.m in Sources */,
 				A8E855B51D6B6DB60030F854 /* AppDelegate.m in Sources */,
 				A8E857A01D6B6E320030F854 /* GPUImageHarrisCornerDetectionFilter.m in Sources */,
+				A874DE0F1D9C3571006F11D4 /* aestab.c in Sources */,
+				A874DE101D9C3571006F11D4 /* entropy.c in Sources */,
 				A8E8579F1D6B6E320030F854 /* GPUImageHardLightBlendFilter.m in Sources */,
 				A8E8576E1D6B6E320030F854 /* GPUImageBoxBlurFilter.m in Sources */,
 				A8E857C11D6B6E320030F854 /* GPUImageMosaicFilter.m in Sources */,
@@ -1335,6 +1637,7 @@
 				A8E8579B1D6B6E320030F854 /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				A8E858021D6B6E320030F854 /* GPUImageUnsharpMaskFilter.m in Sources */,
 				A8E857D21D6B6E320030F854 /* GPUImagePixellatePositionFilter.m in Sources */,
+				A80573901D9448550061E0E1 /* DoubleSlider.m in Sources */,
 				A8E857701D6B6E320030F854 /* GPUImageBuffer.m in Sources */,
 				A8E857A31D6B6E320030F854 /* GPUImageHighlightShadowTintFilter.m in Sources */,
 				A8E857CE1D6B6E320030F854 /* GPUImageParallelCoordinateLineTransformFilter.m in Sources */,
@@ -1342,16 +1645,20 @@
 				A8E857911D6B6E320030F854 /* GPUImageFASTCornerDetectionFilter.m in Sources */,
 				A8E858051D6B6E320030F854 /* GPUImageVignetteFilter.m in Sources */,
 				A8E8580A1D6B6E320030F854 /* GPUImageZoomBlurFilter.m in Sources */,
+				A80A79631DB52CD100F9E29A /* AddVideoCollectionViewController.m in Sources */,
 				A8E857A91D6B6E320030F854 /* GPUImageHSBFilter.m in Sources */,
 				A8E857AA1D6B6E320030F854 /* GPUImageHueBlendFilter.m in Sources */,
+				A874DE0D1D9C3571006F11D4 /* aescrypt.c in Sources */,
 				A8E857BF1D6B6E320030F854 /* GPUImageMissEtikateFilter.m in Sources */,
 				A81ABCC81D7B09A9005AE73D /* SASliderRight.m in Sources */,
 				A8E8579D1D6B6E320030F854 /* GPUImageGrayscaleFilter.m in Sources */,
+				A8C5911A1DCB974D00F41454 /* BBStickerView.m in Sources */,
 				A8E857991D6B6E320030F854 /* GPUImageGaussianBlurFilter.m in Sources */,
 				A8E857D01D6B6E320030F854 /* GPUImagePinchDistortionFilter.m in Sources */,
 				A8E857C71D6B6E320030F854 /* GPUImageNobleCornerDetectionFilter.m in Sources */,
 				A8099D0C1D8DA509000F8013 /* SubTitleAnimation.m in Sources */,
 				A8E857B81D6B6E320030F854 /* GPUImageLowPassFilter.m in Sources */,
+				A86EB5831DC6180D00C9FB55 /* HorizontalProgressView.m in Sources */,
 				A8E857A21D6B6E320030F854 /* GPUImageHighlightShadowFilter.m in Sources */,
 				A8E858081D6B6E320030F854 /* GPUImageWhiteBalanceFilter.m in Sources */,
 				A8E855B21D6B6DB60030F854 /* main.m in Sources */,
@@ -1360,12 +1667,15 @@
 				A8E857DC1D6B6E320030F854 /* GPUImageRGBErosionFilter.m in Sources */,
 				A8E8576A1D6B6E320030F854 /* GPUImageAmatorkaFilter.m in Sources */,
 				A8E857E71D6B6E320030F854 /* GPUImageSkinToneFilter.m in Sources */,
+				A840656E1D9D6D2800110B56 /* YYClassInfo.m in Sources */,
 				A8E857941D6B6E320030F854 /* GPUImageFilterPipeline.m in Sources */,
 				A8E857E41D6B6E320030F854 /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
 				A8E8580E1D6B6E320030F854 /* GPUImagePicture+TextureSubimage.m in Sources */,
 				A8E857E11D6B6E320030F854 /* GPUImageScreenBlendFilter.m in Sources */,
+				A840656D1D9D6D2800110B56 /* NSObject+YYModel.m in Sources */,
 				A8E857E31D6B6E320030F854 /* GPUImageSharpenFilter.m in Sources */,
 				A8E857DB1D6B6E320030F854 /* GPUImageRGBDilationFilter.m in Sources */,
+				A836FC7A1DAD4627006F2642 /* UIView+Custom.m in Sources */,
 				A8E857721D6B6E320030F854 /* GPUImageCannyEdgeDetectionFilter.m in Sources */,
 				A8E857F41D6B6E320030F854 /* GPUImageTextureOutput.m in Sources */,
 				A8E857841D6B6E320030F854 /* GPUImageCrosshatchFilter.m in Sources */,
@@ -1374,15 +1684,19 @@
 				A8E857891D6B6E320030F854 /* GPUImageDirectionalSobelEdgeDetectionFilter.m in Sources */,
 				A8E8579A1D6B6E320030F854 /* GPUImageGaussianBlurPositionFilter.m in Sources */,
 				A8E8578A1D6B6E320030F854 /* GPUImageDissolveBlendFilter.m in Sources */,
+				A874DE5A1D9D5A30006F11D4 /* ThemeObject.m in Sources */,
 				A8E857821D6B6E320030F854 /* GPUImageCropFilter.m in Sources */,
 				A8E8577E1D6B6E320030F854 /* GPUImageColorPackingFilter.m in Sources */,
 				A8E858091D6B6E320030F854 /* GPUImageXYDerivativeFilter.m in Sources */,
 				A8E857C21D6B6E320030F854 /* GPUImageMotionBlurFilter.m in Sources */,
+				A86EB5861DC618F400C9FB55 /* MaterialCutDownViewController.m in Sources */,
 				A8E855E21D6B6DF70030F854 /* VideoObject.m in Sources */,
 				A8E857A41D6B6E320030F854 /* GPUImageHighPassFilter.m in Sources */,
 				A8E857F81D6B6E320030F854 /* GPUImageThresholdSketchFilter.m in Sources */,
+				A86EB57C1DC5DC5000C9FB55 /* UIView+Extra.m in Sources */,
 				A8E8578B1D6B6E320030F854 /* GPUImageDivideBlendFilter.m in Sources */,
 				A8E857931D6B6E320030F854 /* GPUImageFilterGroup.m in Sources */,
+				A80A79661DB52DB800F9E29A /* AddVideoCollectionViewCell.m in Sources */,
 				A8E857FF1D6B6E320030F854 /* GPUImageTwoPassFilter.m in Sources */,
 				A8068B6E1D6F555600C4A857 /* DubbingElementObject.m in Sources */,
 				A8E8578F1D6B6E320030F854 /* GPUImageExposureFilter.m in Sources */,
@@ -1391,6 +1705,7 @@
 				A8E857651D6B6E320030F854 /* GPUImage3x3ConvolutionFilter.m in Sources */,
 				A8E855E11D6B6DF70030F854 /* GPUImageBeautifyFilter.m in Sources */,
 				A81ABCC71D7B09A9005AE73D /* SASliderLeft.m in Sources */,
+				A874DE161D9C3571006F11D4 /* ioapi.c in Sources */,
 				A8E857D61D6B6E320030F854 /* GPUImagePosterizeFilter.m in Sources */,
 				A8E857861D6B6E320030F854 /* GPUImageDifferenceBlendFilter.m in Sources */,
 				A8E857C81D6B6E320030F854 /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
@@ -1398,10 +1713,16 @@
 				A8E857C91D6B6E320030F854 /* GPUImageNormalBlendFilter.m in Sources */,
 				A8E857EF1D6B6E320030F854 /* GPUImageStillCamera.m in Sources */,
 				A8E855E41D6B6DF70030F854 /* VideoPlayView.m in Sources */,
+				A874DE191D9C3571006F11D4 /* zip.c in Sources */,
+				A874DDE71D9AC0FA006F11D4 /* AddMusicViewController.m in Sources */,
 				A8E857EE1D6B6E320030F854 /* GPUImageSphereRefractionFilter.m in Sources */,
 				A8E855E01D6B6DF70030F854 /* CanEditAsset.m in Sources */,
+				A8E8A6451DD07A3400AA8F15 /* StickerElementObject.m in Sources */,
+				A874DE131D9C3571006F11D4 /* prng.c in Sources */,
+				A874DE111D9C3571006F11D4 /* fileenc.c in Sources */,
 				A8068B8B1D7708AE00C4A857 /* VideoFilterViewController.m in Sources */,
 				A8E857B51D6B6E320030F854 /* GPUImageLineGenerator.m in Sources */,
+				A8C591101DC901D700F41454 /* AnimatedStickerObject.m in Sources */,
 				A8E857981D6B6E320030F854 /* GPUImageGammaFilter.m in Sources */,
 				A8E857DE1D6B6E320030F854 /* GPUImageRGBOpeningFilter.m in Sources */,
 				A8E857BE1D6B6E320030F854 /* GPUImageMedianFilter.m in Sources */,
@@ -1411,23 +1732,28 @@
 				A8068B8E1D770AA300C4A857 /* VideoFilterObject.m in Sources */,
 				A8E857691D6B6E320030F854 /* GPUImageAlphaBlendFilter.m in Sources */,
 				A8E858001D6B6E320030F854 /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
+				A80D41FA1DD84A1400173B43 /* BaseViewController.m in Sources */,
 				A8E857D11D6B6E320030F854 /* GPUImagePixellateFilter.m in Sources */,
 				A8E857A81D6B6E320030F854 /* GPUImageHoughTransformLineDetector.m in Sources */,
 				A8E857EC1D6B6E320030F854 /* GPUImageSolidColorGenerator.m in Sources */,
+				A874DE0E1D9C3571006F11D4 /* aeskey.c in Sources */,
 				A8E857681D6B6E320030F854 /* GPUImageAddBlendFilter.m in Sources */,
 				A8E8576C1D6B6E320030F854 /* GPUImageAverageLuminanceThresholdFilter.m in Sources */,
 				A8E857B31D6B6E320030F854 /* GPUImageLightenBlendFilter.m in Sources */,
 				A8068B731D71831C00C4A857 /* MaterialEditTableViewController.m in Sources */,
 				A8E857801D6B6E320030F854 /* GPUImageColourFASTSamplingOperation.m in Sources */,
+				A874DE141D9C3571006F11D4 /* pwd2key.c in Sources */,
 				A8E857E81D6B6E320030F854 /* GPUImageSmoothToonFilter.m in Sources */,
 				A8E857961D6B6E320030F854 /* GPUImageFramebuffer.m in Sources */,
 				A8E857FA1D6B6E320030F854 /* GPUImageToneCurveFilter.m in Sources */,
+				A836FC7D1DAEA7D8006F2642 /* MaterialClipViewController.m in Sources */,
 				A8E857BC1D6B6E320030F854 /* GPUImageLuminosityBlendFilter.m in Sources */,
 				A8E857CF1D6B6E320030F854 /* GPUImagePerlinNoiseFilter.m in Sources */,
 				A8E857641D6B6E320030F854 /* GLProgram.m in Sources */,
 				A8E857AF1D6B6E320030F854 /* GPUImageKuwaharaRadius3Filter.m in Sources */,
 				A8E8577B1D6B6E320030F854 /* GPUImageColorInvertFilter.m in Sources */,
 				A8E8578C1D6B6E320030F854 /* GPUImageEmbossFilter.m in Sources */,
+				A8C591131DC9020700F41454 /* AddStickerViewController.m in Sources */,
 				A8E8577C1D6B6E320030F854 /* GPUImageColorLocalBinaryPatternFilter.m in Sources */,
 				A8E857D71D6B6E320030F854 /* GPUImagePrewittEdgeDetectionFilter.m in Sources */,
 				A8E8576F1D6B6E320030F854 /* GPUImageBrightnessFilter.m in Sources */,
@@ -1435,7 +1761,6 @@
 				A8E8580F1D6B6E320030F854 /* GPUImagePicture.m in Sources */,
 				A8E857D41D6B6E320030F854 /* GPUImagePolarPixellateFilter.m in Sources */,
 				A8E857C31D6B6E320030F854 /* GPUImageMotionDetector.m in Sources */,
-				A8E855DF1D6B6DF70030F854 /* AddContent.m in Sources */,
 				A8E858031D6B6E320030F854 /* GPUImageVibranceFilter.m in Sources */,
 				A81ABCBC1D7ACFC3005AE73D /* SubtitlesView.m in Sources */,
 				A8E857B61D6B6E320030F854 /* GPUImageLocalBinaryPatternFilter.m in Sources */,
@@ -1447,11 +1772,16 @@
 				A8E857741D6B6E320030F854 /* GPUImageChromaKeyBlendFilter.m in Sources */,
 				A8E857F61D6B6E320030F854 /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
 				A8E8576B1D6B6E320030F854 /* GPUImageAverageColor.m in Sources */,
+				A874DE121D9C3571006F11D4 /* hmac.c in Sources */,
 				A8E8577A1D6B6E320030F854 /* GPUImageColorDodgeBlendFilter.m in Sources */,
 				A81ABCC91D7B09A9005AE73D /* SAVideoRangeSlider.m in Sources */,
+				A805739A1D998D0B0061E0E1 /* DubbingManage.m in Sources */,
 				A8E857C51D6B6E320030F854 /* GPUImageMovieComposition.m in Sources */,
 				A8E857F51D6B6E320030F854 /* GPUImageThreeInputFilter.m in Sources */,
 				A8E857FB1D6B6E320030F854 /* GPUImageToonFilter.m in Sources */,
+				A86EB5891DC62F5700C9FB55 /* SpeedView.m in Sources */,
+				A80D41F71DD7B83B00173B43 /* MBProgressHUD+Extra.m in Sources */,
+				A874DE1A1D9C3571006F11D4 /* SSZipArchive.m in Sources */,
 				A8E857751D6B6E320030F854 /* GPUImageChromaKeyFilter.m in Sources */,
 				A8E857E91D6B6E320030F854 /* GPUImageSobelEdgeDetectionFilter.m in Sources */,
 				A8E857B41D6B6E320030F854 /* GPUImageLinearBurnBlendFilter.m in Sources */,
@@ -1580,12 +1910,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: chen liang (AQ4F8Z853R)";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = Video/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.saunaking.VideoEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0272cb7c-26d9-4c1c-81ef-7a366ed708b2";
+				PROVISIONING_PROFILE = "8399edcb-5785-4baf-9722-44efcc57e77e";
 			};
 			name = Debug;
 		};
@@ -1594,12 +1926,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: chen liang (AQ4F8Z853R)";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = Video/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_BUNDLE_IDENTIFIER = com.saunaking.VideoEdit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0272cb7c-26d9-4c1c-81ef-7a366ed708b2";
+				PROVISIONING_PROFILE = "8399edcb-5785-4baf-9722-44efcc57e77e";
 			};
 			name = Release;
 		};
