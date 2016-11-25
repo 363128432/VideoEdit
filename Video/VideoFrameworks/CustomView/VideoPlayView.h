@@ -56,8 +56,11 @@
 
 @property (nonatomic, assign) id<VideoPlayViewDelegate> delegate;
 
+<<<<<<< HEAD
 - (instancetype)initWithFrame:(CGRect)frame playUrl:(NSURL *)playUrl;
 
+=======
+>>>>>>> origin/master
 - (void)toPlay;             // 从最开始播放
 
 - (void)startPlayer;        // 开始播放，暂停后从暂停地方开始播放，和toplay有区别

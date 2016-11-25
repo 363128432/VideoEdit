@@ -131,6 +131,7 @@
 - (void)setNowTime:(CMTime)nowTime {
     _nowTime = nowTime;
     [self.player seekToTime:nowTime];
+<<<<<<< HEAD
 }
 
 - (void)updateViewWitTime:(CMTime)time {
@@ -145,6 +146,22 @@
     [self startPlayer];
 }
 
+=======
+}
+
+- (void)updateViewWitTime:(CMTime)time {
+    double current = CMTimeGetSeconds(time);
+    self.playTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d",(int)current / 60, (int)current % 60];
+    self.timeSlider.value = CMTimeGetSeconds(time);
+}
+
+- (void)startPlayerWithTime:(CMTime)time {
+    _nowTime = time;
+    [self.player seekToTime:_nowTime];
+    [self startPlayer];
+}
+
+>>>>>>> origin/master
 #pragma mark TimeBarSliderDelegate
 - (void)VauleChangeFinishTimeBarSlider:(TimeBarSlider *)timeBar {
    
@@ -157,10 +174,30 @@
 
 #pragma mark set
 - (void)setPlayUrl:(NSURL *)playUrl {
+    [self removeNotification];
     _playUrl = playUrl;
+<<<<<<< HEAD
     
     AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:[AVURLAsset assetWithURL:playUrl]];
     [self.player replaceCurrentItemWithPlayerItem:item];
+=======
+//    self.player = [AVPlayer playerWithURL:playUrl];
+    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:playUrl];
+    self.player = [AVPlayer playerWithPlayerItem:item];
+    self.player.volume = 1.0f;
+    __weak typeof(self) weakself = self;
+    [_player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(0.1, 600) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+        _nowTime = time;
+        
+        [weakself updateViewWitTime:time];
+        
+        if (weakself.delegate && [weakself.delegate respondsToSelector:@selector(videoPlayViewPlayerIsPlay:)]) {
+            [weakself.delegate videoPlayViewPlayerIsPlay:weakself];
+        }
+    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
+    self.playerLayer.player = _player;
+>>>>>>> origin/master
 }
 
 -(void)removeNotification {
@@ -241,6 +278,7 @@
     [self.movie cancelProcessing];
 }
 
+<<<<<<< HEAD
 // 保存当前滤镜视频到某文件
 - (void)saveFilterVideoPath:(NSURL *)pathUrl completion: (void (^ __nullable)(void))completion {
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -276,6 +314,46 @@
             NSLog(@"finish");
             completion();
         }];
+=======
+- (void)saveFilterVideoPath:(NSURL *)pathUrl completion: (void (^ __nullable)(void))completion {
+//    [_movie cancelProcessing];
+    
+//    NSLog(@"videoPlay is %@",_movie);
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [_movie cancelProcessing];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _movie = [[GPUImageMovie alloc] initWithURL:_playUrl];
+            _movie.runBenchmark = YES;
+            _movie.shouldRepeat = NO;
+            _movie.playAtActualSpeed = NO;
+            //    [_movie removeAllTargets];
+            [_movie addTarget:_filter];
+            
+            _videoSize = self.player.currentItem.asset.naturalSize;
+            _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:pathUrl size:_videoSize fileType:AVFileTypeQuickTimeMovie outputSettings:nil];
+            _movieWriter.encodingLiveVideo = YES;
+            _movieWriter.assetWriter.movieFragmentInterval = kCMTimeInvalid;
+            [_filter addTarget:_movieWriter];
+            _movieWriter.shouldPassthroughAudio = YES;
+            _movie.audioEncodingTarget = _movieWriter;
+            [_movie enableSynchronizedEncodingUsingMovieWriter:_movieWriter];
+
+            [_movieWriter startRecording];
+            [_movie startProcessing];
+            
+            
+            __weak typeof(self) weakself = self;
+            [_movieWriter setCompletionBlock:^{
+                [weakself.filter removeTarget:weakself.movieWriter];
+                [weakself.movieWriter finishRecording];
+                [weakself.movie cancelProcessing];
+                NSLog(@"finish");
+                completion();
+            }];
+        });
+>>>>>>> origin/master
     });
 }
 
@@ -317,6 +395,7 @@
     return _playerLayer;
 }
 
+<<<<<<< HEAD
 - (AVPlayer *)player {
     if (!_player) {
         AVPlayerItem *item = [AVPlayerItem playerItemWithURL:_playUrl];
@@ -337,6 +416,8 @@
     return _player;
 }
 
+=======
+>>>>>>> origin/master
 - (BOOL)isPlay {
     return self.player.rate;
 }
