@@ -51,65 +51,10 @@
 - (void)selectFilter:(UIButton *)button {
     [self.playView pausePlayer];
     _filter = self.filterArray[button.tag - 300][@"filter"];
-<<<<<<< HEAD
     [self.playView setFilter:_filter];
     [self.playView toPlay];
-=======
-//    [self.playView setFilter:_filter];
-//    [self.playView toPlay];
->>>>>>> origin/master
     
-//    [self.playView saveFilterVideoPath:self.filterVideoPath completion: ^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.HUD hide:YES];
-//            self.editAsset.filterVideoPath = self.filterVideoPath;
-////            [self.navigationController popViewControllerAnimated:YES];
-//        });
-//    }];
-<<<<<<< HEAD
-//    [self.HUD show:YES];
-//    [self.editAsset saveFilterVideoPath:nil filter:_filter completion:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.HUD hide:YES];
-//            self.playView.playUrl = self.editAsset.filterVideoPath;
-//            [self.playView startPlayer];
-////            [self.navigationController popViewControllerAnimated:YES];
-//        });
-//    }];
-=======
-    [self.HUD show:YES];
-    [self.editAsset saveFilterVideoPath:nil filter:_filter completion:^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.HUD hide:YES];
-            self.playView.playUrl = self.editAsset.filterVideoPath;
-            [self.playView startPlayer];
-//            [self.navigationController popViewControllerAnimated:YES];
-        });
-    }];
 
-}
->>>>>>> origin/master
-
-- (void)makeSureAction {
-//    [self.playView pausePlayer];
-//    
-//    [self.HUD show:YES];
-//    
-//    [self.playView saveFilterVideoPath:self.filterVideoPath completion: ^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.HUD hide:YES];
-//            self.editAsset.filterVideoPath = self.filterVideoPath;
-            [self.navigationController popViewControllerAnimated:YES];
-//        });
-//    }];
-//    
-//    [self.playView cancelMovieProcessing];
-//    [self.editAsset saveFilterVideoPath:nil filter:_filter completion:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.HUD hide:YES];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        });
-//    }];
 }
 
 - (void)makeSureAction {
@@ -124,14 +69,7 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
     }];
-//
-//    [self.playView cancelMovieProcessing];
-//    [self.editAsset saveFilterVideoPath:nil filter:_filter completion:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self.HUD hide:YES];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        });
-//    }];
+
 }
 
 - (VideoPlayView *)playView {

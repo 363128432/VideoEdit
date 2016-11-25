@@ -10,7 +10,6 @@
 
 
 #import <AVFoundation/AVFoundation.h>
-#import "GPUImage.h"
 
 typedef NS_ENUM(NSInteger, VideoFilterType) {
     VideoFilterTypeWithNone,
@@ -36,16 +35,12 @@ typedef NS_ENUM(NSInteger, VideoFilterType) {
 @property (nonatomic, assign) float contrastVaule;              // 对比度
 
 @property (nonatomic, assign) VideoFilterType filterType;
-@property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;    // 视频滤镜
 
 @property (nonatomic, strong) UIImage *thumbnailImage;          // 缩略图
 
 
 // 根据时间分割
 //- (NSArray<CanEditAsset *> *)componentsSeparatedByTime:(CMTime)time;
-
-
-- (void)saveFilterVideoPath:(NSURL *)pathUrl filter:(GPUImageOutput<GPUImageInput> *)filter  completion: (void (^ __nullable)(void))completion;
 
 
 @end
