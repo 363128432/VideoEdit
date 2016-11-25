@@ -60,16 +60,13 @@
         
         // 添加播放层
         [_container.layer addSublayer:self.playerLayer];
-        if (_showRefresh) {
-            [self addSubview:self.refreshButton];
-        }
     }
     return self;
 }
 
 - (void)startPlayer {
-    [self.player play];
     dispatch_async(dispatch_get_main_queue(), ^{
+        [self.player play];
         self.refreshButton.hidden = YES;
     });
     
@@ -124,6 +121,17 @@
     }
 }
 
+- (void)setShowRefresh:(BOOL)showRefresh {
+    _showRefresh = showRefresh;
+    if (_showRefresh) {
+        if (!_refreshButton.superview) {
+            [self addSubview:self.refreshButton];
+        }
+    }else {
+        [self.refreshButton removeFromSuperview];
+    }
+}
+
 - (void)refreshAction {
     [self toPlay];
 }
@@ -131,6 +139,7 @@
 - (void)setNowTime:(CMTime)nowTime {
     _nowTime = nowTime;
     [self.player seekToTime:nowTime];
+    [self updateViewWitTime:nowTime];
 }
 
 - (void)updateViewWitTime:(CMTime)time {
@@ -160,8 +169,28 @@
 - (void)setPlayUrl:(NSURL *)playUrl {
     _playUrl = playUrl;
     
-    AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:[AVURLAsset assetWithURL:playUrl]];
-    [self.player replaceCurrentItemWithPlayerItem:item];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        AVPlayerItem *item = [AVPlayerItem playerItemWithAsset:[AVURLAsset assetWithURL:playUrl]];
+        [self.player replaceCurrentItemWithPlayerItem:item];
+        
+//        [_playerLayer removeFromSuperlayer];
+//        
+//        AVPlayerItem *item = [AVPlayerItem playerItemWithURL:playUrl];
+//        _player = [AVPlayer playerWithPlayerItem:item];
+//        _player.volume = 1.0f;
+//        
+//        
+//        _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+//        //设置播放页面的大小
+//        _playerLayer.frame = CGRectMake(0, 0, _container.bounds.size.width, _container.bounds.size.height);
+//        //设置播放窗口和当前视图之间的比例显示内容
+//        _playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+//        //设置播放的默认音量值
+//        _playerLayer.player.volume = 1.0f;
+//        
+//        [self.container.layer addSublayer:_playerLayer];
+    });
 }
 
 -(void)removeNotification {
@@ -324,12 +353,12 @@
         _player.volume = 1.0f;
         __weak typeof(self) weakself = self;
         [_player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(0.1, 600) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-            _nowTime = time;
-            
-            [weakself updateViewWitTime:time];
-            
-            if (weakself.delegate && [weakself.delegate respondsToSelector:@selector(videoPlayViewPlayerIsPlay:)]) {
-                [weakself.delegate videoPlayViewPlayerIsPlay:weakself];
+            if (weakself.isPlay) {
+                _nowTime = time;
+                [weakself updateViewWitTime:time];
+                if (weakself.delegate && [weakself.delegate respondsToSelector:@selector(videoPlayViewPlayerIsPlay:)]) {
+                    [weakself.delegate videoPlayViewPlayerIsPlay:weakself];
+                }
             }
         }];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackFinished:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
