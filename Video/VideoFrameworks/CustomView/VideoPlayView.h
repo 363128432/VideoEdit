@@ -19,8 +19,6 @@
 - (void)videoPlayViewPlayerStart:(VideoPlayView *)playView;
 - (void)videoPlayViewPlayerPause:(VideoPlayView *)playView;
 
-
-
 @end
 
 
@@ -28,11 +26,11 @@
 
 @property (nonatomic, strong) NSMutableArray<NSURL *> *videoPathArray;  // 播放视频路径地址
 
-@property (nonatomic, strong) UIView *container;            // 播放器容器
+@property (nonatomic, strong) UIView *contentView;          // 内容视图，用来添加字幕，贴纸
 @property (nonatomic, strong) UIView *statusView;           // 状态条，显示进度，素材之间分隔的地，播放时间等
 @property (nonatomic, assign) BOOL hideStatusView;          // 隐藏状态条
 
-@property (nonatomic, strong) NSURL *playUrl;               // 视频播放地址
+@property (nonatomic, strong, readonly) NSURL *playUrl;               // 视频播放地址
 @property (nonatomic, assign) CMTime totalTime;             // 视频总时长
 @property (nonatomic, assign) CMTime nowTime;               // 当前播放时间
 @property (nonatomic, strong) NSArray<NSNumber *> *separatePoints;  // 分隔
@@ -57,7 +55,7 @@
 
 @property (nonatomic, assign) id<VideoPlayViewDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame playUrl:(NSURL *)playUrl;
+- (instancetype)initWithFrame:(CGRect)frame playUrl:(NSURL *)playUrl userFFMPEG:(BOOL)userFFMPEG;
 
 - (void)toPlay;             // 从最开始播放
 
@@ -68,6 +66,8 @@
 - (void)startPlayerWithTime:(CMTime)time;
 
 - (void)cancelMovieProcessing;
+
+- (void)replaceCurrentPlayUrl:(NSURL *)playUrl;
 
 - (void)startPlayerWithTimeRange:(CMTimeRange)range completionHandler:(void (^)(BOOL finished))completionHandler;
 

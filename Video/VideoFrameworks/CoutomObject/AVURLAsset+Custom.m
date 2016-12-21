@@ -20,7 +20,7 @@
     CGImageRef thumbnailImageRef = NULL;
     CFTimeInterval thumbnailImageTime = time;
     NSError *thumbnailImageGenerationError = nil;
-    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 60)actualTime:NULL error:&thumbnailImageGenerationError];
+    thumbnailImageRef = [assetImageGenerator copyCGImageAtTime:CMTimeMake(thumbnailImageTime, 600) actualTime:NULL error:&thumbnailImageGenerationError];
     
     if(!thumbnailImageRef)
         NSLog(@"thumbnailImageGenerationError %@",thumbnailImageGenerationError);

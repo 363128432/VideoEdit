@@ -17,6 +17,7 @@
 @interface MaterialCutDownViewController ()<SAVideoRangeSliderDelegate,GPUImageMovieDelegate,SpeedViewDelegate>
 
 @property (nonatomic, strong) VideoPlayView *playView;  // 播放视图
+@property (nonatomic, strong) VideoObject *currentVideo;
 @property (nonatomic, strong) UIView *functionView;
 @property (nonatomic, strong) UIView *functionContent;
 @property (nonatomic, assign) NSInteger functionType;
@@ -42,6 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    _currentVideo = [VideoObject currentVideo];
     
     [self.view addSubview:self.playView];
     [self.view addSubview:self.functionView];
@@ -161,7 +163,8 @@
 - (void)makeSureAction {
     switch (self.functionType) {
         case 0: {
-            self.editAsset.playTimeRange = CMTimeRangeMake(CMTimeMakeWithSeconds(_leftVaule, 600), CMTimeMakeWithSeconds(_rightVaule - _leftVaule, 600));
+//            self.editAsset.playTimeRange = CMTimeRangeMake(CMTimeMakeWithSeconds(_leftVaule, 600), CMTimeMakeWithSeconds(_rightVaule - _leftVaule, 600));
+            [self.currentVideo changeEditAssetPlayTimeRangeWithAsset:self.editAsset playTimeRange:CMTimeRangeMake(CMTimeMakeWithSeconds(_leftVaule, 600), CMTimeMakeWithSeconds(_rightVaule - _leftVaule, 600))];
         }
             break;
             
@@ -231,8 +234,7 @@
 #pragma mark property
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-        _playView.playUrl = _editAsset.URL;
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:_editAsset.URL userFFMPEG:NO];
         _playView.isEditModel = YES;
         _playView.totalTime = _editAsset.duration;
     }

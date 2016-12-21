@@ -151,8 +151,7 @@
 #pragma mark - property
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-        _playView.playUrl = _editAsset.URL;
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:_editAsset.URL userFFMPEG:NO];
         _playView.totalTime = _editAsset.duration;
     }
     return _playView;

@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSDictionary *audioSettings;          // 录制中音频设置
 @property (nonatomic, strong) NSMutableDictionary *videoSettings;   // 录制中视频设置
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;     // 视频写入
+@property (nonatomic, strong) GPUImageMovieWriter *filterMovieWriter;   // 带视频滤镜写入
 
 @property (nonatomic, strong) NSURL *currentUrl;
 
@@ -173,18 +174,7 @@
     [self.videoArray addObject:movieURL];
     
     
-    _movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:self.bounds.size];
-    _movieWriter.encodingLiveVideo = YES;
-    _movieWriter.shouldPassthroughAudio = YES;
-    if (_filter) {
-        [_filter addTarget:_movieWriter];
-    }else {
-        [_videoCamera addTarget:_movieWriter];
-    }
-    self.videoCamera.audioEncodingTarget = _movieWriter;
-    [_movieWriter startRecording];
-    
-    _isCamera = YES;
+    [self startRecordingWithSavePath:movieURL];
 }
 
 - (void)startRecordingWithSavePath:(NSURL *)pathUrl {
@@ -213,9 +203,7 @@
 }
 
 - (void)pauseRecording {
-    _isCamera = NO;
-    [_movieWriter finishRecording];
-    _movieWriter = nil;
+    [self pauseRecordingCompletion:nil];
 }
 
 - (void)endRecordingCompletion:(void (^)(NSMutableArray<NSURL *> *))completion {

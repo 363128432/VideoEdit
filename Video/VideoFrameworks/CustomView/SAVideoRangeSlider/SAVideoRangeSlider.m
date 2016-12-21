@@ -50,7 +50,7 @@
         
         _frame_width = frame.size.width;
         
-        int thumbWidth = 10;
+        int thumbWidth = 15;
         
         _bgView = [[UIControl alloc] initWithFrame:CGRectMake(thumbWidth-BG_VIEW_BORDERS_SIZE, 0, frame.size.width-(thumbWidth*2)+BG_VIEW_BORDERS_SIZE*2, frame.size.height)];
         _bgView.layer.borderColor = [UIColor grayColor].CGColor;

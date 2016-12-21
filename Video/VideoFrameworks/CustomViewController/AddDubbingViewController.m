@@ -74,7 +74,12 @@
     [self.mySAVideoRangeSlider addSubview:_dubbingViewBackView];
     
     [self reloadDubbingView];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
     
+    self.playView.delegate = nil;
 }
 
 - (void)reloadDubbingView {
@@ -105,6 +110,7 @@
         return;
     }
     
+    NSLog(@"currentTime is %f",[self currentTime]);
     self.playView.nowTime = CMTimeMakeWithSeconds([self currentTime], 600);
     if (!_isStartDubbing) {
         if ([self.currentVideo searchHaveDubbingElementWithThisTime:[self currentTime]]) {
@@ -131,6 +137,7 @@
         _currentDubbingView.backgroundColor = [UIColor colorWithRed:0 green:1 blue:1 alpha:0.3];
         [_dubbingViewBackView addSubview:_currentDubbingView];
     }else if ([self.dubbingButton.titleLabel.text isEqualToString:@"停止配音"]) {
+        
         [self.currentVideo addDubbingArrayObject:[self.manage stopRecord]];
         [self reloadDubbingView];
         [self.dubbingButton setTitle:@"删除" forState:UIControlStateNormal];
@@ -155,10 +162,10 @@
         [self.HUD show:YES];
         __weak typeof(self) weakself = self;
         [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-            weakself.playView.playUrl = assetURL;
-            [weakself.playView startPlayer];
-            
             dispatch_async(dispatch_get_main_queue(), ^{
+                [weakself.playView replaceCurrentPlayUrl:assetURL];
+                [weakself.playView startPlayer];
+                
                 [weakself.HUD hide:YES];
                 [weakself.HUD removeFromSuperview];
                 weakself.HUD = nil;
@@ -166,7 +173,7 @@
                 weakself.playView.separatePoints = _currentVideo.materialPointsArray;
                 if (error) {
                     [MBProgressHUD showHUDInView:self.view.window text:@"合成失败"];
-                    [self.playView pausePlayer];
+                    [weakself.playView pausePlayer];
                 }
             });
         }];
@@ -179,12 +186,10 @@
 
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:self.currentVideo.afterEditingPath userFFMPEG:YES];
         _playView.totalTime = self.currentVideo.totalTime;
         _playView.separatePoints = self.currentVideo.materialPointsArray;
         _playView.delegate = self;
-        _playView.playUrl = self.currentVideo.afterEditingPath;
-        [self.playView startPlayer];
     }
     return _playView;
 }

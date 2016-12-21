@@ -24,6 +24,11 @@
 @implementation DubbingManage
 
 - (void)startRecordingWithStartTime:(NSTimeInterval)time {
+    
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    NSError *setCategoryError = nil;
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&setCategoryError];
+    
     self.elementObject = [[DubbingElementObject alloc]init];
     NSString *urlStr=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     urlStr=[urlStr stringByAppendingPathComponent:[NSString stringWithFormat:@"%ld.caf",(NSInteger)[[NSDate date]timeIntervalSince1970]]];

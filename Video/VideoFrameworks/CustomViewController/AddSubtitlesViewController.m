@@ -146,7 +146,7 @@
 
     [self.subTitleBackView removeAllSubViews];
     
-    [self.playView.container removeAllSubViews];
+    [self.playView.contentView removeAllSubViews];
     
     for (SubtitlesView *object in self.subtitleArray) {
         // 进度条上表示进度的遮罩
@@ -155,7 +155,7 @@
         [_subTitleBackView addSubview:view];
         
         object.hidden = YES;
-        [self.playView.container addSubview:object];
+        [self.playView.contentView addSubview:object];
     }
 }
 
@@ -202,7 +202,7 @@
 
 - (void)playAction:(UIButton *)button {
     if (!button.isSelected) {
-        for (SubtitlesView *view in self.playView.container.subviews) {
+        for (SubtitlesView *view in self.playView.contentView.subviews) {
             if (CMTimeGetSeconds(view.insertTime.start) >= CMTimeGetSeconds(self.playView.nowTime)) {
                 view.hidden = NO;
                 view.hideBorder = YES;
@@ -234,6 +234,7 @@
         [self.playView startPlayer];
     }else {
         [self.playView pausePlayer];
+        [self scrollViewDidScroll:self.scrollView];
     }
     
     playButton.selected = !playButton.isSelected;
@@ -409,9 +410,9 @@
     
     // 添加字幕
     SubtitlesView *subview = [[SubtitlesView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) title:self.textView.text];
-    subview.center = self.playView.container.center;
+    subview.center = self.playView.contentView.center;
     subview.insertTime = CMTimeRangeMake(CMTimeMakeWithSeconds([self currentTime], 600), CMTimeMakeWithSeconds(MIN(2, CMTimeGetSeconds(self.currentVideo.totalTime) - [self currentTime]), 600));
-    [self.playView.container addSubview:subview];
+    [self.playView.contentView addSubview:subview];
     [self.subtitleArray addObject:subview];
     _currentSubtitleView = subview;
     _currentSubtitleView.delegate = self;
@@ -441,9 +442,9 @@
         SubtitleElementObject *subtitle = [[SubtitleElementObject alloc]init];
         subtitle.fontName = obj.titleFontName;
         CGFloat ratio = [UIScreen mainScreen].bounds.size.height / [UIScreen mainScreen].bounds.size.width;
-        CGRect textRect = [obj convertRect:obj.textLabel.frame toView:self.playView.container];
+        CGRect textRect = [obj convertRect:obj.textLabel.frame toView:self.playView.contentView];
         
-        subtitle.rect = CGRectMake(textRect.origin.x * ratio, (self.playView.container.bounds.size.height - textRect.origin.y) * ratio - textRect.size.height * ratio, textRect.size.width * ratio, textRect.size.height * ratio);
+        subtitle.rect = CGRectMake(textRect.origin.x * ratio, (self.playView.contentView.bounds.size.height - textRect.origin.y) * ratio - textRect.size.height * ratio, textRect.size.width * ratio, textRect.size.height * ratio);
         subtitle.fontSize = obj.fontSize * ratio;
         subtitle.title = obj.title;
         subtitle.textColor = obj.textColor;
@@ -479,10 +480,11 @@
 
 - (void)videoPlayViewPlayerPlayEnd:(VideoPlayView *)playView {
     playButton.selected = NO;
-    for (SubtitlesView *view in self.playView.container.subviews) {
+    for (SubtitlesView *view in self.playView.contentView.subviews) {
         [view.layer removeAllAnimations];
         view.layer.opacity = 1;
     }
+    [self scrollViewDidScroll:self.scrollView];
 }
 
 - (void)videoPlayViewPlayerStart:(VideoPlayView *)playView {
@@ -491,7 +493,7 @@
 
 - (void)videoPlayViewPlayerPause:(VideoPlayView *)playView {
 //    [self videoPlayViewPlayerPlayEnd:playView];
-    for (SubtitlesView *view in self.playView.container.subviews) {
+    for (SubtitlesView *view in self.playView.contentView.subviews) {
         [view.layer removeAllAnimations];
         view.layer.opacity = 1;
     }
@@ -505,7 +507,7 @@
     
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:5];   // 用来统计当前时间有多少字幕
     // 遍历播放视图上的字幕视图，在当前时间段的显示
-    for (SubtitlesView *subView in self.playView.container.subviews) {
+    for (SubtitlesView *subView in self.playView.contentView.subviews) {
         if ([self currentTime] >= CMTimeGetSeconds(subView.insertTime.start) && [self currentTime] <= CMTimeGetSeconds(subView.insertTime.start) + CMTimeGetSeconds(subView.insertTime.duration)) {
             subView.hidden = NO;
             [array addObject:subView];
@@ -518,7 +520,7 @@
     if (array.count == 1) {
         _currentSubtitleView = array[0];
         _currentSubtitleView.delegate = self;
-        _currentIndex = [self.playView.container.subviews indexOfObject:_currentSubtitleView];
+        _currentIndex = [self.playView.contentView.subviews indexOfObject:_currentSubtitleView];
         [self reloadCurrentEditSubtitleView];
         _styleButton.hidden = NO;
     }else {
@@ -550,8 +552,7 @@
 #pragma mark - property
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-        _playView.playUrl = self.currentVideo.noSubtitleVideoPath;
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:self.currentVideo.noSubtitleVideoPath userFFMPEG:NO];
         _playView.totalTime = _currentVideo.totalTime;
         _playView.delegate = self;
         _playView.statusView.hidden = YES;
@@ -587,7 +588,7 @@
         [self.currentVideo.subtitleArray enumerateObjectsUsingBlock:^(SubtitleElementObject * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             // 播放视力上的字幕视图
             
-            CGRect subtitleViewRect = CGRectMake(obj.rect.origin.x / ratio - BT_SIZE, self.playView.container.height - obj.rect.origin.y / ratio - obj.rect.size.height / ratio - BT_SIZE, obj.rect.size.width / ratio + 2 * BT_SIZE, obj.rect.size.height / ratio + 2 * BT_SIZE);
+            CGRect subtitleViewRect = CGRectMake(obj.rect.origin.x / ratio - BT_SIZE, self.playView.contentView.height - obj.rect.origin.y / ratio - obj.rect.size.height / ratio - BT_SIZE, obj.rect.size.width / ratio + 2 * BT_SIZE, obj.rect.size.height / ratio + 2 * BT_SIZE);
             SubtitlesView *subView = [[SubtitlesView alloc]initWithFrame:subtitleViewRect title:obj.title];
             subView.titleFontName = obj.fontName;
             subView.fontSize = obj.fontSize / ratio;

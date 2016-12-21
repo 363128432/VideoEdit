@@ -85,7 +85,6 @@
     [self.view bringSubviewToFront:self.maskView];
     [self currentTimeViewStyle];
     
-    [self playAction:playButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,8 +107,8 @@
 
 // 根据AnimatedStickerObject创建对应的贴纸元素
 - (StickerElementObject *)createStickerElementObjectWith:(AnimatedStickerObject *)animatedSticker {
-    BBStickerView *stickerView = [[BBStickerView alloc]initWithWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * animatedSticker.storyboard.widthRatio, self.playView.container.bounds.size.height * animatedSticker.storyboard.heightRatio) AnimatedStickerObject:animatedSticker animation:NO];
-    stickerView.center = self.playView.container.center;
+    BBStickerView *stickerView = [[BBStickerView alloc]initWithWithFrame:CGRectMake(0, 0, SCREEN_WIDTH * animatedSticker.storyboard.widthRatio, self.playView.contentView.bounds.size.height * animatedSticker.storyboard.heightRatio) AnimatedStickerObject:animatedSticker animation:NO];
+    stickerView.center = self.playView.contentView.center;
     
     StickerElementObject *stickerElement = [[StickerElementObject alloc]init];
     stickerElement.stickerView = stickerView;
@@ -134,7 +133,7 @@
     stickerView.delegate = self;
     stickerView.insetTime = stickerElement.insertTime;
     _currentStickerView = stickerView;
-    [self.playView.container addSubview:stickerView];
+    [self.playView.contentView addSubview:stickerView];
     
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake([self correspondingXWithTime:CMTimeGetSeconds(stickerElement.insertTime.start)], 0, [self correspondingXWithTime:CMTimeGetSeconds(stickerElement.insertTime.duration)], 50)];
     view.backgroundColor = [UIColor colorWithRed:0 green:1 blue:1 alpha:0.3];
@@ -144,7 +143,7 @@
 }
 
 - (void)getTheCurrentWithIndex:(NSInteger)index {
-    _currentStickerView = self.playView.container.subviews[index];
+    _currentStickerView = self.playView.contentView.subviews[index];
     _currentTimeView = self.stickerTimeBackView.subviews[index];
     _currentStickerElement = self.currentVideo.stickerArray[index];
 }
@@ -177,12 +176,17 @@
         [self.HUD show:YES];
         __weak typeof(self) weakself = self;
         [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-            weakself.playView.playUrl = assetURL;
-            [weakself.playView startPlayer];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakself.playView replaceCurrentPlayUrl:assetURL];
+                [weakself.playView startPlayer];
+            });
+//            [weakself.playView replaceCurrentPlayUrl:assetURL];
+//            [weakself.playView startPlayer];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakself.HUD hide:YES];
                 [weakself.HUD removeFromSuperview];
+                _currentStickerView.hidden = YES;
                 weakself.HUD = nil;
                 weakself.playView.totalTime = _currentVideo.totalTime;
                 weakself.playView.separatePoints = _currentVideo.materialPointsArray;
@@ -252,10 +256,14 @@
     [self.playView pausePlayer];
 }
 
-
+#pragma mark VideoPlayViewDelegate
 - (void)videoPlayViewPlayerPlayEnd:(VideoPlayView *)playView {
     playButton.selected = NO;
-    self.playView.playUrl = self.currentVideo.noSubtitleVideoPath;
+    [self.playView replaceCurrentPlayUrl:self.currentVideo.noSubtitleVideoPath];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.playView pausePlayer];
+    });
 }
 
 - (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
@@ -305,7 +313,7 @@
     NSArray *array = [self.currentVideo searchHaveStickerElementWithThisTime:[self currentTime]];
     for (int i = 0; i < self.currentVideo.stickerArray.count; i++) {
         StickerElementObject *stickerElement = self.currentVideo.stickerArray[i];
-        BBStickerView *stickerView = self.playView.container.subviews[i];
+        BBStickerView *stickerView = self.playView.contentView.subviews[i];
         stickerView.hidden = ([array indexOfObject:stickerElement] == NSNotFound)?YES:NO;
     }
     
@@ -324,8 +332,7 @@
 #pragma mark - property
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
-        _playView.playUrl = self.currentVideo.noSubtitleVideoPath;
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:self.currentVideo.afterEditingPath userFFMPEG:YES];
         _playView.delegate = self;
         _playView.statusView.hidden = YES;
     }

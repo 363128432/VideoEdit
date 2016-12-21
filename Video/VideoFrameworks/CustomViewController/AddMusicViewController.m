@@ -120,8 +120,11 @@
         [self.HUD show:YES];
         __weak typeof(self) weakself = self;
         [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-            weakself.playView.playUrl = assetURL;
-            [weakself.playView startPlayerWithTime:CMTimeMakeWithSeconds([self currentTime], 600)];
+            [weakself.playView replaceCurrentPlayUrl:assetURL];
+//            [weakself.playView startPlayerWithTime:CMTimeMakeWithSeconds([self currentTime], 600)];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakself.playView startPlayerWithTime:CMTimeMakeWithSeconds([self currentTime], 600)];
+            });
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakself.HUD hide:YES];
@@ -177,9 +180,10 @@
 }
 
 #pragma mark VideoPlayViewDelegate
-//- (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
-//    self.scrollView.contentOffset = CGPointMake([self correspondingXWithTime:CMTimeGetSeconds(playView.nowTime)], 0);
-//}
+- (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
+    self.scrollView.contentOffset = CGPointMake([self correspondingXWithTime:CMTimeGetSeconds(playView.nowTime)], 0);
+    NSLog(@"%f",CMTimeGetSeconds(playView.nowTime));
+}
 
 #pragma mark SAVideoRangeSliderDelegate
 - (void)videoRange:(SAVideoRangeSlider *)videoRange didChangeLeftPosition:(CGFloat)leftPosition rightPosition:(CGFloat)rightPosition
@@ -192,10 +196,9 @@
 
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:_currentVideo.afterEditingPath userFFMPEG:YES];
         _playView.totalTime = _currentVideo.totalTime;
         _playView.separatePoints = _currentVideo.materialPointsArray;
-        _playView.playUrl = _currentVideo.afterEditingPath;
         _playView.delegate = self;
     }
     return _playView;

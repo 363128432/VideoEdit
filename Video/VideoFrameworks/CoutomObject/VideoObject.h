@@ -65,11 +65,23 @@
 
 #pragma mark Sticker
 // 贴纸相关数据
-@property (nonatomic, strong) NSMutableArray<StickerElementObject *> *stickerArray;   // 字幕数组
+@property (nonatomic, strong) NSMutableArray<StickerElementObject *> *stickerArray;   // 贴纸数组
 
 - (void)addStickerObject:(StickerElementObject *)object;
 - (NSMutableArray *)searchHaveStickerElementWithThisTime:(NSTimeInterval)time;
 
+
+#pragma mark Edit
+// 插入
+- (void)insertMaterialObject:(CanEditAsset *)editAsset atIndex:(NSUInteger)index;
+// 分割
+- (void)changeEditAssetPlayTimeRangeWithAsset:(CanEditAsset *)editAsset playTimeRange:(CMTimeRange)playTimeRange;
+// 分割
+- (void)componentsSeparatedWithIndex:(NSInteger)index byTime:(NSTimeInterval)time;
+// 复制
+- (CanEditAsset *)copyMaterialWithIndex:(NSInteger)index;
+// 删除
+- (void)deleteMaterialWithIndex:(NSInteger)index;
 
 
 #pragma mark ---
@@ -80,15 +92,7 @@
 
 // 合并materialVideoArray素材数组里的视频
 - (void)combinationOfMaterialVideoCompletionBlock:(void (^)(NSURL *assetURL, NSError *error))completion;
+- (void)combinationOfMaterialVideoWithSavePath:(NSURL *)pathUrl CompletionBlock:(void (^)(NSURL *, NSError *))completion;
 
-
-// 插入
-- (void)insertMaterialObject:(CanEditAsset *)editAsset atIndex:(NSUInteger)index;
-// 分割
-- (void)componentsSeparatedWithIndex:(NSInteger)index byTime:(NSTimeInterval)time;
-// 复制
-- (CanEditAsset *)copyMaterialWithIndex:(NSInteger)index;
-// 删除
-- (void)deleteMaterialWithIndex:(NSInteger)index;
 
 @end

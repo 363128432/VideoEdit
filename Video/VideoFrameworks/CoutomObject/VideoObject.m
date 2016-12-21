@@ -42,7 +42,32 @@ static VideoObject *currentVideo = nil;
     return self;
 }
 
+#pragma mark Method
+- (CMTime)startTimeWithIndex:(NSInteger)index {
+    CMTime startTime = kCMTimeZero;
+    for (int i  = 0 ; i < index; i++) {
+        CanEditAsset *editAsset = _materialVideoArray[i];
+        startTime = CMTimeAdd(startTime, editAsset.playTimeRange.duration);
+    }
+    return startTime;
+}
+
 - (void)combinationOfMaterialVideoCompletionBlock:(void (^)(NSURL *, NSError *))completion {
+    //  导出路径
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
+                             [NSString stringWithFormat:@"mergeVideo.mov"]];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager removeItemAtPath:myPathDocs error:NULL];
+    _afterEditingPath = [NSURL fileURLWithPath:myPathDocs];
+    
+    [self combinationOfMaterialVideoWithSavePath:_afterEditingPath CompletionBlock:completion];
+}
+
+- (void)combinationOfMaterialVideoWithSavePath:(NSURL *)pathUrl CompletionBlock:(void (^)(NSURL *, NSError *))completion {
+    _afterEditingPath = pathUrl;
+    
     // 2.
     AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
     
@@ -62,7 +87,6 @@ static VideoObject *currentVideo = nil;
             videoAssset = video;
         }
         
-        NSArray *array = video.tracks;
         // 存视频
         AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
         [videoTrack insertTimeRange:video.playTimeRange
@@ -72,7 +96,7 @@ static VideoObject *currentVideo = nil;
 
         // 视频架构层，用来规定video样式，比如合并两个视频，怎么放，是转90度还是边放边旋转
         AVMutableVideoCompositionLayerInstruction *layerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-        [layerInstruction setOpacity:0 atTime:CMTimeAdd(_totalTime, video.duration)];
+        [layerInstruction setOpacity:0 atTime:CMTimeAdd(_totalTime, video.playTimeRange.duration)];
         if (videoTrack.naturalSize.width == videoTrack.naturalSize.height) {  // 如果是竖直拍摄的视频，平移到中间
             [layerInstruction setTransform:CGAffineTransformMakeTranslation(([UIScreen mainScreen].bounds.size.height - [UIScreen mainScreen].bounds.size.width) / 2, 0) atTime:kCMTimeZero];
         }
@@ -87,7 +111,7 @@ static VideoObject *currentVideo = nil;
                                  atTime:_totalTime
                                   error:nil];
             AVMutableAudioMixInputParameters *audioInputParams = [AVMutableAudioMixInputParameters audioMixInputParametersWithTrack:audioTrack] ;
-            [audioInputParams setVolumeRampFromStartVolume:_originalVolume toEndVolume:_originalVolume timeRange:CMTimeRangeMake(_totalTime, videoAssset.duration)];
+            [audioInputParams setVolumeRampFromStartVolume:_originalVolume toEndVolume:_originalVolume timeRange:CMTimeRangeMake(_totalTime, video.playTimeRange.duration)];
             [audioInputParams setTrackID:audioTrack.trackID];
             [audioParameterArray insertObject:audioInputParams atIndex:0];
         }
@@ -156,10 +180,8 @@ static VideoObject *currentVideo = nil;
     
     // 以下是导出不含字幕的视频路径
     //  导出路径
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *noSubtitlePath =  [documentsDirectory stringByAppendingPathComponent:
-                             [NSString stringWithFormat:@"noSubtitleVideo.mov"]];
+    NSString *noSubtitlePath = [[_afterEditingPath path] stringByReplacingOccurrencesOfString:@".mov" withString:@"_noSubtitle.mov"];
+    unlink([noSubtitlePath UTF8String]);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     [fileManager removeItemAtPath:noSubtitlePath error:NULL];
     _noSubtitleVideoPath = [NSURL fileURLWithPath:noSubtitlePath];
@@ -250,13 +272,6 @@ static VideoObject *currentVideo = nil;
     mainComposition.animationTool = [AVVideoCompositionCoreAnimationTool
                                  videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
     
-    
-    
-    //  导出路径
-    NSString *myPathDocs =  [documentsDirectory stringByAppendingPathComponent:
-                             [NSString stringWithFormat:@"mergeVideo.mov"]];
-    [fileManager removeItemAtPath:myPathDocs error:NULL];
-    _afterEditingPath = [NSURL fileURLWithPath:myPathDocs];
 
     //导出
     AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetHighestQuality];
@@ -536,7 +551,6 @@ static VideoObject *currentVideo = nil;
 }
 
 #pragma mark Edit
-
 - (void)insertMaterialObject:(CanEditAsset *)editAsset atIndex:(NSUInteger)index {
     [self.materialVideoArray insertObject:editAsset atIndex:index];
     
@@ -596,6 +610,45 @@ static VideoObject *currentVideo = nil;
     _totalTime = CMTimeAdd(_totalTime, editAsset.playTimeRange.duration);
 }
 
+
+// 剪切
+- (void)changeEditAssetPlayTimeRangeWithAsset:(CanEditAsset *)editAsset playTimeRange:(CMTimeRange)playTimeRange {
+    NSInteger index = [self.materialVideoArray indexOfObject:editAsset];
+    self.musicArray = [self changeEditAssetPlayTimeRangeWithOldPlayTimeRange:editAsset.playTimeRange newPlayTimeRange:playTimeRange assetStartTime:[self startTimeWithIndex:index] withAddElementObjectArray:self.musicArray];
+    self.dubbingArray = [self changeEditAssetPlayTimeRangeWithOldPlayTimeRange:editAsset.playTimeRange newPlayTimeRange:playTimeRange assetStartTime:[self startTimeWithIndex:index] withAddElementObjectArray:self.dubbingArray];
+    self.subtitleArray = [self changeEditAssetPlayTimeRangeWithOldPlayTimeRange:editAsset.playTimeRange newPlayTimeRange:playTimeRange assetStartTime:[self startTimeWithIndex:index] withAddElementObjectArray:self.subtitleArray];
+    self.stickerArray = [self changeEditAssetPlayTimeRangeWithOldPlayTimeRange:editAsset.playTimeRange newPlayTimeRange:playTimeRange assetStartTime:[self startTimeWithIndex:index] withAddElementObjectArray:self.stickerArray];
+    
+    editAsset.playTimeRange = playTimeRange ;
+    
+}
+
+// 更改视频播放时长时，插入元素的插入时间的更改
+- (NSMutableArray *)changeEditAssetPlayTimeRangeWithOldPlayTimeRange:(CMTimeRange)oldPlayTimeRange newPlayTimeRange:(CMTimeRange)newPlayTimeRange assetStartTime:(CMTime)assetStartTime withAddElementObjectArray:(NSMutableArray *)array {
+        for (int i = (int)array.count - 1; i >= 0; i--) {
+            AddElementObject *object = array[i];
+            // 如果和之前的视频播放时间段有重复，直接删除，没有话，是之前的，时间不变，之后的，时间改为之后的时间
+            if (CMTimeGetSeconds(CMTimeRangeGetIntersection(CMTimeRangeMake(assetStartTime, oldPlayTimeRange.duration), object.insertTime).duration) != 0) {
+                [array removeObject:object];
+            }else if (CMTimeGetSeconds(object.insertTime.start) +  CMTimeGetSeconds(object.insertTime.duration) <= CMTimeGetSeconds(assetStartTime)) { // 是之前的，时间不变
+                
+            }else { // 是之前的，时间不变
+                object.insertTime = CMTimeRangeMake(CMTimeAdd(assetStartTime, newPlayTimeRange.duration), object.insertTime.duration);
+            }
+            
+//        if (CMTimeGetSeconds(object.insertTime.start) < CMTimeGetSeconds(assetStartTime)) {
+//            if (CMTimeGetSeconds(object.insertTime.start) +  CMTimeGetSeconds(object.insertTime.duration) > CMTimeGetSeconds(assetStartTime)) {
+//                [array removeObject:object];
+//            }
+//        }else {
+//            if (CMTimeGetSeconds(object.insertTime.start) +  CMTimeGetSeconds(object.insertTime.duration) > CMTimeGetSeconds(assetStartTime)) {
+//                [array removeObject:object];
+//            }
+//        }
+    }
+    
+    return array;
+}
 
 // 分割
 - (void)componentsSeparatedWithIndex:(NSInteger)index byTime:(NSTimeInterval)time {

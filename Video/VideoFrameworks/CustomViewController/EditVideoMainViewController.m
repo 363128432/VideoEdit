@@ -19,8 +19,6 @@
 @property (nonatomic, strong) VideoPlayView *playView;  // 播放视图
 @property (nonatomic, strong) UIView *function;         // 功能视图
 
-@property (nonatomic, strong) UIButton *toPlay;         // 重新播放
-
 @property (nonatomic, strong) UIView *contentView;      //
 @property (nonatomic, strong) UIView *musicView;        // 选择音乐view
 @property (nonatomic, strong) UIView *themeView;
@@ -44,13 +42,10 @@
 
     
     [self.view addSubview:self.playView];
-//    [self.view addSubview:self.toPlay];
     [self.view addSubview:self.function];
     [self.view addSubview:self.contentView];
     
     [self.contentView addSubview:self.themeView];
-    
-    [self playStartPlay];
 }
 
 - (IBAction)backAction:(id)sender {
@@ -80,10 +75,23 @@
     [self.HUD show:YES];
     __weak typeof(self) weakself = self;
     [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-        weakself.playView.playUrl = assetURL;
-        [weakself.playView startPlayer];
+//        [weakself.playView replaceCurrentPlayUrl:assetURL];
+//        [weakself.playView startPlayer];
         
         dispatch_async(dispatch_get_main_queue(), ^{
+            [weakself.playView replaceCurrentPlayUrl:assetURL];
+
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakself.playView replaceCurrentPlayUrl:assetURL];
+                [weakself.playView startPlayer];
+                
+//                [weakself.playView removeFromSuperview];
+//                weakself.playView = nil;
+//                [weakself.view addSubview:self.playView];
+//                [weakself.playView startPlayer];
+            });
+            
+            
             [weakself.HUD hide:YES];
             [weakself.HUD removeFromSuperview];
             weakself.HUD = nil;
@@ -94,11 +102,6 @@
             }
         });
     }];
-}
-
-
-- (void)playStartPlay {
-    [self.playView toPlay];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,7 +182,7 @@
 
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:_currentVideo.afterEditingPath userFFMPEG:YES];
         _playView.totalTime = _currentVideo.totalTime;
         _playView.showRefresh = YES;
         _playView.separatePoints = _currentVideo.materialPointsArray;
@@ -256,17 +259,6 @@
         }
     }
     return _musicView;
-}
-
-- (UIButton *)toPlay {
-    if (!_toPlay) {
-        _toPlay = [UIButton buttonWithType:UIButtonTypeCustom];
-        _toPlay.frame = CGRectMake(0, self.playView.bounds.size.height, 80, 30);
-        [_toPlay setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_toPlay setTitle:@"重新播放" forState:UIControlStateNormal];
-        [_toPlay addTarget:self action:@selector(playStartPlay) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _toPlay;
 }
 
 - (UIView *)function {

@@ -37,7 +37,6 @@
     [self.view addSubview:self.filterSelectView];
     [self.view addSubview:self.ensureButton];
     
-    [self.playView setPlayUrl:self.editAsset.URL];
     [self.playView startPlayer];
 }
 
@@ -74,7 +73,7 @@
 
 - (VideoPlayView *)playView {
     if (!_playView) {
-        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200)];
+        _playView = [[VideoPlayView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200) playUrl:self.editAsset.URL userFFMPEG:NO];
         _playView.totalTime = self.editAsset.duration;
         
     }
