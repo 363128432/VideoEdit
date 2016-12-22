@@ -474,7 +474,7 @@
     
 #pragma mark VideoPlayViewDelegate
 - (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
-//    playButton.selected = YES;
+    playButton.selected = YES;
     self.scrollView.contentOffset = CGPointMake([self correspondingXWithTime:CMTimeGetSeconds(playView.nowTime)], 0);
 }
 
@@ -500,6 +500,10 @@
 }
 
 #pragma mark delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.playView pausePlayer];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.playView.isPlay) {
         return;

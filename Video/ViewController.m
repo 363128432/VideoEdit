@@ -40,6 +40,7 @@
     _videoView = [[VideoShootingView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width)];
     [self.view addSubview:_videoView];
     [self.view sendSubviewToBack:_videoView];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

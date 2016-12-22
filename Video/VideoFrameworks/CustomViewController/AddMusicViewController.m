@@ -12,6 +12,9 @@
 #import "SelectMusicTableViewController.h"
 
 @interface AddMusicViewController ()<SAVideoRangeSliderDelegate,UIScrollViewDelegate,VideoPlayViewDelegate>
+{
+    UIButton *playButton;
+}
 
 @property (nonatomic, strong) VideoPlayView *playView;  // 播放视图
 @property (strong, nonatomic) SAVideoRangeSlider *mySAVideoRangeSlider;
@@ -37,7 +40,7 @@
     
     [self.view addSubview:self.playView];
     
-    UIButton *playButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 250, 40, 50)];
+    playButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 250, 40, 50)];
     [playButton setTitle:@"播放" forState:UIControlStateNormal];
     [playButton setTitle:@"暂停" forState:UIControlStateSelected];
     [playButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -179,10 +182,18 @@
     [self reloadEditMusicElementStyle];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.playView pausePlayer];
+}
+
 #pragma mark VideoPlayViewDelegate
 - (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
+    playButton.selected = YES;
     self.scrollView.contentOffset = CGPointMake([self correspondingXWithTime:CMTimeGetSeconds(playView.nowTime)], 0);
-    NSLog(@"%f",CMTimeGetSeconds(playView.nowTime));
+}
+
+- (void)videoPlayViewPlayerPlayEnd:(VideoPlayView *)playView {
+    playButton.selected = NO;
 }
 
 #pragma mark SAVideoRangeSliderDelegate

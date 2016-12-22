@@ -88,6 +88,9 @@ static VideoObject *currentVideo = nil;
         }
         
         // 存视频
+        if ([videoAssset tracksWithMediaType:AVMediaTypeVideo].count == 0) {
+            completion(nil,[NSError errorWithDomain:@"视频有误" code:-3 userInfo:nil]);
+        }
         AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
         [videoTrack insertTimeRange:video.playTimeRange
                             ofTrack:[[videoAssset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]

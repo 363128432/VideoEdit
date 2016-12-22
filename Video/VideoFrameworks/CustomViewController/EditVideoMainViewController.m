@@ -75,22 +75,9 @@
     [self.HUD show:YES];
     __weak typeof(self) weakself = self;
     [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-//        [weakself.playView replaceCurrentPlayUrl:assetURL];
-//        [weakself.playView startPlayer];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [weakself.playView replaceCurrentPlayUrl:assetURL];
-
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                [weakself.playView replaceCurrentPlayUrl:assetURL];
-                [weakself.playView startPlayer];
-                
-//                [weakself.playView removeFromSuperview];
-//                weakself.playView = nil;
-//                [weakself.view addSubview:self.playView];
-//                [weakself.playView startPlayer];
-            });
-            
             
             [weakself.HUD hide:YES];
             [weakself.HUD removeFromSuperview];

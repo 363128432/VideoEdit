@@ -164,7 +164,7 @@
         [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakself.playView replaceCurrentPlayUrl:assetURL];
-                [weakself.playView startPlayer];
+//                [weakself.playView startPlayer];
                 
                 [weakself.HUD hide:YES];
                 [weakself.HUD removeFromSuperview];

@@ -176,12 +176,8 @@
         [self.HUD show:YES];
         __weak typeof(self) weakself = self;
         [_currentVideo combinationOfMaterialVideoCompletionBlock:^(NSURL *assetURL, NSError *error) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [weakself.playView replaceCurrentPlayUrl:assetURL];
-                [weakself.playView startPlayer];
-            });
-//            [weakself.playView replaceCurrentPlayUrl:assetURL];
-//            [weakself.playView startPlayer];
+            [weakself.playView replaceCurrentPlayUrl:assetURL];
+            // [weakself.playView startPlayer];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [weakself.HUD hide:YES];
@@ -259,14 +255,15 @@
 #pragma mark VideoPlayViewDelegate
 - (void)videoPlayViewPlayerPlayEnd:(VideoPlayView *)playView {
     playButton.selected = NO;
-    [self.playView replaceCurrentPlayUrl:self.currentVideo.noSubtitleVideoPath];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.playView pausePlayer];
-    });
+//    [self.playView replaceCurrentPlayUrl:self.currentVideo.noSubtitleVideoPath];
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self.playView pausePlayer];
+//    });
 }
 
 - (void)videoPlayViewPlayerIsPlay:(VideoPlayView *)playView {
+    playButton.selected = YES;
     self.scrollView.contentOffset = CGPointMake([self correspondingXWithTime:CMTimeGetSeconds(playView.nowTime)], 0);
 }
 
@@ -298,6 +295,10 @@
 
 
 #pragma mark scrollDelegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.playView pausePlayer];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if (self.playView.isPlay) {
         return;

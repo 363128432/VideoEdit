@@ -445,7 +445,7 @@
     
     if (self.ijkPlayer) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.ijkPlayer pause];
+            [self.ijkPlayer shutdown];
             [self removeMovieNotificationObservers];
             [self.playView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [obj removeFromSuperview];
@@ -454,21 +454,41 @@
         });
     }
     
-    
-    [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
-    IJKFFOptions *options = [IJKFFOptions optionsByDefault];
-    self.ijkPlayer = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.playUrl withOptions:options];
-    self.ijkPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    self.ijkPlayer.view.frame = self.playView.bounds;
-    self.ijkPlayer.scalingMode = IJKMPMovieScalingModeAspectFit;
-    self.ijkPlayer.shouldAutoplay = YES;
-    [self installMovieNotificationObservers];
-    
-    self.playView.autoresizesSubviews = YES;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.playView addSubview:self.ijkPlayer.view];
+        // 如果不睡眠，会无法创建成功
+        sleep(0.2);
+        [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
+        IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+        self.ijkPlayer = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.playUrl withOptions:options];
+        self.ijkPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+        self.ijkPlayer.view.frame = self.playView.bounds;
+        self.ijkPlayer.scalingMode = IJKMPMovieScalingModeAspectFit;
+        self.ijkPlayer.shouldAutoplay = YES;
+        [self installMovieNotificationObservers];
+        
+        self.playView.autoresizesSubviews = YES;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.playView addSubview:self.ijkPlayer.view];
+        });
+        [self.ijkPlayer prepareToPlay];
     });
-    [self.ijkPlayer prepareToPlay];
+
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [IJKFFMoviePlayerController checkIfFFmpegVersionMatch:YES];
+//        IJKFFOptions *options = [IJKFFOptions optionsByDefault];
+//        self.ijkPlayer = [[IJKFFMoviePlayerController alloc] initWithContentURL:self.playUrl withOptions:options];
+//        self.ijkPlayer.view.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//        self.ijkPlayer.view.frame = self.playView.bounds;
+//        self.ijkPlayer.scalingMode = IJKMPMovieScalingModeAspectFit;
+//        self.ijkPlayer.shouldAutoplay = YES;
+//        [self installMovieNotificationObservers];
+//        
+//        self.playView.autoresizesSubviews = YES;
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self.playView addSubview:self.ijkPlayer.view];
+//        });
+//        [self.ijkPlayer prepareToPlay];
+//    });
 
 }
 
